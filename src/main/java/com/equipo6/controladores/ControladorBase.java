@@ -1,5 +1,138 @@
 package com.equipo6.controladores;
 
-public class ControladorBase {
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+
+import com.equipo6.modelos.Producto;
+import com.equipo6.servicios.ServicioBase;
+
+
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
+
+@Controller
+public class ControladorBase {
+	
+	@Autowired
+	private ServicioBase servBase;
+	
+	@GetMapping("/home")
+	public String home(HttpSession session, Model model) {
+		
+		if(session.getAttribute("usuarioEnSesion") == null){
+			return "redirect:/";
+		}
+		List<Producto> producto = servBase.todasLosProductos();
+		
+		model.addAttribute("producto", producto);
+		
+		return "home.jsp";
+	}
+	
+	@GetMapping("/nuevoProducto")
+	public String nuevo(@ModelAttribute("nuevoProducto") Producto nuevoProducto, HttpSession session) {
+		
+		if(session.getAttribute("usuarioEnSesion") == null){
+			return "redirect:/";
+		}
+		
+		return "nuevoProducto.jsp";
+	}
+	@PostMapping("/agregarProducto")
+	public String agregar(@Valid @ModelAttribute("nuevoProducto") Producto nuevoProducto, BindingResult result) {
+		
+		if(result.hasErrors()) {
+			return "nuevoProducto.jsp";
+		} else {
+			servBase.guardarProducto(nuevoProducto);
+			return "redirect:/home";
+		}
+	}
+	
+	@GetMapping("/editar/{id}")
+	public String editar(@PathVariable("id") Long id, Model model, HttpSession session) {
+		
+		if(session.getAttribute("usuarioEnSesion") == null){
+			return "redirect:/";
+		}
+		
+	    Producto productoEditar = servBase.buscarProducto(id);
+	    
+	    if (productoEditar == null) {
+	        return "redirect:/home";
+	    }
+	    
+	    model.addAttribute("producto", productoEditar);
+	    return "editarProducto.jsp";
+	}
+	
+	@PutMapping("/actualizar/{id}")
+	public String actualizarProducto(@PathVariable("id") Long id, @ModelAttribute("producto") @Valid Producto producto, BindingResult result, Model model) {
+	  
+	    if (result.hasErrors()) {
+	     
+	        model.addAttribute("producto", producto);
+	        return "editarProducto.jsp";
+	    }
+
+	    producto.setId(id);
+	    servBase.guardarProducto(producto);
+
+	 
+	    return "redirect:/home";
+	}
+	
+	@DeleteMapping("/borrar/{id}")
+	public String borrar(@PathVariable("id") Long id, HttpSession session) {
+		
+		if(session.getAttribute("usuarioEnSesion") == null){
+			return "redirect:/";
+		}
+		
+	    servBase.borrarProducto(id);
+	    return "redirect:/home";
+	}
+	
+	@GetMapping("/comprar/{id}")
+	public String comprar(@PathVariable("id") Long id, Model model, HttpSession session) {
+	    if (session.getAttribute("usuarioEnSesion") == null) {
+	        return "redirect:/";
+	    }
+	    
+	    Producto producto = servBase.buscarProducto(id);
+	    if (producto == null) {
+	        return "redirect:/home";
+	    }
+
+	    model.addAttribute("producto", producto);
+	    return "comprar.jsp";
+	}
+
+	
+	@GetMapping("/arrendar/{id}")
+	public String arrendar(@PathVariable("id") Long id, Model model, HttpSession session) {
+		
+		if (session.getAttribute("usuarioEnSesion") == null) {
+	        return "redirect:/";
+	    }
+	    
+	    Producto producto = servBase.buscarProducto(id);
+	    if (producto == null) {
+	        return "redirect:/home";
+	    }
+
+	    model.addAttribute("producto", producto);
+	    return "arrendar.jsp";
+	}
 }
+

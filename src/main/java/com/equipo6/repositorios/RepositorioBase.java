@@ -1,5 +1,14 @@
 package com.equipo6.repositorios;
 
-public interface RepositorioBase {
+import java.util.List;
 
+import org.springframework.data.repository.CrudRepository;
+
+import com.equipo6.modelos.Producto;
+
+public interface RepositorioBase extends CrudRepository<Producto, Long> {
+	
+	List<Producto> findAll();
+	
+	List<Producto> findAllByOrderByNombreDesc();
 }
