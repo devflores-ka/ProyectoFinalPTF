@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,11 +15,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
         <!--FAVICON-->
-        <link rel="icon" type="image/x-icon" href="img/icon.webp">
+        <link rel="icon" type="image/x-icon" href="/img/icon.webp">
     </head>
     <body>
         <header class="head">
-            <img src="img/logo.webp" alt="Halus">
+            <img src="/img/logo.webp" alt="Halus">
             <ul>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#soluciones">Soluciones</a></li>
@@ -40,17 +42,17 @@
             </div>
             <div id="slider">
                 <figure>
-                    <img class="sliderimg" src="img/slide-1.webp" alt="paneles solares">
-                    <img class="sliderimg" src="img/slide-2.webp" alt="paneles solares">
-                    <img class="sliderimg" src="img/slide-3.webp" alt="paneles solares">
-                    <img class="sliderimg" src="img/slide-1.webp" alt="paneles solares">
+                    <img class="sliderimg" src="/img/slide-1.webp" alt="paneles solares">
+                    <img class="sliderimg" src="/img/slide-2.webp" alt="paneles solares">
+                    <img class="sliderimg" src="/img/slide-3.webp" alt="paneles solares">
+                    <img class="sliderimg" src="/img/slide-1.webp" alt="paneles solares">
                 </figure>
             </div> 
         </section>
 
         <section id="nosotros">
-            <div class="container"></div>
-                <img src="img/logo-b.webp">
+            <div class="container">
+                <img src="/img/logo-b.webp">
                 <div class="s-parrafo">
                     <h4>Energía accesible para todos</h4>
                     <p>Conectamos hogares y empresas con tus soluciones solares asequibles y eficientes.</p>

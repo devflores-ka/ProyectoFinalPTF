@@ -16,11 +16,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
         <!--FAVICON-->
-        <link rel="icon" type="image/x-icon" href="img/icon.webp">
+        <link rel="icon" type="image/x-icon" href="/img/icon.webp">
     </head>
     <body>
         <header class="head">
-            <img src="img/logo.webp" alt="Halus">
+            <img src="/img/logo.webp" alt="Halus">
             <ul>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#soluciones">Soluciones</a></li>
@@ -33,7 +33,7 @@
         </header>
         <h1>Iniciar Sesión</h1>
         <main class="r-cont">
-            <form:form action="iniciarSesion" method="POST" modelAttribute="LoginUsuario">
+            <form:form action="iniciarSesion" method="POST" modelAttribute="loginUsuario">
 				<div class="mt-05">
 					<form:label path="emailLogin"><i class="fa-solid fa-at"> </i> Email:</form:label>
 					<form:input path="emailLogin" class="txt-input"/>
