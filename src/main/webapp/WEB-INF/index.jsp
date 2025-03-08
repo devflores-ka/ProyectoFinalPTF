@@ -19,7 +19,7 @@
     </head>
     <body>
         <header class="head">
-            <img src="/img/logo.webp" alt="Halus">
+            <img src="/img/logo.webp" class="logo" alt="Halus">
             <ul>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#soluciones">Soluciones</a></li>
