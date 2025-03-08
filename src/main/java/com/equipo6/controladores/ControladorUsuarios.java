@@ -21,10 +21,15 @@ public class ControladorUsuarios {
 	private ServicioUsuarios sUsuarios;
 
 	@GetMapping("/")
-	public String index(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario) {
+	public String index() {
 		return "index.jsp";
 	}
 
+	@GetMapping("/registro/formulario")
+	public String formularioRegistro(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario) {
+		return "registroClientes.jsp";
+	}
+	
 	@PostMapping("/registro")
 	public String registro(@Valid @ModelAttribute("nuevoUsuario") Usuario nuevoUsuario,
 						   BindingResult result,
