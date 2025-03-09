@@ -48,6 +48,10 @@ public class ControladorUsuarios {
 
 	}
 
+	@GetMapping("/empresas")
+	public String empresas() {
+		return "empresas.jsp";
+	}
 	
 	@GetMapping("/login")
 	public String login(@ModelAttribute("loginUsuario")LoginUsuario loginUsuario) {
