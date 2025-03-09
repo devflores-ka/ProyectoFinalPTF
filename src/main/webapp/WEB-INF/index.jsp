@@ -19,81 +19,104 @@
     </head>
     <body>
         <header class="head">
-            <img src="/img/logo.webp" class="logo" alt="Halus">
-            <ul>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#soluciones">Soluciones</a></li>
-                <li><a href="#comoFunciona">Funcionamiento</a></li>
-                <li><a href="#">Empresas</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-                <li><a href="#" class="btn">Registro clientes</a></li>
-                <li><a href="#" class="btn"> <i class="fa-solid fa-arrow-right-to-bracket"></i> Entrar</a></li>
+            <img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS">
+            <ul class="navbar">
+                <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
+                <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
+                <li><a class="navlink montserrat" href="#comoFunciona">Funcionamiento</a></li>
+                <li><a class="navlink montserrat" href="/empresas">Empresas</a></li>
+                <li><a href="/registro/formulario" class="btn montserrat">Registro clientes</a></li>
+                <li><a href="/login" class="btn montserrat">Entrar</a></li>
             </ul>
         </header>
-        <div class="intro">
-            <h2>Deja que tu energía llegue más lejos.</h2>
-            <p>Conéctate con quienes necesitan tu energía. Encuentra clientes, gestiona instalaciones y haz crecer tu impacto en la transición solar.</p>
-            <p class="sm-txt">¿Eres una empresa?</p>
-            <a href="#" class="btn">Únete</a>
-        </div>
-        <section>
-            <div class="o-black">
-                <p>Sostiene tu luz con Halus</p>
+        <main class="main">
+            <div class="intro">
+                <h2 class="outfit">Deja que tu energía llegue más lejos.</h2>
+                <p class="outfit l-txt">Conéctate con quienes necesitan tu energía. Encuentra clientes, gestiona instalaciones y haz crecer tu impacto en la transición solar.</p>
+                <p class="sm-txt montserrat" id="intro-em">¿Eres una empresa?</p>
+                <a href="#" class="btn montserrat">Únete</a>
             </div>
-            <div id="slider">
-                <figure>
-                    <img class="sliderimg" src="/img/slide-1.webp" alt="paneles solares">
-                    <img class="sliderimg" src="/img/slide-2.webp" alt="paneles solares">
-                    <img class="sliderimg" src="/img/slide-3.webp" alt="paneles solares">
-                    <img class="sliderimg" src="/img/slide-1.webp" alt="paneles solares">
-                </figure>
-            </div> 
-        </section>
+            <section class="cont-slider">
+                <div class="o-black">
+                    <p class="outfit">Sostiene tu luz con Halus</p>
+                </div>
+                <div id="slider">
+                    <figure>
+                        <img class="sliderimg" src="/img/slide-1.webp" alt="paneles solares">
+                        <img class="sliderimg" src="/img/slide-2.webp" alt="paneles solares">
+                        <img class="sliderimg" src="/img/slide-3.webp" alt="paneles solares">
+                        <img class="sliderimg" src="/img/slide-4.webp" alt="paneles solares">
+                        <img class="sliderimg" src="/img/slide-1.webp" alt="paneles solares">
+                    </figure>
+                </div> 
+            </section>
 
-        <section id="nosotros">
-            <div class="container">
-                <img src="/img/logo-b.webp">
-                <div class="s-parrafo">
-                    <h4>Energía accesible para todos</h4>
-                    <p>Conectamos hogares y empresas con tus soluciones solares asequibles y eficientes.</p>
-                </div>
-                <div class="s-parrafo">
-                    <h4>Un puente entre clientes y proveedores</h4>
-                    <p>Facilitamos la instalación, financiamiento y mantenimiento con un marketplace centralizado.</p>
-                </div>
-                <div class="s-parrafo">
-                    <h4>Impulsando un futuro sustentable</h4>
-                    <p>Reducimos barreras para la adopción de energías limpias y fomentamos la eficiencia energética.</p>
-                </div>
-            </div>
+            <section id="nosotros" class="mb-5">
+                <h2 class="outfit h2-o">¿Quiénes somos?</h2>
+                <div class="container">
+                    <img src="/img/logo-b.webp" class="logo-b">
+                    <div class="about-p">
+                        <div class="s-parrafo">
+                            <h4 class="outfit">Energía accesible para todos</h4>
+                            <p class="montserrat g-p">Conectamos hogares y empresas con tus soluciones solares asequibles y eficientes.</p>
+                        </div>
+                        
+                        <div class="s-parrafo">
+                            <h4 class="outfit">Un puente entre clientes y proveedores</h4>
+                            <p class="montserrat g-p">Facilitamos la instalación, financiamiento y mantenimiento con un marketplace centralizado.</p>
+                        </div>
+                        
+                        <div class="s-parrafo">
+                            <h4 class="outfit">Impulsando un futuro sustentable</h4>
+                            <p class="montserrat g-p">Reducimos barreras para la adopción de energías limpias y fomentamos la eficiencia energética.</p>
+                        </div>
 
-        </section>
-        <section id="soluciones">
-            <h2>¿Cuales son nuestras soluciones?</h2>
-            <p></p>
-        </section>
-        <section id="comoFunciona">
-            <h2>¿Cómo funciona?</h2>
-        </section>
-        <section id="principios">
-            <h3>Nuestros principios</h3>
-            <div class="container">
-                <div class="card-l">
-                    <h5>Confianza y respaldo</h5>
-                    <p>Garantía, soporte técnico y asesoría experta siempre disponibles.</p>
+                        <div class="s-parrafo">
+                            <h4 class="outfit">Contáctanos</h4>
+                            <p class="montserrat mb-1 g-p"> <i class="fa-solid fa-phone"></i> + 56 9 0000 9999</p> <a href="mailto:halus@halus.com" class="btn montserrat" target="_blank"> <i class="fa-solid fa-envelope"></i> Escríbenos</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-l">
-                    <h5>Ahorro inteligente</h5>
-                    <p>Optimiza tu consumo y disminuye costos con energía renovable.</p>
+
+            </section>
+            <section class="cont-sect mb-5" id="soluciones">
+                <h2 class="outfit h2-o">¿Cuales son nuestras soluciones?</h2>
+                <p class="montserrat g-p">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque nihil distinctio iusto tempore obcaecati ab rerum, quam quos aliquid dicta tenetur nemo, veritatis omnis debitis nesciunt nostrum quibusdam, modi numquam!</p>
+            </section>
+            <section class="cont-sect mb-5" id="comoFunciona">
+                <h2 class="outfit h2-o">¿Cómo funciona?</h2>
+                <p class="montserrat g-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae vel, eum quas, quam fugiat commodi pariatur praesentium vero enim illo porro? Aspernatur esse earum eius ex! Deserunt ex dolor perferendis!</p>
+            </section>
+            <section class="cont-sect mb-5" id="principios">
+                <h2 class="outfit  h2-o">Nuestros principios</h2>
+                <div class="container">
+                    <div class="card-l">
+                        <i class="fa-solid fa-handshake fa-card"></i>
+                        <h5 class="outfit">Confianza y respaldo</h5>
+                        <p class="montserrat">Garantía, soporte técnico y asesoría experta siempre disponibles.</p>
+                    </div>
+                    <div class="card-l">
+                        <i class="fa-solid fa-hand-holding-dollar fa-card"></i>
+                        <h5 class="outfit">Ahorro inteligente</h5>
+                        <p class="montserrat">Optimiza tu consumo y disminuye costos con energía renovable.</p>
+                    </div>
+                    <div class="card-l">
+                        <h5 class="outfit">Ahorro inteligente</h5>
+                        <p class="montserrat">Optimiza tu consumo y disminuye costos con energía renovable.</p>
+                    </div>
+                    <div class="card-l">
+                        <h5 class="outfit">Ahorro inteligente</h5>
+                        <p class="montserrat">Optimiza tu consumo y disminuye costos con energía renovable.</p>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </main>
         <footer>
-            <div class="container">
-                <h6> <i class="fa-regular fa-copyright"></i> Halus</h6>
-                <p>Main font "Biko" <a href="http://www.jesuismonreve.org/biko-font-family/"> <i class="fa-regular fa-copyright"></i> Marco Ugolini </a></p>
-                <p>Logo and design are property of this proyect.</p>
-                <p>This site is prototype-only. Any images, fonts, texts, etc. are being used for this single prototype without any revenue. All rights to their respective owners.</p>
+            <div class="footer">
+                <h5 class="outfit"> <i class="fa-regular fa-copyright"></i> Halus</h5>
+                <p class="montserrat">Main font "Biko" <a href="http://www.jesuismonreve.org/biko-font-family/"> <i class="fa-regular fa-copyright"></i> Marco Ugolini </a></p>
+                <p class="montserrat">Logo and design are property of this proyect.</p>
+                <p class="montserrat">This site is prototype-only. Any images, fonts, texts, etc. are being used for this single prototype without any revenue. All rights to their respective owners.</p>
             </div>
         </footer>
     </body>

@@ -21,22 +21,29 @@ public class ControladorUsuarios {
 	private ServicioUsuarios sUsuarios;
 
 	@GetMapping("/")
-	public String index(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario) {
+	public String index() {
 		return "index.jsp";
 	}
 
+	@GetMapping("/registro/formulario")
+	public String formularioRegistro(@ModelAttribute("nuevoUsuario") Usuario nuevoUsuario) {
+		return "registroClientes.jsp";
+	}
+	
 	@PostMapping("/registro")
 	public String registro(@Valid @ModelAttribute("nuevoUsuario") Usuario nuevoUsuario,
 						   BindingResult result,
 						   HttpSession session) {
+		
+		nuevoUsuario.setTipoDeUsuario("CLIENTE");
 		sUsuarios.registrar(nuevoUsuario, result);
 
 		if(result.hasErrors()) {
-			return "index.jsp";
+			return "registroClientes.jsp";
 		} else {
 			
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
-			return "redirect:/dashboard";
+			return "redirect:/home";
 		}
 
 	}
@@ -57,13 +64,20 @@ public class ControladorUsuarios {
 			return "login.jsp";
 		} else {
 			session.setAttribute("usuarioEnSesion", usuario);
-			return "redirect:/dashboard";
+			
 		}
+		if ("ADMIN".equals(usuario.getTipoDeUsuario())) {
+            return "redirect:/";
+        } else if ("EMPRESA".equals(usuario.getTipoDeUsuario())) {
+            return "redirect:/";
+        } else {
+            return "redirect:/";
+        }
 
 	}
 	@GetMapping("/logout")
 	public String logout(HttpSession session ) {
 		session.invalidate();
-		return "redirect:/";
+		return "redirect:/index";
 	}
 }
