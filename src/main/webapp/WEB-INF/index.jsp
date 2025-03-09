@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.2">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -19,7 +19,7 @@
     </head>
     <body>
         <header class="head">
-            <img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS">
+            <a href="/"><img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS"></a>
             <ul class="navbar">
                 <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
                 <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
@@ -34,7 +34,7 @@
                 <h2 class="outfit">Deja que tu energía llegue más lejos.</h2>
                 <p class="outfit l-txt">Conéctate con quienes necesitan tu energía. Encuentra clientes, gestiona instalaciones y haz crecer tu impacto en la transición solar.</p>
                 <p class="sm-txt montserrat" id="intro-em">¿Eres una empresa?</p>
-                <a href="#" class="btn montserrat">Únete</a>
+                <a href="/empresas" class="btn montserrat">Únete</a>
             </div>
             <section class="cont-slider">
                 <div class="o-black">
@@ -114,7 +114,7 @@
         <footer>
             <div class="footer">
                 <h5 class="outfit"> <i class="fa-regular fa-copyright"></i> Halus</h5>
-                <p class="montserrat">Main font "Biko" <a href="http://www.jesuismonreve.org/biko-font-family/"> <i class="fa-regular fa-copyright"></i> Marco Ugolini </a></p>
+                <p class="montserrat">Main font "Biko" <a href="http://www.jesuismonreve.org/biko-font-family/" target="_blank"> <i class="fa-regular fa-copyright"></i> Marco Ugolini </a></p>
                 <p class="montserrat">Logo and design are property of this proyect.</p>
                 <p class="montserrat">This site is prototype-only. Any images, fonts, texts, etc. are being used for this single prototype without any revenue. All rights to their respective owners.</p>
             </div>

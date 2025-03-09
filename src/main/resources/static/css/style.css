@@ -115,7 +115,7 @@ a{
     margin: 0.5em;
 }
 
-.intro h2{
+.intro h2, h1{
     font-size: 3em;
 }
 
@@ -289,4 +289,40 @@ a .fa-solid{
 .footer h5, .footer p{
     font-size: 15px;
     opacity: 0.5;
+}
+
+/*Registro*/
+
+.r-cont{
+    margin: 0 auto;
+    border: 1px solid #aeaeae;
+    padding: 3em;
+    border-radius: 0.5em;
+    width: 50%;
+    box-shadow: 0px 0px 19px -10px rgba(0,0,0,0.75);
+}
+
+
+.txt-input{
+    width: 100%;
+    padding-left: 5px;
+    border: 1px solid #aeaeae;
+    border-radius: 0.5em;
+    height: 2em;
+}
+
+.txt-input:focus{
+    padding-left: 5px;
+}
+
+.txt-input:focus-visible{
+    outline:none;
+}
+
+.r-cont button{
+    width: 100%;
+}
+
+.txt-danger{
+	color: red;
 }

@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.1">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -20,49 +20,58 @@
     </head>
     <body>
         <header class="head">
-            <img src="/img/logo.webp" alt="Halus">
-            <ul>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#soluciones">Soluciones</a></li>
-                <li><a href="#comoFunciona">Funcionamiento</a></li>
-                <li><a href="#">Empresas</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-                <li><a href="#" class="btn">Registro clientes</a></li>
-                <li><a href="#" class="btn"> <i class="fa-solid fa-arrow-right-to-bracket"></i> Entrar</a></li>
+            <a href="/"><img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS"></a>
+            <ul class="navbar">
+                <li><a class="navlink montserrat" href="/#nosotros">Nosotros</a></li>
+                <li><a class="navlink montserrat" href="/#soluciones">Soluciones</a></li>
+                <li><a class="navlink montserrat" href="/#comoFunciona">Funcionamiento</a></li>
+                <li><a class="navlink montserrat" href="/empresas">Empresas</a></li>
+                <li><a href="/registro/formulario" class="btn montserrat">Registro clientes</a></li>
+                <li><a href="/login" class="btn montserrat">Entrar</a></li>
             </ul>
         </header>
-        <h1>Registro Clientes</h1>
-        <main class="r-cont">
-            <form:form action="/registro" method="POST" modelAttribute="nuevoUsuario">
-				<div class="mt-05">
-					<form:label path="nombre"><i class="fa-solid fa-user"> </i> Nombre:</form:label>
-					<form:input path="nombre" class="txt-input"/>
-					<form:errors path="nombre" class="text-danger"/>
-				</div>
-				<div class="mt-05">
-					<form:label path="apellido"><i class="fa-solid fa-address-card"> </i> Apellido:</form:label>
-					<form:input path="apellido" class="txt-input"/>
-					<form:errors path="apellido" class="text-danger"/>
-				</div>
-				<div class="mt-05">
-					<form:label path="email"><i class="fa-solid fa-at"> </i> Email:</form:label>
-					<form:input path="email" class="txt-input"/>
-					<form:errors path="email" class="text-danger"/>
-				</div>
-				<div class="mt-05">
-					<form:label path="password"><i class="fa-solid fa-lock"> </i> Contraseña:</form:label>
-					<form:password path="password" class="txt-input"/>
-					<form:errors path="password" class="text-danger"/>
-				</div>			
-				<div class="mt-05">
-					<form:label path="confirmacion"><i class="fa-solid fa-lock"></i> Confirmar contraseña:</form:label>
-					<form:password path="confirmacion" class="txt-input"/>
-					<form:errors path="confirmacion" class="text-danger"/>
-				</div>		
-				<button type="submit" class="">
-					<i class="fa-solid fa-user-check" id="signUp"></i><span class="q-w"> Registrarse </span>
-				</button>
-			</form:form>
+        <main class="main">
+            <h1 class="outfit m-1">Registro Clientes</h1>
+            <div class="r-cont">
+                <form:form action="/registro" method="POST" modelAttribute="nuevoUsuario">
+                    <div class="mt-05">
+                        <form:label class="montserrat" path="nombre">Nombre:</form:label>
+                        <form:input path="nombre" class="txt-input montserrat"/>
+                        <form:errors path="nombre" class="txt-danger montserrat"/>
+                    </div>
+                    <div class="mt-05">
+                        <form:label class="montserrat" path="apellido">Apellido:</form:label>
+                        <form:input path="apellido" class="txt-input montserrat"/>
+                        <form:errors path="apellido" class="txt-danger montserrat"/>
+                    </div>
+                    <div class="mt-05">
+                        <form:label class="montserrat" path="email">Email:</form:label>
+                        <form:input path="email" class="txt-input montserrat"/>
+                        <form:errors path="email" class="txt-danger montserrat"/>
+                    </div>
+                    <div class="mt-05">
+                        <form:label class="montserrat" path="password">Contraseña:</form:label>
+                        <form:password path="password" class="txt-input montserrat"/>
+                        <form:errors path="password" class="txt-danger montserrat"/>
+                    </div>			
+                    <div class="mt-05">
+                        <form:label class="montserrat" path="confirmacion">Confirmar contraseña:</form:label>
+                        <form:password path="confirmacion" class="txt-input montserrat"/>
+                        <form:errors path="confirmacion" class="txt-danger montserrat"/>
+                    </div>		
+                    <button type="submit" class="btn montserrat mt-05">
+                        <span class="q-w"> Registrarse </span>
+                    </button>
+                </form:form>
+            </div>
         </main>
+        <footer>
+            <div class="footer mt-3">
+                <h5 class="outfit"> <i class="fa-regular fa-copyright"></i> Halus</h5>
+                <p class="montserrat">Main font "Biko" <a href="http://www.jesuismonreve.org/biko-font-family/" target="_blank"> <i class="fa-regular fa-copyright"></i> Marco Ugolini </a></p>
+                <p class="montserrat">Logo and design are property of this proyect.</p>
+                <p class="montserrat">This site is prototype-only. Any images, fonts, texts, etc. are being used for this single prototype without any revenue. All rights to their respective owners.</p>
+            </div>
+        </footer>
     </body>
 </html>
