@@ -60,7 +60,7 @@
                         <form:errors path="confirmacion" class="txt-danger montserrat"/>
                     </div>		
                     <button type="submit" class="btn montserrat mt-05">
-                        <span class="q-w"> Registrarse </span>
+                        <span> Registrarse </span>
                     </button>
                 </form:form>
             </div>

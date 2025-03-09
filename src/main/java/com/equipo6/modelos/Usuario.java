@@ -41,7 +41,6 @@ public class Usuario {
 	@Email()
 	private String email;
 	
-	@NotNull(message="El tipo de usuario es requerido")
 	private String tipoDeUsuario;
 
 	@NotBlank(message="El campo de password es obligatorio")
