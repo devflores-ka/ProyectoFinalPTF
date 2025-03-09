@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.1">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.2">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -80,7 +80,7 @@
 
             </section>
             <section class="cont-sect mb-5" id="soluciones">
-                <h2 class="outfit h2-o">¿Cuales son nuestras soluciones?</h2>
+                <h2 class="outfit h2-o">¿Cuáles son nuestras soluciones?</h2>
                 <p class="montserrat g-p">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque nihil distinctio iusto tempore obcaecati ab rerum, quam quos aliquid dicta tenetur nemo, veritatis omnis debitis nesciunt nostrum quibusdam, modi numquam!</p>
             </section>
             <section class="cont-sect mb-5" id="comoFunciona">

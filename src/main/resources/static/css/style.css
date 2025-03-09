@@ -69,8 +69,9 @@ a{
 }
 
 .btn{
-    background: -moz-linear-gradient(left, rgba(255,174,84,1) 0%, rgba(255,115,96,1) 100%);
-    padding: 0.5em;
+    background: rgb(255,174,84);
+	background: linear-gradient(90deg, rgba(255,174,84,1) 0%, rgba(255,115,96,1) 100%);
+	padding: 0.5em;
     border-radius: 0.4em;
     text-decoration: none;
     color: white;
