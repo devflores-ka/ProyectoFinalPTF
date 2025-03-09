@@ -101,12 +101,14 @@
                         <p class="montserrat">Optimiza tu consumo y disminuye costos con energía renovable.</p>
                     </div>
                     <div class="card-l">
-                        <h5 class="outfit">Ahorro inteligente</h5>
-                        <p class="montserrat">Optimiza tu consumo y disminuye costos con energía renovable.</p>
+                    	<i class="fa-solid fa-seedling fa-card"></i>
+                        <h5 class="outfit">Sostenibilidad</h5>
+                        <p class="montserrat">Comprometidos con soluciones energéticas responsables y renovables.</p>
                     </div>
                     <div class="card-l">
-                        <h5 class="outfit">Ahorro inteligente</h5>
-                        <p class="montserrat">Optimiza tu consumo y disminuye costos con energía renovable.</p>
+                    	<i class="fa-solid fa-solar-panel fa-card"></i>
+                        <h5 class="outfit">Innovación</h5>
+                        <p class="montserrat">Tecnología avanzada para maximizar eficiencia y rendimiento.</p>
                     </div>
                 </div>
             </section>
