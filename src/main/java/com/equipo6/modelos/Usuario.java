@@ -29,23 +29,23 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //AI
 	private Long id;
 
-	@NotBlank(message="El campo de nombre es obligatorio")
+	@NotBlank(message="El Nombre es requerido")
 	@Size(min=2, message="El nombre debe tener al menos dos caracteres")
 	private String nombre;
 
-	@NotBlank(message="El campo de apellido es obligatorio")
+	@NotBlank(message="El Apellido es requerido")
 	@Size(min=2, message="El apellido debe tener al menos dos caracteres")
 	private String apellido;
 
-	@NotBlank(message="El campo de email es obligatorio")
-	@Email()
+	@NotBlank(message="El email es requerido")
+	@Email(message="Ingrese un email válido")
 	private String email;
 	
 	private String tipoDeUsuario;
 
-	@NotBlank(message="El campo de password es obligatorio")
-	@Size(min=8, message="El password debe tener al menos ocho caracteres")
-	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$", message = "El password necesita incluir al menos una letra mayúscula, una letra minúscula y un número")
+	@NotBlank(message="La contraseña es requerida")
+	@Size(min=8, message="La contraseña debe tener al menos ocho caracteres")
+	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$", message = "La contraseña debe incluir al menos una letra mayúscula, una letra minúscula y un número")
 	private String password;
 
 	@Transient 
