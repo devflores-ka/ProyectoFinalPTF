@@ -32,7 +32,7 @@ public class ControladorBase {
 		if(session.getAttribute("usuarioEnSesion") == null){
 			return "redirect:/";
 		}
-		List<Producto> producto = servBase.todasLosProductos();
+		List<Producto> producto = servBase.todosLosProductos();
 		
 		model.addAttribute("producto", producto);
 		
