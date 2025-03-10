@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -21,14 +21,39 @@
     <body>
         <header class="head">
             <img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS">
-            <ul class="navbar">
-                <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
-                <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
-                <li><a class="navlink montserrat" href="#comoFunciona">Funcionamiento</a></li>
-                <li><a class="navlink montserrat" href="/empresas">Empresas</a></li>
-                <li><a href="/registro/formulario" class="btn montserrat">Registro clientes</a></li>
-                <li><a href="/login" class="btn montserrat">Entrar</a></li>
-            </ul>
+            <c:choose>
+				<c:when test="${usuarioEnSesion.tipoDeUsuario == CLIENTE }">
+					<ul class="navbar">
+						<li><a class="navlink montserrat" href="/home">Inicio</a></li>
+		                <li><a class="navlink montserrat" href="/cliente/pedidos">Mis Pedidos</a></li>
+		                <li><a class="navlink montserrat" href="/cliente/guardados">Guardados</a></li>
+		                <li><a class="navlink montserrat" href="/cliente/${usuarioEnSesion.id}">Perfil</a></li>
+		                <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
+		            </ul>
+				</c:when>
+				<c:when test="${usuarioEnSesion.tipoDeUsuario == EMPRESA }">
+					<ul class="navbar">
+		                <li><a class="navlink montserrat" href="/home">Inicio</a></li>
+		                <li><a class="navlink montserrat" href="/empresa/productos">*Mis productos</a></li>
+		                <li><a class="navlink montserrat" href="/nuevoProducto">Agregar Producto</a></li>
+		                <li><a class="navlink montserrat" href="/empresa/ventas">*Mis ventas</a></li>
+		                <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">*Mi empresa</a></li>
+		                <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
+		            </ul>
+				</c:when>
+				<c:otherwise>
+					<ul class="navbar">
+		                <li><a class="navlink montserrat" href="/home">Inicio</a></li>
+		                <li><a class="navlink montserrat" href="/admin/empresas">Empresas</a></li>
+		                <li><a class="navlink montserrat" href="/admin/productos">Productos</a></li>
+		                <li><a class="navlink montserrat" href="/admin/clientes">Clientes</a></li>
+		                <li><a class="navlink montserrat" href="/admin/pedidos">Pedidos</a></li>
+		                <li><a class="navlink montserrat" href="/nuevaEmpresa">Agregar Empresa</a></li>
+		                <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
+		            </ul>
+				</c:otherwise>
+            </c:choose>
+            
         </header>
         <main class="main">
         </main>    

@@ -67,11 +67,11 @@ public class ControladorUsuarios {
 			
 		}
 		if ("ADMIN".equals(usuario.getTipoDeUsuario())) {
-            return "redirect:/";
+            return "redirect:/home";
         } else if ("EMPRESA".equals(usuario.getTipoDeUsuario())) {
-            return "redirect:/";
+            return "redirect:/home";
         } else {
-            return "redirect:/";
+            return "redirect:/home";
         }
 
 	}
