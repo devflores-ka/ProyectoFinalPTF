@@ -43,7 +43,7 @@ public class ControladorUsuarios {
 		} else {
 			
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
-			return "redirect:/home";
+			return "redirect:/cliente/home";
 		}
 
 	}
@@ -67,11 +67,11 @@ public class ControladorUsuarios {
 			
 		}
 		if ("ADMIN".equals(usuario.getTipoDeUsuario())) {
-            return "redirect:/home";
+            return "redirect:/admin/home";
         } else if ("EMPRESA".equals(usuario.getTipoDeUsuario())) {
-            return "redirect:/home";
+            return "redirect:/empresa/home";
         } else {
-            return "redirect:/home";
+            return "redirect:/cliente/home";
         }
 
 	}
