@@ -1,14 +1,21 @@
 package com.equipo6.modelos;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -58,6 +65,10 @@ public class Usuario {
 
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
+	
+	//-------------------RELACIONES----------------------
+	@OneToMany(mappedBy="creador", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<Pedido> misPedidos;	
 
 	public Usuario() {}
 
@@ -132,6 +143,14 @@ public class Usuario {
 
 	public void setTipoDeUsuario(String tipoDeUsuario) {
 		this.tipoDeUsuario = tipoDeUsuario;
+	}
+	
+	public List<Pedido> getMisPedidos() {
+		return misPedidos;
+	}
+
+	public void setMisPedidos(List<Pedido> misPedidos) {
+		this.misPedidos = misPedidos;
 	}
 
 	@PrePersist
