@@ -51,6 +51,13 @@
                         <form:label class="montserrat" path="email">Email:</form:label>
                         <form:input path="email" class="txt-input montserrat" placeholder="Email de la empresa"/>
                         <form:errors path="email" class="txt-danger montserrat"/>
+                    </div>
+                    <div class="mt-05">
+                        <form:label class="montserrat" path="tipoDeUsuario">Tipo de usuario:</form:label>
+                        <form:select class="txt-input montserrat" path="tipoDeUsuario" id="tipoDeUsuario">
+							<form:option class="txt-input montserrat" path="tipoDeUsuario" value="CLIENTE"/>
+							<form:option class="txt-input montserrat" path="tipoDeUsuario" value="EMPRESA"/>
+						</form:select>
                     </div>		
                     <button type="submit" class="btn montserrat mt-05">
                         <span> Guardar </span>
