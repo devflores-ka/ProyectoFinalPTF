@@ -23,13 +23,13 @@
         <header class="head">
             <img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS">
             <ul class="navbar">
-                <li><a class="navlink montserrat" href="/home">Inicio</a></li>
-                <li><a class="navlink montserrat" href="/empresa/productos">*Mis productos</a></li>
-                <li><a class="navlink montserrat" href="/empresa/${usuario.id}">*Mi empresa</a></li>
-                <li><a class="navlink montserrat" href="/nuevoProducto">Agregar Producto</a></li>
-                <li><a class="navlink montserrat" href="/empresa/ventas">*Mis ventas</a></li>
-                <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
-            </ul>
+		          <li><a class="navlink montserrat" href="/home">Inicio</a></li>
+		          <li><a class="navlink montserrat" href="/empresa/productos">*Mis productos</a></li>
+		          <li><a class="navlink montserrat" href="/nuevoProducto">Agregar Producto</a></li>
+		          <li><a class="navlink montserrat" href="/empresa/ventas">*Mis ventas</a></li>
+		          <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">*Mi empresa</a></li>
+		          <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
+		    </ul>  
         </header>
         <main class="main">
             <h1 class="outfit m-1">Editar ${producto.nombre}</h1>
@@ -72,7 +72,7 @@
                 </form:form>
                 <form action="/borrar/${producto.id}" method="POST">
 					<input type="hidden" name="_method" value="DELETE">
-					<button type="submit" class="btn montserrat mt-05">
+					<button type="submit" class="btn-danger montserrat mt-05">
                         <span> <i class="fa-solid fa-xmark"></i> Eliminar Producto </span>
                     </button>
                 </form>   	

@@ -18,9 +18,9 @@
         <link rel="icon" type="image/x-icon" href="/img/icon.webp">
     </head>
     <body>
-        <header class="head">
+        <header class="head" id="start">
             <a href="/"><img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS"></a>
-            <ul class="navbar">
+            <ul class="navbar" >
                 <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
                 <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
                 <li><a class="navlink montserrat" href="#comoFunciona">Funcionamiento</a></li>
@@ -30,6 +30,11 @@
             </ul>
         </header>
         <main class="main">
+        	<a href="#start" >
+                <div id="to-top" class="btn">
+                    <i class="fa-solid fa-arrow-up"></i>
+                </div>
+            </a>
             <div class="intro">
                 <h2 class="outfit">Deja que tu energía llegue más lejos.</h2>
                 <p class="outfit l-txt">Conéctate con quienes necesitan tu energía. Encuentra clientes, gestiona instalaciones y haz crecer tu impacto en la transición solar.</p>
@@ -121,5 +126,15 @@
                 <p class="montserrat">This site is prototype-only. Any images, fonts, texts, etc. are being used for this single prototype without any revenue. All rights to their respective owners.</p>
             </div>
         </footer>
+        <script>
+            document.addEventListener('scroll', () =>{
+                const toTopButton = document.querySelector('#to-top');
+                if (window.scrollY > 800){
+                    toTopButton.classList.add('show');
+                } else {
+                    toTopButton.classList.remove('show');
+                }
+            })
+        </script>
     </body>
 </html>

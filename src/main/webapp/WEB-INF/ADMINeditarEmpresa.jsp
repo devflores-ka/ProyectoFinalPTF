@@ -58,7 +58,7 @@
                 </form:form>
                 <form action="/borrar/${empresa.id}" method="POST">
 					<input type="hidden" name="_method" value="DELETE">
-					<button type="submit" class="btn montserrat mt-05">
+					<button type="submit" class="btn-danger montserrat mt-05">
                         <span> <i class="fa-solid fa-xmark"></i> Eliminar Empresa </span>
                     </button>
                 </form> 

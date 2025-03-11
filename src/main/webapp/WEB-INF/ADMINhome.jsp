@@ -32,6 +32,38 @@
 		   	</ul>            
         </header>
         <main class="main">
+            <div class="ad-cont">
+                <i class="fa-solid fa-briefcase fa-card m-05"></i>
+                <div>
+                    <h2 class="outfit">Administrar empresas</h2>
+                    <p class="montserrat g-p">Administrar todas las empresas</p>
+                </div>
+                <a href="/admin/empresas" class="btn montserrat">Ver</a>
+            </div>
+            <div class="ad-cont">
+                <i class="fa-solid fa-user fa-card m-05"></i>
+                <div>
+                    <h2 class="outfit">Administrar clientes</h2>
+                    <p class="montserrat g-p">Administrar todos los clientes</p>
+                </div>
+                <a href="/admin/clientes" class="btn montserrat">Ver</a>
+            </div>
+            <div class="ad-cont">
+                <i class="fa-solid fa-bag-shopping fa-card m-05"></i>
+                <div>
+                    <h2 class="outfit">Administrar productos</h2>
+                    <p class="montserrat g-p">Administrar todos los productos</p>
+                </div>
+                <a href="/admin/productos" class="btn montserrat">Ver</a>
+            </div>
+            <div class="ad-cont">
+                <i class="fa-solid fa-check fa-card m-05"></i>
+                <div>
+                    <h2 class="outfit">Administrar pedidos</h2>
+                    <p class="montserrat g-p">Administrar todos los pedidos</p>
+                </div>
+                <a href="/admin/pedidos" class="btn montserrat">Ver</a>
+            </div>
         </main>    
         <footer>
             <div class="footer">
