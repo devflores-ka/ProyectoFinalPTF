@@ -28,8 +28,9 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	 
-	@NotNull(message="Es obligatorio escoger el tipo de servicio")
 	private String tipoDeServicio;
+	
+	private Long totalDelPedido;
 	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -50,6 +51,7 @@ public class Pedido {
 	
 	private List<Producto> productosEnPedido;
 	
+	public Pedido()	{}
 	
 	public Long getId() {
 		return id;
@@ -65,6 +67,14 @@ public class Pedido {
 
 	public void setTipoDeServicio(String tipoDeServicio) {
 		this.tipoDeServicio = tipoDeServicio;
+	}
+
+	public Long getTotalDelPedido() {
+		return totalDelPedido;
+	}
+
+	public void setTotalDelPedido(Long totalDelPedido) {
+		this.totalDelPedido = totalDelPedido;
 	}
 
 	public Date getCreatedAt() {
@@ -91,8 +101,6 @@ public class Pedido {
 		this.creador = creador;
 	}
 
-	
-
 	public List<Producto> getProductosEnPedido() {
 		return productosEnPedido;
 	}
@@ -100,8 +108,6 @@ public class Pedido {
 	public void setProductosEnPedido(List<Producto> productosEnPedido) {
 		this.productosEnPedido = productosEnPedido;
 	}
-
-	public Pedido()	{}
 	
 	@PrePersist
 	protected void onCreate() {
