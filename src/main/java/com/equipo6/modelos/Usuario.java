@@ -48,6 +48,10 @@ public class Usuario {
 	@Email()
 	private String email;
 	
+	@NotBlank(message="El campo de dirección es requerido.")
+	@Size(min=4, message="La dirección debe tener al menos cuatro carácteres.")
+	private String direccion;
+	
 	@NotNull(message="El tipo de usuario es requerido")
 	private String tipoDeUsuario;
 
@@ -118,6 +122,14 @@ public class Usuario {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 
 	public Date getCreatedAt() {
