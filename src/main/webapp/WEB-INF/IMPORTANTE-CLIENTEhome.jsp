@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,52 +21,42 @@
     <body>
         <header class="head">
             <img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS">
-			<ul class="navbar">
-		        <li><a class="navlink montserrat" href="/admin/home">Inicio</a></li>
-		        <li><a class="navlink montserrat" href="/admin/empresas">Empresas</a></li>
-		        <li><a class="navlink montserrat" href="/admin/productos">Productos</a></li>
-		        <li><a class="navlink montserrat" href="/admin/clientes">Clientes</a></li>
-		        <li><a class="navlink montserrat" href="/admin/pedidos">Pedidos</a></li>
-		        <li><a class="navlink montserrat" href="/nuevaEmpresa">Agregar Empresa</a></li>
+            <ul class="navbar">
+				<li><a class="navlink montserrat" href="/cliente/home">Inicio</a></li>
+		        <li><a class="navlink montserrat" href="/cliente/pedidos">Mis Pedidos</a></li>
+		        <li><a class="navlink montserrat" href="/cliente/guardados">Guardados</a></li>
+		        <li><a class="navlink montserrat" href="/cliente/${usuarioEnSesion.id}">Perfil</a></li>
 		        <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
-		   	</ul>            
+		   </ul>
         </header>
-        <main class="main">
-            <div class="ad-cont">
-                <i class="fa-solid fa-briefcase fa-card m-05"></i>
-                <div>
-                    <h2 class="outfit">Administrar empresas</h2>
-                    <p class="montserrat g-p">Administrar todas las empresas</p>
+        <main id="main">
+            <div id="c-header">
+                <img src="/img/header-image.webp" class="c-img">
+                <div id="c-header-txt">
+                    <h2 class="outfit">Tienda</h2>
+                    <p class="montserrat mb-1">Descubre las opciones de la energia sustentable</p>
+                    <a href="/cliente/todo" class="btn montserrat">Tienda</a>
                 </div>
-                <a href="/admin/empresas" class="btn montserrat">Ver</a>
             </div>
-            <div class="ad-cont">
-                <i class="fa-solid fa-user fa-card m-05"></i>
-                <div>
-                    <h2 class="outfit">Administrar clientes</h2>
-                    <p class="montserrat g-p">Administrar todos los clientes</p>
+            <div class="c-cont">
+                <img src="/img/eolico-solar.webp" class="flex-2">
+                <div class="flex-4 c-div-h">
+                    <h3 class="outfit">Leasing Solar</h3>
+                    <p class="montserrat mb-1">Paga una cuota mensual por usar la instalación sin comprarla.</p>
+                    <a href="/cliente/arrendar" class="btn montserrat">Contrata</a>
                 </div>
-                <a href="/admin/clientes" class="btn montserrat">Ver</a>
             </div>
-            <div class="ad-cont">
-                <i class="fa-solid fa-bag-shopping fa-card m-05"></i>
-                <div>
-                    <h2 class="outfit">Administrar productos</h2>
-                    <p class="montserrat g-p">Administrar todos los productos</p>
+            <div class="c-cont">
+                <img src="/img/panel.webp" class="flex-2">
+                <div class="flex-4 c-div-h">
+                    <h3 class="outfit">Marketplace</h3>
+                    <p class="montserrat mb-1">Encuentra todo lo que necesitas para comenzar con la energía sustentable.</p>
+                    <a href="/cliente/comprar" class="btn montserrat">Comprar</a>
                 </div>
-                <a href="/admin/productos" class="btn montserrat">Ver</a>
-            </div>
-            <div class="ad-cont">
-                <i class="fa-solid fa-check fa-card m-05"></i>
-                <div>
-                    <h2 class="outfit">Administrar pedidos</h2>
-                    <p class="montserrat g-p">Administrar todos los pedidos</p>
-                </div>
-                <a href="/admin/pedidos" class="btn montserrat">Ver</a>
             </div>
         </main>    
         <footer>
-            <div class="footer">
+            <div class="footer mt-4">
                 <h5 class="outfit"> <i class="fa-regular fa-copyright"></i> Halus</h5>
                 <p class="montserrat">Main font "Biko" <a href="http://www.jesuismonreve.org/biko-font-family/"> <i class="fa-regular fa-copyright"></i> Marco Ugolini </a></p>
                 <p class="montserrat">Logo and design are property of this proyect.</p>

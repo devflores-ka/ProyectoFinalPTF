@@ -23,7 +23,7 @@
         <header class="head">
             <a href="/"><img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS"></a>
             <ul class="navbar">
-			      <li><a class="navlink montserrat" href="/home">Inicio</a></li>
+			      <li><a class="navlink montserrat" href="/admin/home">Inicio</a></li>
 			      <li><a class="navlink montserrat" href="/admin/empresas">Empresas</a></li>
 			      <li><a class="navlink montserrat" href="/admin/productos">Productos</a></li>
 			      <li><a class="navlink montserrat" href="/admin/clientes">Clientes</a></li>
@@ -35,7 +35,7 @@
         <main class="main">
             <h1 class="outfit m-1">Editar Empresa</h1>
             <div class="r-cont">
-                <form:form action="/actualizar/${empresa.id}" method="POST" modelAttribute="empresa">
+                <form:form action="/admin/actualizar/empresa/${empresa.id}" method="POST" modelAttribute="empresa">
                     <input type="hidden" name="_method" value="PUT"><!-- SOBREESCRIBO METODO -->
                     <div class="mt-05">
                         <form:label class="montserrat" path="nombre">Nombre:</form:label>
@@ -63,7 +63,7 @@
                         <span> Guardar </span>
                     </button>
                 </form:form>
-                <form action="/borrar/${empresa.id}" method="POST">
+                <form action="/borrar/empresa/${empresa.id}" method="POST">
 					<input type="hidden" name="_method" value="DELETE">
 					<button type="submit" class="btn-danger montserrat mt-05">
                         <span> <i class="fa-solid fa-xmark"></i> Eliminar Empresa </span>

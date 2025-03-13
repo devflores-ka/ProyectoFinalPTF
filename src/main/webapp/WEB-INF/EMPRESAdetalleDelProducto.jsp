@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.2">
+        <link rel="stylesheet" type="text/css" href="css/style.css?version=0.2">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -22,16 +22,36 @@
         <header class="head">
             <img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS">
             <ul class="navbar">
-				<li><a class="navlink montserrat" href="/home">Inicio</a></li>
-		        <li><a class="navlink montserrat" href="/cliente/pedidos">Mis Pedidos</a></li>
-		        <li><a class="navlink montserrat" href="/cliente/guardados">Guardados</a></li>
-		        <li><a class="navlink montserrat" href="/cliente/${usuarioEnSesion.id}">Perfil</a></li>
+		        <li><a class="navlink montserrat" href="/empresa/home">Inicio</a></li>
+		        <li><a class="navlink montserrat" href="/empresa/productos">Mis productos</a></li>
+		        <li><a class="navlink montserrat" href="/nuevoProducto">Agregar Producto</a></li>
+		        <li><a class="navlink montserrat" href="/empresa/ventas">Mis ventas</a></li>
+		        <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">Mi empresa</a></li>
 		        <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
-		   </ul>
+		    </ul>    
         </header>
         <main class="main">
+            <div class="flex">
+                <img src="${producto.urlImagen }" class="imagen flex-2" alt="${producto.nombre}">
+                <div class="info flex-3">
+                    <h2 class="outfit">${producto.nombre}</h2>
+                    <p class="montserrat">${producto.descripcion}</p>
+                    <!-- <p>${producto.categoria}</p> -->
+                    <!-- Aqui puede ir un if para cambiar el valor por el pArriendo -->
+                    <p class="montserrat"> <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}</p>
+                    <p class="montserrat"> <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}</p>
+                    <p class="montserrat g-p">Proveedor: ${producto.creador.nombre}</p>
+                    <a href="/empresa/editar/producto/${producto.id}" class="btn montserrat mt-05" > <i class="fa-solid fa-pen"></i> Editar Producto</a>
+                    <form action="/empresa/borrar/producto/${producto.id}" method="POST">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn-danger montserrat mt-05">
+                            <span> <i class="fa-solid fa-xmark"></i> Eliminar Producto </span>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </main>    
-        <footer>
+        <footer class="mt-3">
             <div class="footer">
                 <h5 class="outfit"> <i class="fa-regular fa-copyright"></i> Halus</h5>
                 <p class="montserrat">Main font "Biko" <a href="http://www.jesuismonreve.org/biko-font-family/"> <i class="fa-regular fa-copyright"></i> Marco Ugolini </a></p>

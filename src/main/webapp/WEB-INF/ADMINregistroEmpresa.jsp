@@ -22,7 +22,7 @@
         <header class="head">
             <a href="/"><img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS"></a>
             <ul class="navbar">
-			      <li><a class="navlink montserrat" href="/home">Inicio</a></li>
+			      <li><a class="navlink montserrat" href="/admin/home">Inicio</a></li>
 			      <li><a class="navlink montserrat" href="/admin/empresas">Empresas</a></li>
 			      <li><a class="navlink montserrat" href="/admin/productos">Productos</a></li>
 			      <li><a class="navlink montserrat" href="/admin/clientes">Clientes</a></li>
@@ -36,19 +36,24 @@
             <div class="r-cont">
                 <form:form action="/registroEmpresa" method="POST" modelAttribute="nuevaEmpresa">
                     <div class="mt-05">
-                        <form:label class="montserrat" path="nombre">Nombre:</form:label>
-                        <form:input path="nombre" class="txt-input montserrat" placeholder="Nombre de representante legal"/>
+                        <form:label class="montserrat" path="nombre">Nombre Empresa:</form:label>
+                        <form:input path="nombre" class="txt-input montserrat" placeholder="Nombre de la empresa."/>
                         <form:errors path="nombre" class="txt-danger montserrat"/>
                     </div>
-                    <div class="mt-05">
-                        <form:label class="montserrat" path="apellido">Apellido:</form:label>
-                        <form:input path="apellido" class="txt-input montserrat" placeholder="Apellido de representante legal"/>
+                    <div class="mt-05"><!-- En modelo el atributo es apellido, en vistas respecto a empresas será Nombre Representante Legal. -->
+                        <form:label class="montserrat" path="apellido">Nombre Representante Legal:</form:label>
+                        <form:input path="apellido" class="txt-input montserrat" placeholder="Nombre y apellido del representante legal de la empresa."/>
                         <form:errors path="apellido" class="txt-danger montserrat"/>
                     </div>
                     <div class="mt-05">
                         <form:label class="montserrat" path="email">Email:</form:label>
-                        <form:input path="email" class="txt-input montserrat" placeholder="Email de la empresa"/>
+                        <form:input path="email" class="txt-input montserrat" placeholder="Email de la empresa."/>
                         <form:errors path="email" class="txt-danger montserrat"/>
+                    </div>
+                    <div class="mt-05">
+                        <form:label path="direccion" class="montserrat">Dirección</form:label>
+                        <form:input path="direccion" class="txt-input montserrat" placeholder="Dirección de la empresa."/>
+                        <form:errors path="direccion" class="txt-danger montserrat" />
                     </div>
                     <div class="mt-05">
                         <form:label class="montserrat" path="password">Contraseña:</form:label>

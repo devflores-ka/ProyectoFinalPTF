@@ -35,7 +35,7 @@
         <main class="main">
             <h1 class="outfit m-1">Editar Cliente</h1>
             <div class="r-cont">
-                <form:form action="/actualizar/${cliente.id}" method="POST" modelAttribute="cliente">
+                <form:form action="/admin/actualizar/cleinte/${cliente.id}" method="POST" modelAttribute="cliente">
                     <input type="hidden" name="_method" value="PUT"><!-- SOBREESCRIBO METODO -->
                     <div class="mt-05">
                         <form:label class="montserrat" path="nombre">Nombre:</form:label>
@@ -68,7 +68,7 @@
                         <span> Guardar </span>
                     </button>
                 </form:form>
-                <form action="/borrar/${cliente.id}" method="POST">
+                <form action="/borrar/cliente/${cliente.id}" method="POST">
 					<input type="hidden" name="_method" value="DELETE">
 					<button type="submit" class="btn-danger montserrat mt-05">
                         <span> <i class="fa-solid fa-xmark"></i> Eliminar cliente </span>

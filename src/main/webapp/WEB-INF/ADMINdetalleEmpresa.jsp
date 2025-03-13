@@ -45,9 +45,7 @@
                      <div class="mt-05">
                         <p class="montserrat" >Correo Electronico: ${empresa.email}</p>
                     </div>
-                    <button type="submit" class="btn montserrat mt-05">
-                        <span href="/admin/editar/empresa/${empresa.id }"> Editar Empresa </span>
-                    </button>
+                    <a href="/admin/editar/empresa/${empresa.id }" class="btn montserrat mt-05"> Editar Empresa </a>
              </div>
         </main>
         <footer>

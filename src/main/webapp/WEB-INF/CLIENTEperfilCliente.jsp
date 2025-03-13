@@ -35,7 +35,7 @@
                         <p class="montserrat" >Direccion: ${usuarioEnSesion.direccion }</p>
                     </div>
                     <div class="mt-05">
-                        <p class="montserrat" >Correo electronico:${usuarioEnSesion.email }</p>
+                        <p class="montserrat" >Correo electronico: ${usuarioEnSesion.email }</p>
                     </div>
                     <button type="submit" class="btn montserrat mt-05">
                         <span href="/cliente/editar/${usuarioEnSesion.id}"> Editar mi Informacion </span>
