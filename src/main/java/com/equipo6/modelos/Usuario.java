@@ -1,14 +1,21 @@
 package com.equipo6.modelos;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -41,6 +48,10 @@ public class Usuario {
 	@Email(message="Ingrese un email válido")
 	private String email;
 	
+	@NotBlank(message="El campo de dirección es requerido.")
+	@Size(min=4, message="La dirección debe tener al menos cuatro carácteres.")
+	private String direccion;
+	
 	private String tipoDeUsuario;
 
 	@NotBlank(message="La contraseña es requerida")
@@ -57,6 +68,10 @@ public class Usuario {
 
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
+	
+	//-------------------RELACIONES----------------------
+	@OneToMany(mappedBy="creador", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	private List<Pedido> misPedidos;	
 
 	public Usuario() {}
 
@@ -108,6 +123,14 @@ public class Usuario {
 		this.email = email;
 	}
 
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -131,6 +154,14 @@ public class Usuario {
 
 	public void setTipoDeUsuario(String tipoDeUsuario) {
 		this.tipoDeUsuario = tipoDeUsuario;
+	}
+	
+	public List<Pedido> getMisPedidos() {
+		return misPedidos;
+	}
+
+	public void setMisPedidos(List<Pedido> misPedidos) {
+		this.misPedidos = misPedidos;
 	}
 
 	@PrePersist

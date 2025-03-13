@@ -1,6 +1,7 @@
 package com.equipo6.modelos;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -11,6 +12,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
@@ -61,7 +64,16 @@ public class Producto {
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
-
+	
+	//---------------RELACIONES------------------
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(
+			   name="producto_en_pedido",
+			   joinColumns= @JoinColumn(name="producto_id"),
+			   inverseJoinColumns= @JoinColumn(name="pedido_id"))
+	
+	private List<Pedido> pedidosQueTienenEsteProducto;
+	
 	public Producto() {
 	}
 
@@ -127,6 +139,15 @@ public class Producto {
 
 	public void setCreador(Usuario creador) {
 		this.creador = creador;
+	}
+
+	
+	public List<Pedido> getPedidosQueTienenEsteProducto() {
+		return pedidosQueTienenEsteProducto;
+	}
+
+	public void setPedidosQueTienenEsteProducto(List<Pedido> pedidosQueTienenEsteProducto) {
+		this.pedidosQueTienenEsteProducto = pedidosQueTienenEsteProducto;
 	}
 
 	public Date getCreatedAt() {
