@@ -42,9 +42,10 @@ public class ControladorAdmins {
 		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
 		    return "redirect:/";
 		}
-
 		
-		List<Usuario> clientes = sUsuarios.listaClientes();
+		String tipoDeUsuario = "CLIENTE";
+		
+		List<Usuario> clientes = sUsuarios.listaUsuarios(tipoDeUsuario);
 		
 		model.addAttribute("clientes", clientes);
 		
@@ -73,7 +74,8 @@ public class ControladorAdmins {
 		    return "redirect:/";
 		}
 		
-		List<Usuario> empresas = sUsuarios.listaEmpresas();
+		String tipoDeUsuario= "EMPRESA";
+		List<Usuario> empresas = sUsuarios.listaUsuarios(tipoDeUsuario);
 		
 		model.addAttribute("empresas", empresas);
 		

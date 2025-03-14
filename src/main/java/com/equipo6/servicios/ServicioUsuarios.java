@@ -71,12 +71,28 @@ public class ServicioUsuarios {
 		return repoUsuarios.findAll();
 	}
 	
-	public List<Usuario> todosClientes(String CLIENTE){
-		return repoUsuarios.findAllByTipoDeUsuarioContainingOrderByCreatedAtDesc(CLIENTE);
+	public List<Usuario> listaUsuarios(String tipoDeUsuario){
+		return repoUsuarios.findAllByTipoDeUsuarioContainingOrderByCreatedAtDesc(tipoDeUsuario);
 	}
 	
-	public List<Usuario> todosEmpresas(String EMPRESA){
-		return repoUsuarios.findAllByTipoDeUsuarioContainingOrderByCreatedAtDesc(EMPRESA);
+	public Usuario guardarEmpresa(Usuario nuevaEmpresa){
+		return repoUsuarios.save(nuevaEmpresa);
+	}
+	
+	public Usuario guardarCliente(Usuario nuevoCliente){
+		return repoUsuarios.save(nuevoCliente);
+	}
+	
+	public Usuario buscarEmpresa(Long id) {
+		return repoUsuarios.findById(id).orElse(null);
+	}
+	
+	public Usuario buscarCliente(Long id) {
+		return repoUsuarios.findById(id).orElse(null);
+	}
+	
+	public void borrarUsuario(Long id) {
+		repoUsuarios.deleteById(id);
 	}
 
 }
