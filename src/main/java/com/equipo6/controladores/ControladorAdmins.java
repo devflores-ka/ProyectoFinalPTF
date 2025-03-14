@@ -23,6 +23,7 @@ import com.equipo6.servicios.ServicioUsuarios;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
+@RequestMapping("/admin")
 @Controller
 public class ControladorAdmins {
 	
@@ -34,7 +35,6 @@ public class ControladorAdmins {
 	
 	@Autowired
 	private ServicioProductos sProductos;
-	
 	
 	@GetMapping("/listaDeClientes")
 	public String clientes(HttpSession session, Model model) {
