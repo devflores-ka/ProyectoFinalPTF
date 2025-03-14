@@ -1,5 +1,7 @@
 package com.equipo6.servicios;
 
+import java.util.List;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,5 +67,16 @@ public class ServicioUsuarios {
 			
 		}
 	
+	public List<Usuario> todosUsuarios(){
+		return repoUsuarios.findAll();
+	}
+	
+	public List<Usuario> todosClientes(String CLIENTE){
+		return repoUsuarios.findAllByTipoDeUsuarioContainingOrderByCreatedAtDesc(CLIENTE);
+	}
+	
+	public List<Usuario> todosEmpresas(String EMPRESA){
+		return repoUsuarios.findAllByTipoDeUsuarioContainingOrderByCreatedAtDesc(EMPRESA);
+	}
 
 }
