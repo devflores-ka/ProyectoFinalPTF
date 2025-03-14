@@ -1,5 +1,7 @@
 package com.equipo6.servicios;
 
+import java.util.List;
+
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,5 +67,32 @@ public class ServicioUsuarios {
 			
 		}
 	
+	public List<Usuario> todosUsuarios(){
+		return repoUsuarios.findAll();
+	}
+	
+	public List<Usuario> listaUsuarios(String tipoDeUsuario){
+		return repoUsuarios.findAllByTipoDeUsuarioContainingOrderByCreatedAtDesc(tipoDeUsuario);
+	}
+	
+	public Usuario guardarEmpresa(Usuario nuevaEmpresa){
+		return repoUsuarios.save(nuevaEmpresa);
+	}
+	
+	public Usuario guardarCliente(Usuario nuevoCliente){
+		return repoUsuarios.save(nuevoCliente);
+	}
+	
+	public Usuario buscarEmpresa(Long id) {
+		return repoUsuarios.findById(id).orElse(null);
+	}
+	
+	public Usuario buscarCliente(Long id) {
+		return repoUsuarios.findById(id).orElse(null);
+	}
+	
+	public void borrarUsuario(Long id) {
+		repoUsuarios.deleteById(id);
+	}
 
 }

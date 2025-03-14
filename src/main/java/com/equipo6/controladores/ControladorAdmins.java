@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.equipo6.modelos.Pedido;
 import com.equipo6.modelos.Producto;
@@ -23,6 +24,7 @@ import com.equipo6.servicios.ServicioUsuarios;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
+@RequestMapping("/admin")
 @Controller
 public class ControladorAdmins {
 	
@@ -35,16 +37,16 @@ public class ControladorAdmins {
 	@Autowired
 	private ServicioProductos sProductos;
 	
-	
 	@GetMapping("/listaDeClientes")
 	public String clientes(HttpSession session, Model model) {
 		
 		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
 		    return "redirect:/";
 		}
-
 		
-		List<Usuario> clientes = sUsuarios.listaClientes();
+		String tipoDeUsuario = "CLIENTE";
+		
+		List<Usuario> clientes = sUsuarios.listaUsuarios(tipoDeUsuario);
 		
 		model.addAttribute("clientes", clientes);
 		
@@ -73,7 +75,8 @@ public class ControladorAdmins {
 		    return "redirect:/";
 		}
 		
-		List<Usuario> empresas = sUsuarios.listaEmpresas();
+		String tipoDeUsuario= "EMPRESA";
+		List<Usuario> empresas = sUsuarios.listaUsuarios(tipoDeUsuario);
 		
 		model.addAttribute("empresas", empresas);
 		
