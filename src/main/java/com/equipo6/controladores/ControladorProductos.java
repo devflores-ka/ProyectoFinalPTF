@@ -14,17 +14,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import com.equipo6.modelos.Producto;
-import com.equipo6.servicios.ServicioBase;
-
+import com.equipo6.servicios.ServicioProductos;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 @Controller
-public class ControladorBase {
+public class ControladorProductos {
 	
 	@Autowired
-	private ServicioBase servBase;
+	private ServicioProductos servProductos;
 	
 	@GetMapping("/home")
 	public String home(HttpSession session, Model model) {
@@ -32,7 +31,7 @@ public class ControladorBase {
 		if(session.getAttribute("usuarioEnSesion") == null){
 			return "redirect:/";
 		}
-		List<Producto> producto = servBase.todosLosProductos();
+		List<Producto> producto = servProductos.todosLosProductos();
 		
 		model.addAttribute("producto", producto);
 		
@@ -54,7 +53,7 @@ public class ControladorBase {
 		if(result.hasErrors()) {
 			return "nuevoProducto.jsp";
 		} else {
-			servBase.guardarProducto(nuevoProducto);
+			servProductos.guardarProducto(nuevoProducto);
 			return "redirect:/home";
 		}
 	}
@@ -66,7 +65,7 @@ public class ControladorBase {
 			return "redirect:/";
 		}
 		
-	    Producto productoEditar = servBase.buscarProducto(id);
+	    Producto productoEditar = servProductos.buscarProducto(id);
 	    
 	    if (productoEditar == null) {
 	        return "redirect:/home";
@@ -86,7 +85,7 @@ public class ControladorBase {
 	    }
 
 	    producto.setId(id);
-	    servBase.guardarProducto(producto);
+	    servProductos.guardarProducto(producto);
 
 	 
 	    return "redirect:/home";
@@ -99,7 +98,7 @@ public class ControladorBase {
 			return "redirect:/";
 		}
 		
-	    servBase.borrarProducto(id);
+	    servProductos.borrarProducto(id);
 	    return "redirect:/home";
 	}
 	
@@ -109,7 +108,7 @@ public class ControladorBase {
 	        return "redirect:/";
 	    }
 	    
-	    Producto producto = servBase.buscarProducto(id);
+	    Producto producto = servProductos.buscarProducto(id);
 	    if (producto == null) {
 	        return "redirect:/home";
 	    }
@@ -126,7 +125,7 @@ public class ControladorBase {
 	        return "redirect:/";
 	    }
 	    
-	    Producto producto = servBase.buscarProducto(id);
+	    Producto producto = servProductos.buscarProducto(id);
 	    if (producto == null) {
 	        return "redirect:/home";
 	    }
@@ -135,4 +134,3 @@ public class ControladorBase {
 	    return "arrendar.jsp";
 	}
 }
-

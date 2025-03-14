@@ -5,31 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 import com.equipo6.modelos.Producto;
-import com.equipo6.repositorios.RepositorioBase;
-
+import com.equipo6.repositorios.RepositorioProductos;
 
 @Service
-public class ServicioBase {
+public class ServicioProductos {
 	
 	@Autowired
-	private RepositorioBase repoBase;
+	private RepositorioProductos repoProductos;
 	
 	public List<Producto> todosLosProductos() {
 		
-		return repoBase.findAllByOrderByNombreDesc();
+		return repoProductos.findAllByOrderByNombreDesc();
 	}
 	
 	public Producto guardarProducto(Producto producto) {
-		return repoBase.save(producto);
+		return repoProductos.save(producto);
 	}
 	
 	public Producto buscarProducto(Long id) {
-		return repoBase.findById(id).orElse(null);
+		return repoProductos.findById(id).orElse(null);
 	}
 	public void borrarProducto(Long id) {
-		repoBase.deleteById(id);
+		repoProductos.deleteById(id);
 	}
 }
-

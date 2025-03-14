@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.equipo6.modelos.Producto;
 
-public interface RepositorioBase extends CrudRepository<Producto, Long> {
+public interface RepositorioProductos extends CrudRepository<Producto, Long> {
 	
 	List<Producto> findAll();
 	
