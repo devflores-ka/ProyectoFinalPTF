@@ -12,7 +12,5 @@ public interface RepositorioPedido extends CrudRepository<Pedido, Long> {
 	
 	List<Pedido> findAll();
 	
-	List<Pedido> findAllByOrderByNombreDesc();
-	
-	List<Pedido> findById();
+	List<Pedido> findAllByOrderByCreatedAtDesc();
 }

@@ -16,7 +16,7 @@ public class ServicioPedido {
 	
 	public List<Pedido> todosLosPedidos() {
 		
-		return repoPedido.findAllByOrderByNombreDesc();
+		return repoPedido.findAllByOrderByCreatedAtDesc();
 	}
 	
 	public Pedido guardarProducto(Pedido pedido) {
