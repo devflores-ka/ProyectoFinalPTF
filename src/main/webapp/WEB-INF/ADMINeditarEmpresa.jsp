@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.5">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -39,18 +39,23 @@
                     <input type="hidden" name="_method" value="PUT"><!-- SOBREESCRIBO METODO -->
                     <div class="mt-05">
                         <form:label class="montserrat" path="nombre">Nombre:</form:label>
-                        <form:input path="nombre" class="txt-input montserrat" placeholder="Nombre de representante legal"/>
+                        <form:input path="nombre" class="txt-input montserrat" placeholder="Nombre de la empresa."/>
                         <form:errors path="nombre" class="txt-danger montserrat"/>
                     </div>
                     <div class="mt-05">
-                        <form:label class="montserrat" path="apellido">Apellido:</form:label>
-                        <form:input path="apellido" class="txt-input montserrat" placeholder="Apellido de representante legal"/>
+                        <form:label class="montserrat" path="apellido">Nombre Representante Legal:</form:label>
+                        <form:input path="apellido" class="txt-input montserrat" placeholder="Nombre y apellido del representante legal de la empresa."/>
                         <form:errors path="apellido" class="txt-danger montserrat"/>
                     </div>
                     <div class="mt-05">
                         <form:label class="montserrat" path="email">Email:</form:label>
-                        <form:input path="email" class="txt-input montserrat" placeholder="Email de la empresa"/>
+                        <form:input path="email" class="txt-input montserrat" placeholder="Email de la empresa."/>
                         <form:errors path="email" class="txt-danger montserrat"/>
+                    </div>
+                    <div class="mt-05">
+                        <form:label path="direccion" class="montserrat">Dirección</form:label>
+                        <form:input path="direccion" class="txt-input montserrat" placeholder="Dirección de la empresa."/>
+                        <form:errors path="direccion" class="txt-danger montserrat" />
                     </div>
                     <div class="mt-05">
                         <form:label class="montserrat" path="tipoDeUsuario">Tipo de usuario:</form:label>
@@ -58,7 +63,7 @@
 							<form:option class="txt-input montserrat" path="tipoDeUsuario" value="CLIENTE"/>
 							<form:option class="txt-input montserrat" path="tipoDeUsuario" value="EMPRESA"/>
 						</form:select>
-                    </div>		
+                    </div>
                     <button type="submit" class="btn montserrat mt-05">
                         <span> Guardar </span>
                     </button>
@@ -71,8 +76,8 @@
                 </form> 
             </div>
         </main>
-        <footer>
-            <div class="footer mt-3">
+        <footer class="mt-3">
+            <div class="footer">
                 <h5 class="outfit"> <i class="fa-regular fa-copyright"></i> Halus</h5>
                 <p class="montserrat">Main font "Biko" <a href="http://www.jesuismonreve.org/biko-font-family/" target="_blank"> <i class="fa-regular fa-copyright"></i> Marco Ugolini </a></p>
                 <p class="montserrat">Logo and design are property of this proyect.</p>

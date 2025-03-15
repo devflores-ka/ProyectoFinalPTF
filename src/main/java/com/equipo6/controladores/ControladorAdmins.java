@@ -176,7 +176,7 @@ public class ControladorAdmins {
 		if(result.hasErrors()) {
 			return "ADMINregistroEmpresa.jsp";
 		} else {
-			sUsuarios.guardarEmpresa(nuevaEmpresa);
+			sUsuarios.guardarUsuario(nuevaEmpresa);
 			return "redirect:/admin/empresas";
 		}
 	}
@@ -209,7 +209,7 @@ public class ControladorAdmins {
 	    }
 	    
 	    empresa.setId(id);
-	    sUsuarios.guardarEmpresa(empresa);
+	    sUsuarios.guardarUsuario(empresa);
 
 	 
 	    return "redirect:/admin/empresas";
@@ -244,7 +244,7 @@ public class ControladorAdmins {
 	    }
 
 	    cliente.setId(id);
-	    sUsuarios.guardarCliente(cliente);
+	    sUsuarios.guardarUsuario(cliente);
 
 	 
 	    return "redirect:/admin/clientes";
