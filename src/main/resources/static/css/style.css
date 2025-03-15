@@ -78,7 +78,7 @@ a{
 }
 
 .btn-danger:hover{
-    box-shadow: 0px 0px 5px 1px rgba(255,84,84,1);
+    box-shadow: 0px 0px 5px 1px rgb(255, 84, 84);
 }
 
 .btn{
@@ -322,7 +322,6 @@ a{
     padding: 3em;
     border-radius: 0.5em;
     width: 50%;
-    height: 23em;
     box-shadow: 0px 0px 19px -10px rgba(0,0,0,0.75);
 }
 
@@ -336,6 +335,10 @@ a{
     border: 1px solid #aeaeae;
     border-radius: 0.5em;
     height: 2em;
+}
+
+.txt-danger{
+	color: rgb(255, 84, 84);
 }
 
 .txt-input:focus{

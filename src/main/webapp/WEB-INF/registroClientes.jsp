@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.5">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -37,27 +37,32 @@
                     <div class="mt-05">
                         <form:label class="montserrat" path="nombre">Nombre:</form:label>
                         <form:input path="nombre" class="txt-input montserrat"/>
-                        <form:errors path="nombre" class="txt-danger montserrat"/>
+                        <form:errors path="nombre" class="txt-danger sm-txt montserrat"/>
                     </div>
                     <div class="mt-05">
                         <form:label class="montserrat" path="apellido">Apellido:</form:label>
                         <form:input path="apellido" class="txt-input montserrat"/>
-                        <form:errors path="apellido" class="txt-danger montserrat"/>
+                        <form:errors path="apellido" class="txt-danger sm-txt montserrat"/>
                     </div>
                     <div class="mt-05">
                         <form:label class="montserrat" path="email">Email:</form:label>
                         <form:input path="email" class="txt-input montserrat"/>
-                        <form:errors path="email" class="txt-danger montserrat"/>
+                        <form:errors path="email" class="txt-danger sm-txt montserrat"/>
+                    </div>
+                    <div class="mt-05">
+                        <form:label class="montserrat" path="direccion">Dirección:</form:label>
+                        <form:input path="direccion" class="txt-input montserrat"/>
+                        <form:errors path="direccion" class="txt-danger sm-txt montserrat"/>
                     </div>
                     <div class="mt-05">
                         <form:label class="montserrat" path="password">Contraseña:</form:label>
                         <form:password path="password" class="txt-input montserrat"/>
-                        <form:errors path="password" class="txt-danger montserrat"/>
+                        <form:errors path="password" class="txt-danger sm-txt montserrat"/>
                     </div>			
                     <div class="mt-05">
                         <form:label class="montserrat" path="confirmacion">Confirmar contraseña:</form:label>
                         <form:password path="confirmacion" class="txt-input montserrat"/>
-                        <form:errors path="confirmacion" class="txt-danger montserrat"/>
+                        <form:errors path="confirmacion" class="txt-danger sm-txt montserrat"/>
                     </div>		
                     <button type="submit" class="btn montserrat mt-05">
                         <span> Registrarse </span>

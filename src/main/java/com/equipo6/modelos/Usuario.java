@@ -48,7 +48,7 @@ public class Usuario {
 	@Email(message="Ingrese un email válido")
 	private String email;
 	
-	@NotBlank(message="El campo de dirección es requerido.")
+	@NotBlank(message="La dirección es requerida.")
 	@Size(min=4, message="La dirección debe tener al menos cuatro carácteres.")
 	private String direccion;
 	

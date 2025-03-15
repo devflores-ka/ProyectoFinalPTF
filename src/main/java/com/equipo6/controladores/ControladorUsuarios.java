@@ -43,7 +43,7 @@ public class ControladorUsuarios {
 		} else {
 			
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
-			return "redirect:/cliente/home";
+			return "redirect:/";
 		}
 
 	}
@@ -68,15 +68,15 @@ public class ControladorUsuarios {
 			return "login.jsp";
 		} else {
 			session.setAttribute("usuarioEnSesion", usuario);
-			
+			if ("ADMIN".equals(usuario.getTipoDeUsuario())) {
+	            return "redirect:/admin/home";
+	        } else if ("EMPRESA".equals(usuario.getTipoDeUsuario())) {
+	            return "redirect:/empresa/home";
+	        } else {
+	            return "redirect:/cliente/home";
+	        }
 		}
-		if ("ADMIN".equals(usuario.getTipoDeUsuario())) {
-            return "redirect:/admin/home";
-        } else if ("EMPRESA".equals(usuario.getTipoDeUsuario())) {
-            return "redirect:/empresa/home";
-        } else {
-            return "redirect:/cliente/home";
-        }
+		
 
 	}
 	@GetMapping("/logout")
