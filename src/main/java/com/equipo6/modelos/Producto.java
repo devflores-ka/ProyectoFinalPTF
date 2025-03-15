@@ -12,9 +12,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -22,7 +23,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table
+@Table(name="productos")
 public class Producto {
 
 	@Id
@@ -66,13 +67,8 @@ public class Producto {
 	private Date updatedAt;
 	
 	//---------------RELACIONES------------------
-	@ManyToMany(fetch=FetchType.LAZY)
-	@JoinTable(
-			   name="producto_en_pedido",
-			   joinColumns= @JoinColumn(name="producto_id"),
-			   inverseJoinColumns= @JoinColumn(name="pedido_id"))
-	
-	private List<Pedido> pedidosQueTienenEsteProducto;
+	@OneToMany(mappedBy ="producto", fetch=FetchType.LAZY)
+	private List<ProductoEnPedido> pedidosQueTienenEsteProducto;
 	
 	public Producto() {
 	}
@@ -142,11 +138,11 @@ public class Producto {
 	}
 
 	
-	public List<Pedido> getPedidosQueTienenEsteProducto() {
+	public List<ProductoEnPedido> getPedidosQueTienenEsteProducto() {
 		return pedidosQueTienenEsteProducto;
 	}
 
-	public void setPedidosQueTienenEsteProducto(List<Pedido> pedidosQueTienenEsteProducto) {
+	public void setPedidosQueTienenEsteProducto(List<ProductoEnPedido> pedidosQueTienenEsteProducto) {
 		this.pedidosQueTienenEsteProducto = pedidosQueTienenEsteProducto;
 	}
 
@@ -166,5 +162,14 @@ public class Producto {
 		this.updatedAt = updatedAt;
 	}
 	
+	@PrePersist
+	protected void onCreate() {
+		this.createdAt = new Date();
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		this.updatedAt = new Date();
+	}
 	
 }

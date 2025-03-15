@@ -12,13 +12,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name="pedidos")
@@ -43,13 +41,8 @@ public class Pedido {
 	@JoinColumn(name="usuario_id")
 	private Usuario creador;
 	
-	@ManyToMany(fetch=FetchType.LAZY)
-	@JoinTable(
-			   name="producto_en_pedido",
-			   joinColumns= @JoinColumn(name="pedido_id"),
-			   inverseJoinColumns= @JoinColumn(name="producto_id"))
-	
-	private List<Producto> productosEnPedido;
+	@OneToMany(mappedBy="pedido" ,fetch=FetchType.LAZY)	
+	private List<ProductoEnPedido> productosEnPedido;
 	
 	public Pedido()	{}
 	
@@ -101,11 +94,11 @@ public class Pedido {
 		this.creador = creador;
 	}
 
-	public List<Producto> getProductosEnPedido() {
+	public List<ProductoEnPedido> getProductosEnPedido() {
 		return productosEnPedido;
 	}
 
-	public void setProductosEnPedido(List<Producto> productosEnPedido) {
+	public void setProductosEnPedido(List<ProductoEnPedido> productosEnPedido) {
 		this.productosEnPedido = productosEnPedido;
 	}
 	
