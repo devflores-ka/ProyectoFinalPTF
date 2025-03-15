@@ -19,7 +19,7 @@
     </head>
     <body>
         <header class="head">
-            <img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS">
+            <a href="/"><img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS"></a>
 			<ul class="navbar">
 		        <li><a class="navlink montserrat" href="/admin/home">Inicio</a></li>
 		        <li><a class="navlink montserrat" href="/admin/empresas">Empresas</a></li>

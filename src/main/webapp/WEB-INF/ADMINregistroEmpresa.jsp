@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.5">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -34,7 +34,7 @@
         <main class="main">
             <h1 class="outfit m-1">Añadir Empresa</h1>
             <div class="r-cont">
-                <form:form action="/registroEmpresa" method="POST" modelAttribute="nuevaEmpresa">
+                <form:form action="/admin/guardar/empresa" method="POST" modelAttribute="nuevaEmpresa">
                     <div class="mt-05">
                         <form:label class="montserrat" path="nombre">Nombre Empresa:</form:label>
                         <form:input path="nombre" class="txt-input montserrat" placeholder="Nombre de la empresa."/>

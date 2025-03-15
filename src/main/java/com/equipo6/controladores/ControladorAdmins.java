@@ -40,17 +40,20 @@ public class ControladorAdmins {
 	@GetMapping("/home")
 	public String home(HttpSession session) {
 		
-		if(session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))){
-			return "redirect:/";
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
+		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
+		    return "redirect:/";
 		}
 		
 		return "ADMINhome.jsp";
+		
 	}
 	
 	@GetMapping("/clientes")
 	public String clientes(HttpSession session, Model model) {
 		
-		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
+		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
 		    return "redirect:/";
 		}
 		
@@ -65,8 +68,9 @@ public class ControladorAdmins {
 	
 	@GetMapping("/clientes/{id}")
 	public String cliente(HttpSession session, Model model, @PathVariable("id") Long id) {
-		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
-			return "redirect:/";
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
+		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
+		    return "redirect:/";
 		}
 		
 		Usuario cliente= sUsuarios.buscarUsuario(id);
@@ -77,7 +81,8 @@ public class ControladorAdmins {
 	@GetMapping("/productos")
 	public String productos(HttpSession session, Model model) {
 		
-		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
+		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
 		    return "redirect:/";
 		}
 
@@ -91,8 +96,9 @@ public class ControladorAdmins {
 	
 	@GetMapping("/productos/{id}")
 	public String producto(HttpSession session, Model model, @PathVariable("id") Long id) {
-		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
-			return "redirect:/";
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
+		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
+		    return "redirect:/";
 		}
 		
 		Producto producto= sProductos.buscarProducto(id);
@@ -103,7 +109,8 @@ public class ControladorAdmins {
 	@GetMapping("/empresas")
 	public String empresas(HttpSession session, Model model) {
 		
-		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
+		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
 		    return "redirect:/";
 		}
 		
@@ -117,8 +124,9 @@ public class ControladorAdmins {
 	
 	@GetMapping("/empresas/{id}")
 	public String empresa(HttpSession session, Model model, @PathVariable("id") Long id) {
-		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
-			return "redirect:/";
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
+		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
+		    return "redirect:/";
 		}
 		
 		Usuario empresa= sUsuarios.buscarUsuario(id);
@@ -129,9 +137,11 @@ public class ControladorAdmins {
 	@GetMapping("/pedidos")
 	public String pedidos(HttpSession session, Model model) {
 		
-		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
+		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
 		    return "redirect:/";
 		}
+		
 		List<Pedido> pedidos = sPedido.todosLosPedidos();
 		
 		model.addAttribute("pedidos", pedidos);
@@ -141,8 +151,9 @@ public class ControladorAdmins {
 	
 	@GetMapping("/pedidos/{id}")
 	public String pedido(HttpSession session, Model model, @PathVariable("id") Long id) {
-		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
-			return "redirect:/";
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
+		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
+		    return "redirect:/";
 		}
 		
 		Pedido pedido= sPedido.buscarPedido(id);
@@ -150,7 +161,13 @@ public class ControladorAdmins {
 		return "ADMINdetallePedido.jsp";
 	}
 	
-	@PostMapping("/agregar/empresa")
+	@GetMapping("/agregar/empresa")
+	public String agregarEmpresa(@ModelAttribute("nuevaEmpresa") Usuario nuevoUsuario) {
+		return "ADMINregistroEmpresa.jsp";
+	}
+	
+	
+	@PostMapping("/guardar/empresa")
 	public String agregar(@Valid @ModelAttribute("nuevaEmpresa") Usuario nuevaEmpresa, BindingResult result) {
 		
 		nuevaEmpresa.setTipoDeUsuario("EMPRESA");
@@ -160,14 +177,15 @@ public class ControladorAdmins {
 			return "ADMINregistroEmpresa.jsp";
 		} else {
 			sUsuarios.guardarEmpresa(nuevaEmpresa);
-			return "redirect:/home";
+			return "redirect:/admin/empresas";
 		}
 	}
 	
 	@GetMapping("/editar/empresa/{id}")
 	public String editarEmpresa(@PathVariable("id") Long id, Model model, HttpSession session) {
 		
-		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
+		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
 		    return "redirect:/";
 		}
 		
@@ -182,14 +200,14 @@ public class ControladorAdmins {
 	}
 	
 	@PutMapping("/actualizar/empresa/{id}")
-	public String actualizarEmpresa(@PathVariable("id") Long id, @ModelAttribute("empresa") @Valid Usuario empresa, BindingResult result, Model model) {
+	public String actualizarEmpresa(@PathVariable("id") Long id,@Valid @ModelAttribute("empresa") Usuario empresa, BindingResult result, Model model) {
 	  
 	    if (result.hasErrors()) {
 	     
 	        model.addAttribute("empresa", empresa);
 	        return "ADMINeditarEmpresa.jsp";
 	    }
-
+	    
 	    empresa.setId(id);
 	    sUsuarios.guardarEmpresa(empresa);
 
@@ -201,7 +219,8 @@ public class ControladorAdmins {
 	@GetMapping("/editar/cliente/{id}")
 	public String editarCliente(@PathVariable("id") Long id, Model model, HttpSession session) {
 		
-		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
+		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
 		    return "redirect:/";
 		}
 		
@@ -234,7 +253,8 @@ public class ControladorAdmins {
 	@DeleteMapping("/borrar/usuario/{id}")
 	public String borrar(@PathVariable("id") Long id, HttpSession session) {
 		
-		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
+		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
 		    return "redirect:/";
 		}
 		

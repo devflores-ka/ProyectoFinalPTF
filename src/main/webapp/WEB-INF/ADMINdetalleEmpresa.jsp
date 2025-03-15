@@ -42,14 +42,14 @@
                     <div class="mt-05">
                         <p class="montserrat" >Id empresa: ${empresa.id}</p>
                     </div>
-                     <div class="mt-05">
+                     <div class="mt-05 mb-1">
                         <p class="montserrat" >Correo Electronico: ${empresa.email}</p>
                     </div>
                     <a href="/admin/editar/empresa/${empresa.id }" class="btn montserrat mt-05"> Editar Empresa </a>
              </div>
         </main>
-        <footer>
-            <div class="footer mt-3">
+        <footer class="mt-3">
+            <div class="footer">
                 <h5 class="outfit"> <i class="fa-regular fa-copyright"></i> Halus</h5>
                 <p class="montserrat">Main font "Biko" <a href="http://www.jesuismonreve.org/biko-font-family/" target="_blank"> <i class="fa-regular fa-copyright"></i> Marco Ugolini </a></p>
                 <p class="montserrat">Logo and design are property of this proyect.</p>

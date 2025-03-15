@@ -43,7 +43,7 @@ public class ControladorUsuarios {
 		} else {
 			
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
-			return "redirect:/";
+			return "redirect:/clientes/home";
 		}
 
 	}
@@ -79,6 +79,7 @@ public class ControladorUsuarios {
 		
 
 	}
+	
 	@GetMapping("/logout")
 	public String logout(HttpSession session ) {
 		session.invalidate();
