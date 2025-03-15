@@ -83,11 +83,7 @@ public class ServicioUsuarios {
 		return repoUsuarios.save(nuevoCliente);
 	}
 	
-	public Usuario buscarEmpresa(Long id) {
-		return repoUsuarios.findById(id).orElse(null);
-	}
-	
-	public Usuario buscarCliente(Long id) {
+	public Usuario buscarUsuario(Long id) {
 		return repoUsuarios.findById(id).orElse(null);
 	}
 	

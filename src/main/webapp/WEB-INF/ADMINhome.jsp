@@ -26,7 +26,7 @@
 		        <li><a class="navlink montserrat" href="/admin/productos">Productos</a></li>
 		        <li><a class="navlink montserrat" href="/admin/clientes">Clientes</a></li>
 		        <li><a class="navlink montserrat" href="/admin/pedidos">Pedidos</a></li>
-		        <li><a class="navlink montserrat" href="/nuevaEmpresa">Agregar Empresa</a></li>
+		        <li><a class="navlink montserrat" href="/admin/agregar/empresa">Agregar Empresa</a></li>
 		        <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 		   	</ul>            
         </header>

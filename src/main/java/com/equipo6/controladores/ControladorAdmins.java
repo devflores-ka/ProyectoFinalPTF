@@ -37,7 +37,17 @@ public class ControladorAdmins {
 	@Autowired
 	private ServicioProductos sProductos;
 	
-	@GetMapping("/listaDeClientes")
+	@GetMapping("/home")
+	public String home(HttpSession session) {
+		
+		if(session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))){
+			return "redirect:/";
+		}
+		
+		return "ADMINhome.jsp";
+	}
+	
+	@GetMapping("/clientes")
 	public String clientes(HttpSession session, Model model) {
 		
 		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
@@ -50,10 +60,21 @@ public class ControladorAdmins {
 		
 		model.addAttribute("clientes", clientes);
 		
-		return "ListaDeClientes.jsp";
+		return "ADMINlistaClientes.jsp";
 	}
 	
-	@GetMapping("/listaDeProductos")
+	@GetMapping("/clientes/{id}")
+	public String cliente(HttpSession session, Model model, @PathVariable("id") Long id) {
+		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
+			return "redirect:/";
+		}
+		
+		Usuario cliente= sUsuarios.buscarUsuario(id);
+		model.addAttribute("cliente", cliente);
+		return "ADMINdetalleCliente.jsp";
+	}
+	
+	@GetMapping("/productos")
 	public String productos(HttpSession session, Model model) {
 		
 		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
@@ -65,10 +86,21 @@ public class ControladorAdmins {
 		
 		model.addAttribute("productos", productos);
 		
-		return "ListaDeProductos.jsp";
+		return "ADMINlistaProductos.jsp";
 	}
 	
-	@GetMapping("/listaDeEmpresas")
+	@GetMapping("/productos/{id}")
+	public String producto(HttpSession session, Model model, @PathVariable("id") Long id) {
+		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
+			return "redirect:/";
+		}
+		
+		Producto producto= sProductos.buscarProducto(id);
+		model.addAttribute("producto", producto);
+		return "ADMINdetalleProducto.jsp";
+	}
+	
+	@GetMapping("/empresas")
 	public String empresas(HttpSession session, Model model) {
 		
 		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
@@ -80,9 +112,21 @@ public class ControladorAdmins {
 		
 		model.addAttribute("empresas", empresas);
 		
-		return "ListaDeEmpresas.jsp";
+		return "ADMINlistaEmpresas.jsp";
 	}
-	@GetMapping("/listaDePedidos")
+	
+	@GetMapping("/empresas/{id}")
+	public String empresa(HttpSession session, Model model, @PathVariable("id") Long id) {
+		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
+			return "redirect:/";
+		}
+		
+		Usuario empresa= sUsuarios.buscarUsuario(id);
+		model.addAttribute("empresa", empresa);
+		return "ADMINdetalleEmpresa.jsp";
+	}
+	
+	@GetMapping("/pedidos")
 	public String pedidos(HttpSession session, Model model) {
 		
 		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
@@ -92,91 +136,102 @@ public class ControladorAdmins {
 		
 		model.addAttribute("pedidos", pedidos);
 		
-		return "ListaDePedidos.jsp";
+		return "ADMINpedidos.jsp";
 	}
 	
-	@PostMapping("/agregarEmpresa")
+	@GetMapping("/pedidos/{id}")
+	public String pedido(HttpSession session, Model model, @PathVariable("id") Long id) {
+		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
+			return "redirect:/";
+		}
+		
+		Pedido pedido= sPedido.buscarPedido(id);
+		model.addAttribute("pedido", pedido);
+		return "ADMINdetallePedido.jsp";
+	}
+	
+	@PostMapping("/agregar/empresa")
 	public String agregar(@Valid @ModelAttribute("nuevaEmpresa") Usuario nuevaEmpresa, BindingResult result) {
 		
 		nuevaEmpresa.setTipoDeUsuario("EMPRESA");
 		sUsuarios.registrar(nuevaEmpresa, result);
 		
 		if(result.hasErrors()) {
-			return "nuevaEmpresa.jsp";
+			return "ADMINregistroEmpresa.jsp";
 		} else {
 			sUsuarios.guardarEmpresa(nuevaEmpresa);
 			return "redirect:/home";
 		}
 	}
 	
-	@GetMapping("/editarEmpresa/{id}")
+	@GetMapping("/editar/empresa/{id}")
 	public String editarEmpresa(@PathVariable("id") Long id, Model model, HttpSession session) {
 		
 		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
 		    return "redirect:/";
 		}
 		
-	    Usuario empresaEditar = sUsuarios.buscarEmpresa(id);
+	    Usuario empresaEditar = sUsuarios.buscarUsuario(id);
 	    
 	    if (empresaEditar == null) {
-	        return "redirect:/listaDeEmpresas";
+	        return "redirect:/admin/empresas";
 	    }
 	    
 	    model.addAttribute("empresa", empresaEditar);
-	    return "editarEmpresa.jsp";
+	    return "ADMINeditarEmpresa.jsp";
 	}
 	
-	@PutMapping("/actualizarEmpresa/{id}")
+	@PutMapping("/actualizar/empresa/{id}")
 	public String actualizarEmpresa(@PathVariable("id") Long id, @ModelAttribute("empresa") @Valid Usuario empresa, BindingResult result, Model model) {
 	  
 	    if (result.hasErrors()) {
 	     
 	        model.addAttribute("empresa", empresa);
-	        return "editarEmpresa.jsp";
+	        return "ADMINeditarEmpresa.jsp";
 	    }
 
 	    empresa.setId(id);
 	    sUsuarios.guardarEmpresa(empresa);
 
 	 
-	    return "redirect:/listaDeEmpresas";
+	    return "redirect:/admin/empresas";
 	}
 	
 
-	@GetMapping("/editarCliente/{id}")
+	@GetMapping("/editar/cliente/{id}")
 	public String editarCliente(@PathVariable("id") Long id, Model model, HttpSession session) {
 		
 		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
 		    return "redirect:/";
 		}
 		
-	    Usuario clienteEditar = sUsuarios.buscarCliente(id);
+	    Usuario clienteEditar = sUsuarios.buscarUsuario(id);
 	    
 	    if (clienteEditar == null) {
-	        return "redirect:/listaDeClientes";
+	        return "redirect:/admin/clientes";
 	    }
 	    
 	    model.addAttribute("cliente", clienteEditar);
-	    return "editarCliente.jsp";
+	    return "ADMINeditarCliente.jsp";
 	}
 	
-	@PutMapping("/actualizarCliente/{id}")
+	@PutMapping("/actualizar/cliente/{id}")
 	public String actualizarCliente(@PathVariable("id") Long id, @ModelAttribute("cliente") @Valid Usuario cliente, BindingResult result, Model model) {
 	  
 	    if (result.hasErrors()) {
 	     
 	        model.addAttribute("cliente", cliente);
-	        return "editarCliente.jsp";
+	        return "ADMINeditarCliente.jsp";
 	    }
 
 	    cliente.setId(id);
 	    sUsuarios.guardarCliente(cliente);
 
 	 
-	    return "redirect:/listaDeClientes";
+	    return "redirect:/admin/clientes";
 	}
 	
-	@DeleteMapping("/borrarUsuario/{id}")
+	@DeleteMapping("/borrar/usuario/{id}")
 	public String borrar(@PathVariable("id") Long id, HttpSession session) {
 		
 		if (session.getAttribute("usuarioEnSesion") == null || !"ADMIN".equals(session.getAttribute("tipoDeUsuario"))) {
@@ -184,6 +239,6 @@ public class ControladorAdmins {
 		}
 		
 	    sUsuarios.borrarUsuario(id);
-	    return "redirect:/homeAdmin";
+	    return "redirect:/admin/home";
 	}
 }

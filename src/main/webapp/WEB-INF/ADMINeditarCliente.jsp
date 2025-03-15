@@ -28,14 +28,14 @@
 			      <li><a class="navlink montserrat" href="/admin/productos">Productos</a></li>
 			      <li><a class="navlink montserrat" href="/admin/clientes">Clientes</a></li>
 			      <li><a class="navlink montserrat" href="/admin/pedidos">Pedidos</a></li>
-			      <li><a class="navlink montserrat" href="/nuevaEmpresa">Agregar Empresa</a></li>
+			      <li><a class="navlink montserrat" href="/admin/agregar/empresa">Agregar Empresa</a></li>
 			      <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 			</ul>
         </header>
         <main class="main">
             <h1 class="outfit m-1">Editar Cliente</h1>
             <div class="r-cont">
-                <form:form action="/admin/actualizar/cleinte/${cliente.id}" method="POST" modelAttribute="cliente">
+                <form:form action="/admin/actualizar/cliente/${cliente.id}" method="POST" modelAttribute="cliente">
                     <input type="hidden" name="_method" value="PUT"><!-- SOBREESCRIBO METODO -->
                     <div class="mt-05">
                         <form:label class="montserrat" path="nombre">Nombre:</form:label>
@@ -68,7 +68,7 @@
                         <span> Guardar </span>
                     </button>
                 </form:form>
-                <form action="/borrar/cliente/${cliente.id}" method="POST">
+                <form action="/borrar/usuario/${cliente.id}" method="POST">
 					<input type="hidden" name="_method" value="DELETE">
 					<button type="submit" class="btn-danger montserrat mt-05">
                         <span> <i class="fa-solid fa-xmark"></i> Eliminar cliente </span>

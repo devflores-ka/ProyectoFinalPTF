@@ -28,7 +28,7 @@
 			      <li><a class="navlink montserrat" href="/admin/productos">Productos</a></li>
 			      <li><a class="navlink montserrat" href="/admin/clientes">Clientes</a></li>
 			      <li><a class="navlink montserrat" href="/admin/pedidos">Pedidos</a></li>
-			      <li><a class="navlink montserrat" href="/nuevaEmpresa">Agregar Empresa</a></li>
+			      <li><a class="navlink montserrat" href="/admin/agregar/empresa">Agregar Empresa</a></li>
 			      <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 			</ul>
         </header>
@@ -63,7 +63,7 @@
                         <span> Guardar </span>
                     </button>
                 </form:form>
-                <form action="/borrar/empresa/${empresa.id}" method="POST">
+                <form action="/borrar/usuario/${empresa.id}" method="POST">
 					<input type="hidden" name="_method" value="DELETE">
 					<button type="submit" class="btn-danger montserrat mt-05">
                         <span> <i class="fa-solid fa-xmark"></i> Eliminar Empresa </span>
