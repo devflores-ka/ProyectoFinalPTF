@@ -63,13 +63,29 @@
                     <p class="montserrat"> <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}</p>
                     <p class="montserrat"> <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}</p>
                     <p class="montserrat g-p">Proveedor: ${producto.creador.nombre}</p>
-                    <a href="/empresa/editar/producto/${producto.id}" class="btn montserrat mt-05" > <i class="fa-solid fa-pen"></i> Editar Producto</a>
-                    <form action="/empresa/borrar/producto/${producto.id}" method="POST">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn-danger montserrat mt-05">
-                            <span> <i class="fa-solid fa-xmark"></i> Eliminar Producto </span>
-                        </button>
-                    </form>
+                    <c:choose>
+                    	<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
+	                    	<a href="/admin/editar/producto/${producto.id}" class="btn montserrat mt-05" > <i class="fa-solid fa-pen"></i> Editar Producto</a>
+		                    <form action="/admin/borrar/producto/${producto.id}" method="POST">
+		                        <input type="hidden" name="_method" value="DELETE">
+		                        <button type="submit" class="btn-danger montserrat mt-05">
+		                            <span> <i class="fa-solid fa-xmark"></i> Eliminar Producto </span>
+		                        </button>
+		                    </form>
+                    	</c:when>
+                    	<c:when test="${usuarioEnSesion.tipoDeUsuario == cliente }">
+                    		<a href="/cliente/carrito/${usuarioEnSesion.id}/${producto.id}" class="btn montserrat"><i class="fa-solid fa-cart-plus"></i> Agregar al carrito</a>
+                    	</c:when>
+                    	<c:otherwise>
+	                    	<a href="/empresa/editar/producto/${producto.id}" class="btn montserrat mt-05" > <i class="fa-solid fa-pen"></i> Editar Producto</a>
+		                    <form action="/empresa/borrar/producto/${producto.id}" method="POST">
+		                        <input type="hidden" name="_method" value="DELETE">
+		                        <button type="submit" class="btn-danger montserrat mt-05">
+		                            <span> <i class="fa-solid fa-xmark"></i> Eliminar Producto </span>
+		                        </button>
+		                    </form>
+                    	</c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </main>    

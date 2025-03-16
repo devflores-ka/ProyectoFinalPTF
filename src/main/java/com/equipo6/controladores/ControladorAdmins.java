@@ -68,7 +68,7 @@ public class ControladorAdmins {
 		return "ListaClientes.jsp";
 	}
 	
-	//ACdetalleCliente.jsp
+//ACdetalleCliente.jsp
 	@GetMapping("/clientes/{id}")
 	public String mostrarCliente(@PathVariable("id") Long id, Model model, HttpSession session) {
 		
@@ -85,8 +85,7 @@ public class ControladorAdmins {
 		model.addAttribute("cliente", cliente);
 		return "ACdetalleCliente.jsp"; //cliente/{id}
 	}
-	
-	//AClistaProductos.jsp
+//AClistaProductos.jsp
 	@GetMapping("/productos")
 	public String productos(HttpSession session, Model model) {
 		
@@ -105,7 +104,7 @@ public class ControladorAdmins {
 		
 		return "AClistaProductos.jsp"; //cliente/home
 	}
-	
+//ACEdetalleProducto.jsp
 	@GetMapping("/productos/{id}")
 	public String producto(HttpSession session, Model model, @PathVariable("id") Long id) {
 		
@@ -123,9 +122,9 @@ public class ControladorAdmins {
 		Producto producto= sProductos.buscarProducto(id);
 		model.addAttribute("producto", producto);
 		
-		return "AdetalleProducto.jsp"; 
+		return "ACEdetalleProducto.jsp"; 
 	}
-	
+//AEeditarProducto.jsp
 	@GetMapping("/editar/producto/{id}")
 	public String editarProducto(@PathVariable("id") Long id, Model model, HttpSession session) {
 		
@@ -143,7 +142,7 @@ public class ControladorAdmins {
 	    model.addAttribute("producto", productoEditar);
 	    return "ADMINeditarProducto.jsp";
 	}
-	
+//Aempresas.jsp	
 	@GetMapping("/empresas")
 	public String empresas(HttpSession session, Model model) {
 		
@@ -160,7 +159,7 @@ public class ControladorAdmins {
 		
 		return "listaDeEmpresas.jsp";
 	}
-	
+//AEdetalleEmpresa.jsp	
 	@GetMapping("/empresas/{id}")
 	public String empresa(@PathVariable("id") Long id, Model model, HttpSession session) {
 		
@@ -175,7 +174,7 @@ public class ControladorAdmins {
 		
 		return "ADMINdetalleEmpresa.jsp";
 	}
-	
+//ACEpedidos.jsp	
 	@GetMapping("/pedidos")
 	public String pedidos(HttpSession session, Model model) {
 		
@@ -185,11 +184,16 @@ public class ControladorAdmins {
 		    return "redirect:/";
 		}
 		
+		String cliente = "CLIENTE";//para comparacion en jsp
+		model.addAttribute("cliente", cliente);
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
+		
 		List<Pedido> pedidos = sPedido.todosLosPedidos();
 		
 		model.addAttribute("pedidos", pedidos);
 		
-		return "ListaDePedidos.jsp";
+		return "ACElistaPedidos.jsp";
 	}
 	
 	@GetMapping("/pedidos/{id}")

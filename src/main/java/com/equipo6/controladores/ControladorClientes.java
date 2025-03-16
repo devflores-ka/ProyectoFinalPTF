@@ -51,7 +51,7 @@ public class ControladorClientes {
     	
     }
 	
-	
+//ACEdetalleProducto.jsp
 	@GetMapping("/productos/{id}")
 	public String mostrar(@PathVariable("id") Long id,
 						  Model model,
@@ -61,36 +61,39 @@ public class ControladorClientes {
 			return "redirect:/";
 		}
 		
+		String cliente = "CLIENTE";//para comparacion en jsp
+		model.addAttribute("cliente", cliente);
 		String admin = "ADMIN";
 		model.addAttribute("admin", admin);
+		
 		Producto producto = sProductos.buscarProducto(id);
 		model.addAttribute("producto", producto); 
 		
-		
-		Usuario usuarioEnSesion = (Usuario)session.getAttribute("usuarioEnSesion"); 
-		Usuario usuario = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
-		model.addAttribute("usuario", usuario);
-		
-		return ""; //jsp vista 2 detalle del producto
+		return "ACEdetalleProducto.jsp";
 		
 	}
-	
-	
-
-	
+//ACEpedidos.jsp
 	@GetMapping("/pedidos")
 	public String pedidos(HttpSession session, Model model) {
 		
 		if (session.getAttribute("usuarioEnSesion") == null ) {
 		    return "redirect:/";
 		}
+		
+		String cliente = "CLIENTE";//para comparacion en jsp
+		model.addAttribute("cliente", cliente);
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
+		
 		List<Pedido> pedidos = sPedido.todosLosPedidos();
+		model.addAttribute("pedidos", pedidos);
+		
 		Usuario usuarioEnSesion = (Usuario)session.getAttribute("usuarioEnSesion"); //Obteniendo de la sesión el objeto usuario
 		Usuario usuario = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
 		model.addAttribute("usuario", usuario);
-		model.addAttribute("pedidos", pedidos);
 		
-		return "CLIENTEmisPedidos.jsp"; //vista 4 jsp de listado de pedidos
+		
+		return "ACElistaPedidos.jsp"; 
 	}
 	
 	@GetMapping("/pedidos/{id}")
