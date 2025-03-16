@@ -75,19 +75,11 @@ public class ServicioUsuarios {
 		return repoUsuarios.findAllByTipoDeUsuarioContainingOrderByCreatedAtDesc(tipoDeUsuario);
 	}
 	
-	public Usuario guardarEmpresa(Usuario nuevaEmpresa){
-		return repoUsuarios.save(nuevaEmpresa);
+	public Usuario guardarUsuario(Usuario usuario) {
+		return repoUsuarios.save(usuario);
 	}
 	
-	public Usuario guardarCliente(Usuario nuevoCliente){
-		return repoUsuarios.save(nuevoCliente);
-	}
-	
-	public Usuario buscarEmpresa(Long id) {
-		return repoUsuarios.findById(id).orElse(null);
-	}
-	
-	public Usuario buscarCliente(Long id) {
+	public Usuario buscarUsuario(Long id) {
 		return repoUsuarios.findById(id).orElse(null);
 	}
 	
