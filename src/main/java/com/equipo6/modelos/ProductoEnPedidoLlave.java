@@ -1,6 +1,7 @@
 package com.equipo6.modelos;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -32,5 +33,17 @@ public class ProductoEnPedidoLlave implements Serializable {
         this.productoId = productoId;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ProductoEnPedidoLlave that = (ProductoEnPedidoLlave) o;
+        return Objects.equals(productoId, that.productoId) && Objects.equals(pedidoId, that.pedidoId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productoId, pedidoId);
+    }
 
 }
