@@ -128,9 +128,19 @@ a{
     margin-bottom: 3em;
 }
 
+.ml-1{
+    margin-left: 1em;
+}
+
 .main{
     margin: 1em auto;
     width: 80%;
+}
+
+.l-prod{
+    width: 80%;
+    margin: 0 auto;
+    gap: 1em;
 }
 
 .intro{
@@ -372,6 +382,9 @@ a{
     align-self: center;
 }
 
+.a-s-e{
+    align-self: flex-end;
+}
 
 /*VOLVER ARRIBA*/
 #to-top{
@@ -427,7 +440,7 @@ html{
     box-shadow: 0px 0px 19px -10px rgba(0,0,0,0.75);
     display: flex;
     margin: 1em auto;
-    width: 65%;
+    flex-direction: column;
 }
 
 .c-img{
@@ -439,9 +452,8 @@ html{
 .c-cont img{
     border: 1px solid #aeaeae;
     height: 13em;
-    width: 330px;
     border-top-left-radius: 0.5em;
-    border-bottom-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
 }
 
 .flex-2{
@@ -459,6 +471,13 @@ html{
 .c-div-h{
     padding: 1em;
     align-self: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.b-2{
+    display: flex;
+    gap: 0.5em;
 }
 
 .imagen{

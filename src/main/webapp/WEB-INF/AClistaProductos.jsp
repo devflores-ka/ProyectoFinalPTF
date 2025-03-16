@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="css/style.css?version=0.2">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.2">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -33,7 +33,7 @@
 				        <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 				   	</ul>
 			    </c:when>
-			    <c:when test="${usuarioEnSesion.tipoDeUsuario == cliente }">
+			    <c:otherwise>
 				    <ul class="navbar">
 						<li><a class="navlink montserrat" href="/cliente/home">Inicio</a></li>
 				        <li><a class="navlink montserrat" href="/cliente/pedidos">Mis Pedidos</a></li>
@@ -41,40 +41,43 @@
 				        <li><a class="navlink montserrat" href="/cliente/${usuarioEnSesion.id}">Perfil</a></li>
 				        <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 				    </ul>
-			    </c:when>
-			    <c:otherwise>
-			    	<ul class="navbar">
-		                <li><a class="navlink montserrat" href="/empresa/home">Inicio</a></li>
-		                <li><a class="navlink montserrat" href="/empresa/productos">Mis productos</a></li>
-		                <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">Mi empresa</a></li>
-		                <li><a class="navlink montserrat" href="/nuevoProducto">Agregar Producto</a></li>
-		                <li><a class="navlink montserrat" href="/empresa/ventas">Mis ventas</a></li>
-		                <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
-		            </ul>
 			    </c:otherwise>
-            </c:choose> 
+            </c:choose>         
         </header>
-        <main class="main">
-            <div class="flex">
-                <img src="${producto.urlImagen }" class="imagen flex-2" alt="${producto.nombre}">
-                <div class="info flex-3">
-                    <h2 class="outfit">${producto.nombre}</h2>
-                    <p class="montserrat">${producto.descripcion}</p>
-                    <p class="montserrat"> <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}</p>
-                    <p class="montserrat"> <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}</p>
-                    <p class="montserrat g-p">Proveedor: ${producto.creador.nombre}</p>
-                    <a href="/empresa/editar/producto/${producto.id}" class="btn montserrat mt-05" > <i class="fa-solid fa-pen"></i> Editar Producto</a>
-                    <form action="/empresa/borrar/producto/${producto.id}" method="POST">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn-danger montserrat mt-05">
-                            <span> <i class="fa-solid fa-xmark"></i> Eliminar Producto </span>
-                        </button>
-                    </form>
+        <main id="main">
+            <div id="c-header">
+                <img src="/img/header-image.webp" class="c-img">
+                <div id="c-header-txt">
+                    <h1 class="outfit">Todos los productos</h1>
+                    <p class="montserrat mb-1">Explora nuestras opciones para avanzar hacia la energia sustentable.</p>
                 </div>
             </div>
+            <section class="l-prod flex">
+                <c:forEach var="producto" items="${productos}">
+                    <div class="c-cont">
+                        <img src="${producto.urlImagen}" class="flex-2">
+                        <div class="flex-4 c-div-h">
+                            <h2 class="outfit mb-1">${producto.nombre}</h2>
+                            <p class="montserrat"><i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}</p>
+                            <p class="montserrat mb-1"><i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}</p>
+                            <div class="b-2 a-s-e">
+                                <a href="/cliente/productos/${producto.id}" class="btn montserrat"> Detalles</a>
+                                <c:choose>
+                                	<c:when test="${usuarioEnSesion.tipoDeUsuario == ADMIN }">
+                                		<a href="/admin/editar/producto/${producto.id }" class="btn montserrat">Editar</a>
+                                	</c:when>
+                                	<c:otherwise>
+                                		<a href="/cliente/carrito/${usuarioEnSesion.id}/${producto.id}" class="btn montserrat"><i class="fa-solid fa-cart-plus"></i> Agregar al carrito</a>
+                                	</c:otherwise>
+                                </c:choose>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </section>
         </main>    
-        <footer class="mt-3">
-            <div class="footer">
+        <footer>
+            <div class="footer mt-4">
                 <h5 class="outfit"> <i class="fa-regular fa-copyright"></i> Halus</h5>
                 <p class="montserrat">Main font "Biko" <a href="http://www.jesuismonreve.org/biko-font-family/"> <i class="fa-regular fa-copyright"></i> Marco Ugolini </a></p>
                 <p class="montserrat">Logo and design are property of this proyect.</p>

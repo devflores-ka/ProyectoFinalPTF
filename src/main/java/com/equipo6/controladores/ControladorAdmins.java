@@ -65,7 +65,7 @@ public class ControladorAdmins {
 		
 		return "ADMINlistaClientes.jsp";
 	}
-	
+	//ACdetalleCliente.jsp
 	@GetMapping("/clientes/{id}")
 	public String cliente(HttpSession session, Model model, @PathVariable("id") Long id) {
 		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
@@ -73,11 +73,14 @@ public class ControladorAdmins {
 		    return "redirect:/";
 		}
 		
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
 		Usuario cliente= sUsuarios.buscarUsuario(id);
 		model.addAttribute("cliente", cliente);
-		return "ADMINdetalleCliente.jsp";
+		return "ACdetalleCliente.jsp"; //cliente/{id}
 	}
 	
+	//AClistaProductos.jsp
 	@GetMapping("/productos")
 	public String productos(HttpSession session, Model model) {
 		
@@ -88,10 +91,11 @@ public class ControladorAdmins {
 
 		
 		List<Producto> productos = sProductos.todosLosProductos();
-		
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
 		model.addAttribute("productos", productos);
 		
-		return "ADMINlistaProductos.jsp";
+		return "AClistaProductos.jsp"; //cliente/home
 	}
 	
 	@GetMapping("/productos/{id}")
@@ -100,10 +104,31 @@ public class ControladorAdmins {
 		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
 		    return "redirect:/";
 		}
-		
+		String cliente = "CLIENTE";
+		model.addAttribute("cliente", cliente);
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
 		Producto producto= sProductos.buscarProducto(id);
 		model.addAttribute("producto", producto);
-		return "ADMINdetalleProducto.jsp";
+		return "ACEdetalleProducto.jsp"; 
+	}
+	
+	@GetMapping("/editar/producto/{id}")
+	public String editarProducto(@PathVariable("id") Long id, Model model, HttpSession session) {
+		
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
+		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
+		    return "redirect:/";
+		}
+		
+	    Producto productoEditar = sProductos.buscarProducto(id);
+	    
+	    if (productoEditar == null) {
+	        return "redirect:/admin/productos";
+	    }
+	    
+	    model.addAttribute("producto", productoEditar);
+	    return "ADMINeditarProducto.jsp";
 	}
 	
 	@GetMapping("/empresas")

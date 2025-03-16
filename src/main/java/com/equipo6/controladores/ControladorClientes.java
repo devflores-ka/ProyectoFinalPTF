@@ -34,21 +34,25 @@ public class ControladorClientes {
 	@Autowired
 	private ServicioProductos sProductos;
 	
-	
+//AClistaProductos.jsp
     @GetMapping("/home")
     public String home (HttpSession session, Model model) {
     	
     	if (session.getAttribute("usuarioEnSesion") == null ) {
 		    return "redirect:/";
 		}
-    	String tipoDeUsuario = "CLIENTE";
     	
-    	return "home.jsp";  //home vista 1
+    	String admin = "ADMIN";
+		List<Producto> productos = sProductos.todosLosProductos();
+		model.addAttribute("admin", admin);
+		model.addAttribute("productos", productos);
+		
+    	return "AClistaProductos.jsp"; //admin/productos 
     	
     }
 	
 	
-	@GetMapping("/mostrarProducto/{id}")
+	@GetMapping("/productos/{id}")
 	public String mostrar(@PathVariable("id") Long id,
 						  Model model,
 						  HttpSession session) {
@@ -56,38 +60,25 @@ public class ControladorClientes {
 		if(session.getAttribute("usuarioEnSesion") == null){
 			return "redirect:/";
 		}
-		String tipoDeUsuario = "CLIENTE";
-		Producto producto = sProductos.buscarProducto(id); 
+		
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
+		Producto producto = sProductos.buscarProducto(id);
 		model.addAttribute("producto", producto); 
 		
 		
 		Usuario usuarioEnSesion = (Usuario)session.getAttribute("usuarioEnSesion"); 
-		Usuario usuario = sUsuarios.buscarCliente(usuarioEnSesion.getId());
+		Usuario usuario = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
 		model.addAttribute("usuario", usuario);
 		
 		return ""; //jsp vista 2 detalle del producto
 		
 	}
 	
-	@GetMapping("/listaDeProductos")
-	public String productos(HttpSession session, Model model) {
-		
-		if (session.getAttribute("usuarioEnSesion") == null  ) {
-		    return "redirect:/";
-		}
-		String tipoDeUsuario = "CLIENTE";
-	
-		
-		List<Producto> productos = sProductos.todosLosProductos();
-		
-		model.addAttribute("productos", productos);
-		
-		return ""; //vista 3 jsp lsitado de productos arriendo/venta
-	}
 	
 
 	
-	@GetMapping("/listaDePedidos")
+	@GetMapping("/pedidos")
 	public String pedidos(HttpSession session, Model model) {
 		
 		if (session.getAttribute("usuarioEnSesion") == null ) {
@@ -95,14 +86,14 @@ public class ControladorClientes {
 		}
 		List<Pedido> pedidos = sPedido.todosLosPedidos();
 		Usuario usuarioEnSesion = (Usuario)session.getAttribute("usuarioEnSesion"); //Obteniendo de la sesión el objeto usuario
-		Usuario usuario = sUsuarios.buscarCliente(usuarioEnSesion.getId());
+		Usuario usuario = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
 		model.addAttribute("usuario", usuario);
 		model.addAttribute("pedidos", pedidos);
 		
 		return "CLIENTEmisPedidos.jsp"; //vista 4 jsp de listado de pedidos
 	}
 	
-	@GetMapping("/mostrarPedidos/{id}")
+	@GetMapping("/pedidos/{id}")
 	public String mostrarPedido (@PathVariable("id") Long id,
 						  Model model,
 						  HttpSession session) {
@@ -116,13 +107,15 @@ public class ControladorClientes {
 		
 		
 		Usuario usuarioEnSesion = (Usuario)session.getAttribute("usuarioEnSesion"); 
-		Usuario usuario = sUsuarios.buscarCliente(usuarioEnSesion.getId());
+		Usuario usuario = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
 		model.addAttribute("usuario", usuario);
 		
 		return ""; //jsp vista 5 detalle de un  pedido
 		
 	}
-	@GetMapping("/mostrarcliente/{id}")
+	
+	//ACdetalleCliente.jsp
+	@GetMapping("/cliente/{id}")
 	public String mostrarCliente (@PathVariable("id") Long id,
 						  Model model,
 						  HttpSession session) {
@@ -130,16 +123,18 @@ public class ControladorClientes {
 		if(session.getAttribute("usuarioEnSesion") == null){
 			return "redirect:/";
 		}
-		String tipoDeUsuario = "CLIENTE"; 
-			
+		
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
 		Usuario usuarioEnSesion = (Usuario)session.getAttribute("usuarioEnSesion"); 
-		Usuario usuario = sUsuarios.buscarCliente(usuarioEnSesion.getId());
+		Usuario usuario = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
 		model.addAttribute("usuario", usuario);
 		
-		return "CLIENTEperfilCliente.jsp"; //jsp vista 6 perfil de un cliente
+		return "ACdetalleCliente.jsp"; //admin/clientes/{id}
 		
 	}
-	@GetMapping("/editarCliente/{id}")
+	
+	@GetMapping("/editar/{id}")
 	public String formularioEditarReceta(@ModelAttribute("usuario") Usuario usuario,
 			                              @PathVariable("id") Long id,
                                            Model model,
@@ -147,14 +142,14 @@ public class ControladorClientes {
 		if(session.getAttribute("usuarioEnSesion") == null){
 			return "redirect:/";
 		}
-		Usuario usuarioActual = sUsuarios.buscarCliente(id);
+		Usuario usuarioActual = sUsuarios.buscarUsuario(id);
 	model.addAttribute("usuario ", usuarioActual);
 	
 	return"CLIENTEeditarCliente.jsp"; //vista 7 edicion
 	
    }
 
-	@PutMapping("/editarCliente/{id}")
+	@PutMapping("/actualizar/{id}")
 	public String procesarEditarReceta(@Valid @ModelAttribute("usuario")Usuario usuario,
 			                            @PathVariable("id")Long id,
 			                            BindingResult result
@@ -165,7 +160,7 @@ public class ControladorClientes {
 		}else { 
 	      
 			
-			sUsuarios.guardarCliente(usuario);
+			sUsuarios.guardarUsuario(usuario);
 			return "redirect:/mostrarcliente/{id}"; //vista 7 de edicion
 		
 	 }
