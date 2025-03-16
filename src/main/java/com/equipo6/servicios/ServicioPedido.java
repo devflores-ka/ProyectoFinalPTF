@@ -19,14 +19,14 @@ public class ServicioPedido {
 		return repoPedido.findAllByOrderByCreatedAtDesc();
 	}
 	
-	public Pedido guardarProducto(Pedido pedido) {
+	public Pedido guardarPedido(Pedido pedido) {
 		return repoPedido.save(pedido);
 	}
 	
-	public Pedido buscarProducto(Long id) {
+	public Pedido buscarPedido(Long id) {
 		return repoPedido.findById(id).orElse(null);
 	}
-	public void borrarProducto(Long id) {
+	public void borrarPedido(Long id) {
 		repoPedido.deleteById(id);
 	}
 }
