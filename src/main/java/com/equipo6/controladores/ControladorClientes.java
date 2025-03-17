@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -67,6 +68,10 @@ public class ControladorClientes {
 		model.addAttribute("admin", admin);
 		
 		Producto producto = sProductos.buscarProducto(id);
+		if (producto == null) {
+			return "redirect:/cliente/home";
+		}
+		
 		model.addAttribute("producto", producto); 
 		
 		return "ACEdetalleProducto.jsp";
@@ -85,9 +90,7 @@ public class ControladorClientes {
 		String admin = "ADMIN";
 		model.addAttribute("admin", admin);
 		
-		List<Pedido> pedidos = sPedido.todosLosPedidos();
-		model.addAttribute("pedidos", pedidos);
-		
+		//Para conseguir los pedidos del USUARIO EN SESION
 		Usuario usuarioEnSesion = (Usuario)session.getAttribute("usuarioEnSesion"); //Obteniendo de la sesión el objeto usuario
 		Usuario usuario = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
 		model.addAttribute("usuario", usuario);
@@ -95,7 +98,7 @@ public class ControladorClientes {
 		
 		return "ACElistaPedidos.jsp"; 
 	}
-	
+//ACEdetallePedido.jsp	
 	@GetMapping("/pedidos/{id}")
 	public String mostrarPedido (@PathVariable("id") Long id,
 						  Model model,
@@ -104,21 +107,21 @@ public class ControladorClientes {
 		if(session.getAttribute("usuarioEnSesion") == null){
 			return "redirect:/";
 		}
-		String tipoDeUsuario = "CLIENTE";
+		
 		Pedido pedido = sPedido.buscarPedido(id); 
 		model.addAttribute("pedido", pedido); 
 		
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("userInSession");
+		Usuario usuarioActualizado = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
 		
-		Usuario usuarioEnSesion = (Usuario)session.getAttribute("usuarioEnSesion"); 
-		Usuario usuario = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
-		model.addAttribute("usuario", usuario);
+		model.addAttribute("usuario", usuarioActualizado);
 		
-		return ""; //jsp vista 5 detalle de un  pedido
+		return "ACEdetallePedido.jsp"; //jsp vista 5 detalle de un  pedido
 		
 	}
 	
-	//ACdetalleCliente.jsp
-	@GetMapping("/cliente/{id}")
+//ACdetalleCliente.jsp
+	@GetMapping("/{id}")
 	public String mostrarCliente (@PathVariable("id") Long id,
 						  Model model,
 						  HttpSession session) {
@@ -129,26 +132,48 @@ public class ControladorClientes {
 		
 		String admin = "ADMIN";
 		model.addAttribute("admin", admin);
-		Usuario usuarioEnSesion = (Usuario)session.getAttribute("usuarioEnSesion"); 
+		
+		Usuario usuarioEnSesion = (Usuario)session.getAttribute("usuarioEnSesion");
+		
 		Usuario usuario = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
+		if(usuario == null) {
+			return "redirect:/cliente/home";
+		}
 		model.addAttribute("usuario", usuario);
 		
 		return "ACdetalleCliente.jsp"; //admin/clientes/{id}
 		
 	}
-	
+//DELETEmappind
+	@DeleteMapping("/borrar/pedido/{id}")
+	public String borrarPedido(@PathVariable("id")Long id) {
+		sPedido.borrarPedido(id);
+		
+		return "redirect:/cliente/pedidos";
+	}
+//ACeditarCliente.jsp
 	@GetMapping("/editar/{id}")
-	public String formularioEditarReceta(@ModelAttribute("usuario") Usuario usuario,
+	public String editar(@ModelAttribute("cliente") Usuario cliente,
 			                              @PathVariable("id") Long id,
                                            Model model,
                                            HttpSession session) {
 		if(session.getAttribute("usuarioEnSesion") == null){
 			return "redirect:/";
 		}
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
 		Usuario usuarioActual = sUsuarios.buscarUsuario(id);
-	model.addAttribute("usuario ", usuarioActual);
+		
+		if(usuarioActual == null || !usuarioActual.getId().equals(usuarioEnSesion.getId())) {
+			return "redirect:/cliente/"+usuarioEnSesion.getId();
+		}
+		
+		String admin = "ADMIN";//para comparacion en jsp
+		model.addAttribute("admin", admin);
+		
+		
+		model.addAttribute("usuario ", usuarioActual);
 	
-	return"CLIENTEeditarCliente.jsp"; //vista 7 edicion
+		return"ACeditarCliente.jsp"; 
 	
    }
 
