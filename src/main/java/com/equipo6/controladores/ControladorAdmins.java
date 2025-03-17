@@ -65,7 +65,7 @@ public class ControladorAdmins {
 		
 		model.addAttribute("clientes", clientes);
 		
-		return "ListaClientes.jsp";
+		return "ADMINListaClientes.jsp";
 	}
 	
 //ACdetalleCliente.jsp
