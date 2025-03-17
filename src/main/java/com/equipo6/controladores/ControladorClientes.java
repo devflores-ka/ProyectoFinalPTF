@@ -135,7 +135,7 @@ public class ControladorClientes {
 	}
 	
 	@GetMapping("/editar/{id}")
-	public String formularioEditarReceta(@ModelAttribute("usuario") Usuario usuario,
+	public String formularioEditarCliente(@ModelAttribute("usuario") Usuario usuario,
 			                              @PathVariable("id") Long id,
                                            Model model,
                                            HttpSession session) {
@@ -150,7 +150,7 @@ public class ControladorClientes {
    }
 
 	@PutMapping("/actualizar/{id}")
-	public String procesarEditarReceta(@Valid @ModelAttribute("usuario")Usuario usuario,
+	public String procesarEditarCliente(@Valid @ModelAttribute("usuario")Usuario usuario,
 			                            @PathVariable("id")Long id,
 			                            BindingResult result
 			                            ) {
