@@ -49,7 +49,7 @@ public class ControladorAdmins {
 		return "ADMINhome.jsp";
 		
 	}
-	
+//ADMINlistaClientes.jsp	
 	@GetMapping("/clientes")
 	public String clientes(HttpSession session, Model model) {
 		
@@ -142,7 +142,7 @@ public class ControladorAdmins {
 	    model.addAttribute("producto", productoEditar);
 	    return "AEeditarProducto.jsp";
 	}
-//Aempresas.jsp	
+//ADMINlistaEmpresas.jsp	
 	@GetMapping("/empresas")
 	public String empresas(HttpSession session, Model model) {
 		
@@ -157,7 +157,7 @@ public class ControladorAdmins {
 		
 		model.addAttribute("empresas", empresas);
 		
-		return "listaDeEmpresas.jsp";
+		return "ADMINlistaEmpresas.jsp";
 	}
 //AEdetalleEmpresa.jsp	
 	@GetMapping("/empresas/{id}")
