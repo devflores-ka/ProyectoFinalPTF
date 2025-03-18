@@ -51,21 +51,20 @@ public class ControladorAdmins {
 	}
 //ADMINlistaClientes.jsp	
 	@GetMapping("/clientes")
-	public String clientes(HttpSession session, Model model) {
-		
+	public String listaClientes(HttpSession session, Model model) {
+
 		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
 		
 		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
 		    return "redirect:/";
 		}
 		
-		String tipoDeUsuario = "CLIENTE";
-		
+		String tipoDeUsuario= "CLIENTE";//para buscar con el servicio
 		List<Usuario> clientes = sUsuarios.listaUsuarios(tipoDeUsuario);
 		
 		model.addAttribute("clientes", clientes);
 		
-		return "ADMINListaClientes.jsp";
+		return "ADMINlistaClientes.jsp";
 	}
 	
 //ACdetalleCliente.jsp
