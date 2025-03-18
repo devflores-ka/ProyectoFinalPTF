@@ -122,7 +122,7 @@
             <div class="footer">
                 <h5 class="outfit"> <i class="fa-regular fa-copyright"></i> Halus</h5>
                 <p class="montserrat">Main font "Biko" <a href="http://www.jesuismonreve.org/biko-font-family/" target="_blank"> <i class="fa-regular fa-copyright"></i> Marco Ugolini </a></p>
-                <p class="montserrat">Logo and design are property of this proyect.</p>
+                <p class="montserrat">Logo and design are property of this project.</p>
                 <p class="montserrat">This site is prototype-only. Any images, fonts, texts, etc. are being used for this single prototype without any revenue. All rights to their respective owners.</p>
             </div>
         </footer>

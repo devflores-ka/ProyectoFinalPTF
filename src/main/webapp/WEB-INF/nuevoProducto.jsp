@@ -6,7 +6,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Halus</title>
+        <title>Halus | Agregar un Producto</title>
         <!--CSS-->
         <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.2">
         <!--FAFA-->
@@ -20,13 +20,13 @@
     </head>
     <body>
         <header class="head">
-            <img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS">
+           <a href="/"><img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS"></a>
             <ul class="navbar">
-                <li><a class="navlink montserrat" href="/home">Inicio</a></li>
-                <li><a class="navlink montserrat" href="/empresa/productos">*Mis productos</a></li>
-                <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">*Mi empresa</a></li>
+                <li><a class="navlink montserrat" href="/empresa/home">Inicio</a></li>
+                <li><a class="navlink montserrat" href="/empresa/productos">Mis productos</a></li>
+                <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">Mi empresa</a></li>
                 <li><a class="navlink montserrat" href="/nuevoProducto">Agregar Producto</a></li>
-                <li><a class="navlink montserrat" href="/empresa/ventas">*Mis ventas</a></li>
+                <li><a class="navlink montserrat" href="/empresa/ventas">Mis ventas</a></li>
                 <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
             </ul>
         </header>
@@ -74,7 +74,7 @@
             <div class="footer">
                 <h5 class="outfit"> <i class="fa-regular fa-copyright"></i> Halus</h5>
                 <p class="montserrat">Main font "Biko" <a href="http://www.jesuismonreve.org/biko-font-family/"> <i class="fa-regular fa-copyright"></i> Marco Ugolini </a></p>
-                <p class="montserrat">Logo and design are property of this proyect.</p>
+                <p class="montserrat">Logo and design are property of this project.</p>
                 <p class="montserrat">This site is prototype-only. Any images, fonts, texts, etc. are being used for this single prototype without any revenue. All rights to their respective owners.</p>
             </div>
         </footer>
