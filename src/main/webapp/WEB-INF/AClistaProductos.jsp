@@ -63,7 +63,7 @@
                             <div class="b-2 a-s-e">
                                 <a href="/cliente/productos/${producto.id}" class="btn montserrat"> Detalles</a>
                                 <c:choose>
-                                	<c:when test="${usuarioEnSesion.tipoDeUsuario == ADMIN }">
+                                	<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
                                 		<a href="/admin/editar/producto/${producto.id }" class="btn montserrat">Editar</a>
                                 	</c:when>
                                 	<c:otherwise>

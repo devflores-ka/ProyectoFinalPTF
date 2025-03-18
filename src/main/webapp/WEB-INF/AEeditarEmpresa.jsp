@@ -116,11 +116,11 @@
 	                        <form:select class="txt-input montserrat" path="tipoDeUsuario" id="tipoDeUsuario" name="nuevoRol">
 								<form:option class="txt-input montserrat" path="tipoDeUsuario" value="CLIENTE"/>
 								<form:option class="txt-input montserrat" path="tipoDeUsuario" value="EMPRESA"/>
-								<input type="submit" class="btn montserrat" value="Cambiar tipo de usuario"/>
+								<input type="submit" class="btn montserrat mt-05" value="Cambiar tipo de usuario"/>
 							</form:select>
 	                    </div>
 	                </form:form>
-	                <form action="/borrar/usuario/${empresa.id}" method="POST">
+	                <form action="/admin/borrar/usuario/${empresa.id}" method="POST">
 						<input type="hidden" name="_method" value="DELETE">
 						<button type="submit" class="btn-danger montserrat mt-05">
 	                        <span> <i class="fa-solid fa-xmark"></i> Eliminar Empresa </span>

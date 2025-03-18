@@ -133,6 +133,9 @@ public class ControladorAdmins {
 		    return "redirect:/";
 		}
 		
+		String admin = "ADMIN";//para comparacion en jsp
+		model.addAttribute("admin", admin);
+		
 	    Producto productoEditar = sProductos.buscarProducto(id);
 	    
 	    if (productoEditar == null) {
@@ -181,7 +184,7 @@ public class ControladorAdmins {
 		model.addAttribute("empresa", empresa);
 		
 		
-		return "ADMINdetalleEmpresa.jsp";
+		return "AEdetalleEmpresa.jsp";
 	}
 //ACEpedidos.jsp	
 	@GetMapping("/pedidos")
@@ -233,7 +236,7 @@ public class ControladorAdmins {
 	}
 //PUTmapping	
 	@PutMapping("/actualizar/producto/{id}")
-	public String actualizarProducto(@PathVariable("id")Long id, @Valid @ModelAttribute("producto") Producto producto, BindingResult result, Model model, HttpSession session) {
+	public String actualizarProducto(@PathVariable("id")Long id, @Valid @ModelAttribute("producto") Producto producto, BindingResult result, Model model) {
 		
 		if(result.hasErrors()) {
 			model.addAttribute("producto", producto);
