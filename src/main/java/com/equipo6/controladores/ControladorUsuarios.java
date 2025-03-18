@@ -43,7 +43,7 @@ public class ControladorUsuarios {
 		} else {
 			
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
-			return "redirect:/clientes/home";
+			return "redirect:/cliente/home";
 		}
 
 	}

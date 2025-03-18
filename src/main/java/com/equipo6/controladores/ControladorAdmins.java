@@ -287,16 +287,25 @@ public class ControladorAdmins {
 	
 //PUTmapping	
 	@PutMapping("/actualizar/empresa/{id}")
-	public String actualizarEmpresa(@Valid @ModelAttribute("empresa") Usuario empresa, BindingResult result, Model model) {
+	public String actualizarEmpresa(@PathVariable("id")Long id, @Valid @ModelAttribute("empresa") Usuario empresa, BindingResult result, Model model) {
 	  
+		System.out.println("Actualizar Empresa: Envía la ruta");
+		 String admin = "ADMIN";//para comparacion en jsp
+			model.addAttribute("admin", admin);
+			
+		/*Usuario empresapwd = sUsuarios.buscarUsuario(id);
+		String pwd = empresapwd.getPassword();
+		empresa.setPassword(pwd);
+		System.out.println(pwd);*/
+		
 	    if (result.hasErrors()) {
-	     
+	    	System.out.println("Actualizar Empresa: hay error"+result);
 	        model.addAttribute("empresa", empresa);
 	        return "AEeditarEmpresa.jsp";
 	    }
 	    
 	    sUsuarios.guardarUsuario(empresa);
-	    
+	    System.out.println("Actualizar Empresa: debería hacer return");
 	    return "redirect:/admin/empresas/"+empresa.getId();
 	}
 	

@@ -223,7 +223,7 @@ public class ControladorEmpresas {
 //PUTmapping    
     @PutMapping("/actualizar/producto/{id}")
     public String actualizarProducto(@PathVariable("id") Long id, @Valid @ModelAttribute("producto") Producto producto, BindingResult result, Model model, HttpSession session) {
-
+    	
         if (result.hasErrors()) {
             model.addAttribute("producto", producto);
             return "AEeditarProducto.jsp";
