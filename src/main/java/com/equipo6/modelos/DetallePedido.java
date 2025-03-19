@@ -24,8 +24,7 @@ public class DetallePedido implements Serializable{
 	private static final long serialVersionUID = 7550745928843183535L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) //AI
-	private Long id;
+	private String id;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="pedido_id")
@@ -61,10 +60,10 @@ public class DetallePedido implements Serializable{
 	public DetallePedido() {
 		
 	}
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public Pedido getPedido() {

@@ -39,7 +39,7 @@ public class Producto implements Serializable {
 	
 	@NotNull(message="Precio de venta es obligatorio")
 	@Min(value=1, message="El precio mínimo es 1")
-	private Integer pVenta;
+	private Long pVenta;
 	
 	@NotNull(message="Precio de arriendo es obligatorio")
 	@Min(value=1, message="El precio mínimo es 1")
@@ -92,11 +92,11 @@ public class Producto implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public Integer getpVenta() {
+	public Long getpVenta() {
 		return pVenta;
 	}
 
-	public void setpVenta(Integer pVenta) {
+	public void setpVenta(Long pVenta) {
 		this.pVenta = pVenta;
 	}
 

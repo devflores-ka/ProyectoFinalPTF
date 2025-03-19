@@ -59,11 +59,11 @@ public class Pedido implements Serializable{
 	}
 	
 
-	public Long getnPedido() {
+	public int getnPedido() {
 		return nPedido;
 	}
 
-	public void setnPedido(Long nPedido) {
+	public void setnPedido(int nPedido) {
 		this.nPedido = nPedido;
 	}
 
