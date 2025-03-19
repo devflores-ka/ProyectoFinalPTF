@@ -318,6 +318,7 @@ a{
 }
 
 .footer{
+	height:140px;
     background-color: #F7F7F7;
     padding: 2em 3em;
     border-top: 2px solid rgb(152, 152, 152);

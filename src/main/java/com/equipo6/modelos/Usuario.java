@@ -70,7 +70,7 @@ public class Usuario {
 	private Date updatedAt;
 	
 	//-------------------RELACIONES----------------------
-	@OneToMany(mappedBy="creador", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="creador", fetch=FetchType.EAGER, cascade=CascadeType.ALL)//Lazy
 	private List<Pedido> misPedidos;	
 
 	public Usuario() {}
