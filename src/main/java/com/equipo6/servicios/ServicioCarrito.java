@@ -18,19 +18,12 @@ public class ServicioCarrito {
 	public Carrito buscarCarritoPorCliente(Long id) {
 		return repoCarrito.findByCliente(id);
 	}
-	
-	Carrito carrito;//***********************
-	
-	List<Producto> productosEnCarrito = carrito.getProductosEnCarrito();
-	
-	public void agregarProducto(Producto producto) {
-		productosEnCarrito.add(producto);
+
+	public void agregarProducto(Producto producto, Carrito carrito) {
+		carrito.getProductosEnCarrito().add(producto);
 	}
 	
-	public List<Producto>conseguirProductosEnCarrito(){
-		for(Producto producto: productosEnCarrito) {
-			productosEnCarrito.add(producto);
-		}
-		return productosEnCarrito;
+	public List<Producto>conseguirProductosEnCarrito(Carrito carrito){
+		return carrito.getProductosEnCarrito();
 	}
 }
