@@ -252,21 +252,6 @@ public class ControladorAdmins {
 		return "redirect:/admin/home";
 	}
 
-//PUTmapping
-	@PutMapping("/editar/rol/{id}")
-	public String cambiarTipoDeUsuario(@PathVariable("id") Long id, @RequestParam("nuevoRol") String nuevoRol,
-			HttpSession session) {
-		Usuario usuario = sUsuarios.buscarUsuario(id);
-		if (usuario == null) {
-			return "redirect:/admin/home";
-		}
-
-		usuario.setTipoDeUsuario(nuevoRol);
-		sUsuarios.guardarUsuario(usuario);
-
-		return "redirect:/admin/home";
-	}
-
 //AClistaProductos.jsp
 	@GetMapping("/productos")
 	public String productos(HttpSession session, Model model) {
