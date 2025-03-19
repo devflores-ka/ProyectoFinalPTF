@@ -25,7 +25,7 @@ public class Carrito {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@OneToMany(mappedBy="carrito", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="carritoTieneProducto", fetch=FetchType.LAZY)//, cascade=CascadeType.)
 	private List <Producto> productosEnCarrito;
 	
 	@OneToOne(mappedBy="carrito")
