@@ -1,5 +1,6 @@
 package com.equipo6.modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -24,8 +25,10 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="productos")
-public class Producto {
+public class Producto implements Serializable {
 
+	private static final long serialVersionUID = -1000119078147252957L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
