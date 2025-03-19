@@ -15,8 +15,8 @@ public class ServicioCarrito {
 	@Autowired
 	private RepositorioCarrito repoCarrito;
 	
-	public Carrito buscarCarritoPorCliente(Long id) {
-		return repoCarrito.findByCliente(id);
+	public Carrito buscarCarrito(Long id) {
+		return repoCarrito.findById(id).orElse(null);
 	}
 
 	public void agregarProducto(Producto producto, Carrito carrito) {

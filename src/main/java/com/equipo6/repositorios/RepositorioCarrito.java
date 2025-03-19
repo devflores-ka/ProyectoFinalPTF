@@ -8,5 +8,4 @@ import com.equipo6.modelos.Carrito;
 @Repository
 public interface RepositorioCarrito extends CrudRepository<Carrito, Long>{
 
-	Carrito findByCliente(Long id);
 }
