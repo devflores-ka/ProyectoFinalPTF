@@ -24,6 +24,7 @@
                 <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
                 <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
                 <li><a class="navlink montserrat" href="#comoFunciona">Funcionamiento</a></li>
+                <li><a class="navlink montserrat" href="/informacion">¿Porqué energía solar?</a></li>
                 <li><a class="navlink montserrat" href="/empresas">Empresas</a></li>
                 <li><a href="/registro/formulario" class="btn montserrat">Registro clientes</a></li>
                 <li><a href="/login" class="btn montserrat">Entrar</a></li>
@@ -36,8 +37,8 @@
                 </div>
             </a>
             <div class="intro">
-                <h2 class="outfit">Deja que tu energía llegue más lejos.</h2>
-                <p class="outfit l-txt">Conéctate con quienes necesitan tu energía. Encuentra clientes, gestiona instalaciones y haz crecer tu impacto en la transición solar.</p>
+                <h2 class="outfit">Conéctate con la energía que no te falla.</h2>
+                <p class="outfit l-txt">Encuentra proveedores, gestiona tus pedidos y haz crecer tu impacto en la transición solar.</p>
                 <p class="sm-txt montserrat" id="intro-em">¿Eres una empresa?</p>
                 <a href="/empresas" class="btn montserrat">Únete</a>
             </div>
@@ -63,12 +64,12 @@
                     <div class="about-p">
                         <div class="s-parrafo">
                             <h4 class="outfit">Energía accesible para todos</h4>
-                            <p class="montserrat g-p">Conectamos hogares y empresas con tus soluciones solares asequibles y eficientes.</p>
+                            <p class="montserrat g-p">Conectamos hogares y empresas con soluciones solares asequibles y eficientes.</p>
                         </div>
                         
                         <div class="s-parrafo">
                             <h4 class="outfit">Un puente entre clientes y proveedores</h4>
-                            <p class="montserrat g-p">Facilitamos la instalación, financiamiento y mantenimiento con un marketplace centralizado.</p>
+                            <p class="montserrat g-p">Facilitamos la comunicación entre tú y la empresa que más te gusta, ofreciendo alternativas que tú necesitas.</p>
                         </div>
                         
                         <div class="s-parrafo">
@@ -86,11 +87,12 @@
             </section>
             <section class="cont-sect mb-5" id="soluciones">
                 <h2 class="outfit h2-o">¿Cuáles son nuestras soluciones?</h2>
-                <p class="montserrat g-p">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Neque nihil distinctio iusto tempore obcaecati ab rerum, quam quos aliquid dicta tenetur nemo, veritatis omnis debitis nesciunt nostrum quibusdam, modi numquam!</p>
+                <p class="montserrat g-p">Te ofrecemos un lugar donde puedes encontrar los productos que necesitas y los proveedores que necesitas. ¿Alguna vez te has visto afectado por cortes del suministro eléctrico? Dejar de depender de una red eléctrica y sus complicaciones es algo que ahora está a tu alcance, con nuestro marketplace organizado y personalizado puedes comparar productos, precios y solicitar desde diferentes empresas justo lo que tú necesitas.</p>
+                <p class="montserrat g-p">Experiencia el cambio, elige una fuente de energía limpia, renovable y confiable.</p>
             </section>
             <section class="cont-sect mb-5" id="comoFunciona">
                 <h2 class="outfit h2-o">¿Cómo funciona?</h2>
-                <p class="montserrat g-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae vel, eum quas, quam fugiat commodi pariatur praesentium vero enim illo porro? Aspernatur esse earum eius ex! Deserunt ex dolor perferendis!</p>
+                <p class="montserrat g-p">Halus se encarga de acercar empresas que se ajustan a tus necesidades. La posibilidad de comparar productos que se ajustan a tu presupuesto, con diversidad de proveedores para escoger el que más te gusta. Desde probar la experiencia con un arriendo semestral, hasta cambiarte definitivamente a esta mejor opción. Encontrarás en nosotros un mercado de energía ideal para adentrarte en este nuevo mundo.</p>
             </section>
             <section class="cont-sect mb-5" id="principios">
                 <h2 class="outfit  h2-o">Nuestros principios</h2>
