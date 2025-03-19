@@ -74,6 +74,14 @@
 		                        <form:input path="direccion" class="txt-input montserrat" placeholder="Dirección de la empresa."/>
 		                        <form:errors path="direccion" class="txt-danger montserrat" />
 		                    </div>
+							<div class="mt-05">
+								<label for="tipoDeUsuario">Tipo de Usuario:</label>
+						        <form:select path="tipoDeUsuario">
+						            <option value="CLIENTE">Cliente</option>
+						            <option value="EMPRESA">Empresa</option>
+						        </form:select>
+				                <form:errors path="direccion" class="txt-danger montserrat" />
+				            </div>
 		                    <button type="submit" class="btn montserrat mt-05">
 		                        <span> Guardar </span>
 		                    </button>

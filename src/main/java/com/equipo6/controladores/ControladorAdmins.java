@@ -159,6 +159,7 @@ public class ControladorAdmins {
 		empresapwd.setApellido(empresa.getApellido());
 		empresapwd.setEmail(empresa.getEmail());
 		empresapwd.setDireccion(empresa.getDireccion());
+		empresapwd.setTipoDeUsuario(empresa.getTipoDeUsuario());
 
 		if (result.hasErrors()) {
 			System.out.println("Actualizar Empresa: hay error" + result);
