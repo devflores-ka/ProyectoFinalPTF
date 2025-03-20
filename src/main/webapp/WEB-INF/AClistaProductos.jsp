@@ -52,30 +52,70 @@
                     <p class="montserrat mb-1">Explora nuestras opciones para avanzar hacia la energia sustentable.</p>
                 </div>
             </div>
-            <section class="l-prod flex">
-                <c:forEach var="producto" items="${productos}">
-                    <div class="c-cont">
-                        <img src="${producto.urlImagen}" class="flex-2">
-                        <div class="flex-4 c-div-h">
-                            <h2 class="outfit mb-1">${producto.nombre}</h2>
-                            <p class="montserrat"><i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}</p>
-                            <p class="montserrat mb-1"><i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}</p>
-                            <div class="b-2 a-s-e">
-                                <a href="/cliente/productos/${producto.id}" class="btn montserrat"> Detalles</a>
-                                <c:choose>
-                                	<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
-                                		<a href="/admin/editar/producto/${producto.id }" class="btn montserrat">Editar</a>
-                                	</c:when>
-                                	<c:otherwise>
-                                		<a href="/cliente/carrito/${usuarioEnSesion.id}/${producto.id}" class="btn montserrat"><i class="fa-solid fa-cart-plus"></i> Agregar al carrito</a>
-                                	</c:otherwise>
-                                </c:choose>
+		<c:choose>
+			<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
+				<section class="l-prod flex">
+					<c:forEach var="producto" items="${productos}">
+						<div class="c-cont">
+							<img src="${producto.urlImagen}" class="flex-2">
+							<div class="flex-4 c-div-h">
+								<h2 class="outfit mb-1">${producto.nombre}</h2>
+								<p class="montserrat">
+									<i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}
+								</p>
+								<p class="montserrat mb-1">
+									<i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}
+								</p>
+								<div class="b-2 a-s-e">
+									<a href="/admin/productos/${producto.id}" class="btn montserrat"> Detalles</a>
+									<a href="/admin/editar/producto/${producto.id }" class="btn montserrat">Editar</a>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</section>
+			</c:when>
+			<c:otherwise>
+				<div class="c-list-cont flex">
+					<section class="l-prod flex">
+						<c:forEach var="producto" items="${productos}">
+							<div class="c-cont">
+								<img src="${producto.urlImagen}" class="flex-2">
+								<div class="flex-4 c-div-h">
+									<h2 class="outfit mb-1">${producto.nombre}</h2>
+									<p class="montserrat">
+										<i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}
+									</p>
+									<p class="montserrat mb-1">
+										<i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}
+									</p>
+									<div class="b-2 a-s-e">
+										<a href="/admin/productos/${producto.id}" class="btn montserrat"> Detalles</a>
+										<a href="/cliente/carrito/${usuarioEnSesion.id}/${producto.id}"class="btn montserrat"><i class="fa-solid fa-cart-plus"></i>Agregar al carrito</a>
+									</div>
+								</div>
+							</div>
+						</c:forEach>
+					</section>
+					<section class="carrito">
+                        <h2 class="outfit">Mi carrito</h2>
+                    	<c:forEach var="producto" items=${carrito}>
+                            <div class="flex m-05">
+                                <img src="${producto.urlImagen}">
+                                <div>
+                                    <p class="montserrat g-p sm-txt mb-1">${producto.nombre}</p>
+                                    <p class="montserrat g-p sm-txt">${producto.pVenta}</p>
+                                </div>
+                                <a href="#" class="btn-danger m-05"><i class="fa-xmark fa-solid"></i></a>
                             </div>
-                        </div>
-                    </div>
-                </c:forEach>
-            </section>
-        </main>    
+                            <hr >
+                    	</c:forEach>
+                        <a href="#" class="btn montserrat "><i class="fa-solid fa-check"></i>Generar Pedido</a>
+               		</section>
+				</div>
+			</c:otherwise>
+		</c:choose>
+		</main>    
         <footer>
             <div class="footer mt-4">
                 <h5 class="outfit"> <i class="fa-regular fa-copyright"></i> Halus</h5>

@@ -45,7 +45,16 @@ public class ControladorClientes {
 		if (session.getAttribute("usuarioEnSesion") == null) {
 			return "redirect:/";
 		}
-
+		
+		//reviso si existe un carrito, si no, creo uno
+	    List<Producto> carrito = (List<Producto>) session.getAttribute("carrito");
+	    
+	    if (session.getAttribute("carrito") == null){
+	    carrito = new ArrayList<>();
+	}
+		
+	    model.addAttribute("carrito", carrito); //envio el carrito al jsp para verlo
+	    
 		String admin = "ADMIN";
 		List<Producto> productos = sProductos.todosLosProductos();
 		model.addAttribute("admin", admin);
