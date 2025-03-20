@@ -127,7 +127,7 @@ public class ControladorClientes {
 	}
 
 //ACdetalleCliente.jsp
-	@GetMapping("mostrarcliente/{id}")
+	@GetMapping("/{id}")
 	public String mostrarCliente(@PathVariable("id") Long id, Model model, HttpSession session) {
 
 		if (session.getAttribute("usuarioEnSesion") == null) {
