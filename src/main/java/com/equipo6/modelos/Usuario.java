@@ -71,10 +71,6 @@ public class Usuario {
 	@OneToMany(mappedBy="creador", fetch=FetchType.EAGER, cascade=CascadeType.ALL)//Lazy
 	private List<Pedido> misPedidos;	
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name= "carrito_id", referencedColumnName = "id")
-	Carrito carrito;
-	
 	public Usuario() {}
 
 	public Long getId() {

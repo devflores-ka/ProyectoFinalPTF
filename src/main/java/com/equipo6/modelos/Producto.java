@@ -70,10 +70,6 @@ public class Producto {
 	@OneToMany(mappedBy ="producto", fetch=FetchType.LAZY)
 	private List<ProductoEnPedido> pedidosQueTienenEsteProducto;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="carrito")
-	private Carrito carritoTieneProducto;
-	
 	public Producto() {
 	}
 

@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.equipo6.modelos.LoginUsuario;
+import com.equipo6.modelos.Pedido;
 import com.equipo6.modelos.Usuario;
+import com.equipo6.servicios.ServicioPedido;
 import com.equipo6.servicios.ServicioUsuarios;
 
 import jakarta.servlet.http.HttpSession;
@@ -19,6 +21,9 @@ public class ControladorUsuarios {
 
 	@Autowired
 	private ServicioUsuarios sUsuarios;
+	
+	@Autowired
+	private ServicioPedido sPedidos;
 
 	@GetMapping("/")
 	public String index() {
@@ -43,6 +48,8 @@ public class ControladorUsuarios {
 		} else {
 			
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
+			Pedido pedido = new Pedido();
+			session.setAttribute("carrito", pedido);
 			return "redirect:/cliente/home";
 		}
 

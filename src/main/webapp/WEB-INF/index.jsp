@@ -87,13 +87,19 @@
             </section>
             <section class="cont-sect mb-5" id="soluciones">
                 <h2 class="outfit h2-o">¿Cuáles son nuestras soluciones?</h2>
-                <p class="montserrat g-p">Te ofrecemos un lugar donde puedes encontrar los productos que necesitas y los proveedores que necesitas. ¿Alguna vez te has visto afectado por cortes del suministro eléctrico? Dejar de depender de una red eléctrica y sus complicaciones es algo que ahora está a tu alcance, con nuestro marketplace organizado y personalizado puedes comparar productos, precios y solicitar desde diferentes empresas justo lo que tú necesitas.</p>
-                <p class="montserrat g-p">Experiencia el cambio, elige una fuente de energía limpia, renovable y confiable.</p>
+                <div class="container w-txt">
+	                <p class="montserrat g-p">Te ofrecemos un lugar donde puedes encontrar los productos que necesitas y los proveedores que necesitas. ¿Alguna vez te has visto afectado por cortes del suministro eléctrico? Dejar de depender de una red eléctrica y sus complicaciones es algo que ahora está a tu alcance, con nuestro marketplace organizado y personalizado puedes comparar productos, precios y solicitar desde diferentes empresas justo lo que tú necesitas.</p>
+	                <p class="montserrat g-p">Experiencia el cambio, elige una fuente de energía limpia, renovable y confiable.</p>
+                </div>
             </section>
             <section class="cont-sect mb-5" id="comoFunciona">
                 <h2 class="outfit h2-o">¿Cómo funciona?</h2>
-                <p class="montserrat g-p">Halus se encarga de acercar empresas que se ajustan a tus necesidades. La posibilidad de comparar productos que se ajustan a tu presupuesto, con diversidad de proveedores para escoger el que más te gusta. Desde probar la experiencia con un arriendo semestral, hasta cambiarte definitivamente a esta mejor opción. Encontrarás en nosotros un mercado de energía ideal para adentrarte en este nuevo mundo.</p>
+                <div class="container w-txt">
+                	<p class="montserrat g-p">Halus se encarga de acercar empresas que se ajustan a tus necesidades. La posibilidad de comparar productos que se ajustan a tu presupuesto, con diversidad de proveedores para escoger el que más te gusta. Desde probar la experiencia con un arriendo semestral, hasta cambiarte definitivamente a esta mejor opción. Encontrarás en nosotros un mercado de energía ideal para adentrarte en este nuevo mundo.</p>
+                </div>
             </section>
+             <section class="cont-sect mb-5" id="comoFunciona">
+             </section>
             <section class="cont-sect mb-5" id="principios">
                 <h2 class="outfit  h2-o">Nuestros principios</h2>
                 <div class="container">

@@ -21,7 +21,6 @@ import com.equipo6.servicios.ServicioProductos;
 import com.equipo6.servicios.ServicioUsuarios;
 
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 
 @RequestMapping("/cliente")
 @Controller

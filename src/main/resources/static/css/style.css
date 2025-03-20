@@ -344,6 +344,12 @@ a{
     display: flex;
 }
 
+.w-txt{
+	margin: 0 auto;
+    text-align: center;
+    width: 50%;
+}
+
 .txt-input{
     width: 100%;
     padding-left: 5px;
