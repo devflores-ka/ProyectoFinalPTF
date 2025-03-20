@@ -233,15 +233,22 @@ public class ControladorAdmins {
 	public String actualizarCliente(@PathVariable("id") Long id, @ModelAttribute("cliente") @Valid Usuario cliente,
 			BindingResult result, Model model) {
 
+		Usuario clientepwd = sUsuarios.buscarUsuario(id);
+		clientepwd.setNombre(cliente.getNombre());
+		clientepwd.setApellido(cliente.getApellido());
+		clientepwd.setEmail(cliente.getEmail());
+		clientepwd.setDireccion(cliente.getDireccion());
+		clientepwd.setTipoDeUsuario(cliente.getTipoDeUsuario());
+		
 		if (result.hasErrors()) {
 
-			model.addAttribute("cliente", cliente);
+			model.addAttribute("cliente", clientepwd);;
 			return "ADMINeditarCliente.jsp";
 		}
 
-		sUsuarios.guardarUsuario(cliente);
+		sUsuarios.guardarUsuario(clientepwd);
 
-		return "redirect:/admin/clientes/" + cliente.getId();
+		return "redirect:/admin/clientes/" + clientepwd.getId();
 	}
 
 //DELETEmapping	
