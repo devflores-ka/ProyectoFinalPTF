@@ -1,5 +1,7 @@
 package com.equipo6.modelos;
 
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,7 +22,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="pedidos")
-public class Pedido {
+public class Pedido{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,7 +44,7 @@ public class Pedido {
 	private Usuario creador;
 	
 	@OneToMany(mappedBy="pedido" ,fetch=FetchType.LAZY)	
-	private List<ProductoEnPedido> productosEnPedido;
+	private List<ProductoEnPedido> productosEnPedido = new ArrayList<>();
 	
 	public Pedido()	{}
 	

@@ -1,5 +1,6 @@
 package com.equipo6.controladores;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +11,19 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.equipo6.modelos.Pedido;
 import com.equipo6.modelos.Producto;
+import com.equipo6.modelos.ProductoEnPedido;
 import com.equipo6.modelos.Usuario;
 import com.equipo6.servicios.ServicioPedido;
 import com.equipo6.servicios.ServicioProductos;
 import com.equipo6.servicios.ServicioUsuarios;
 
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 
 @RequestMapping("/cliente")
 @Controller
@@ -198,4 +200,78 @@ public class ControladorClientes {
 	    
 
 	}
+		
+		//---------------CARRITO---------------(SOLO COMPRAS)
+		@PostMapping("/carrito/agregar/{Id}")
+		public String agregarproducto (@PathVariable("id") Long id, HttpSession session ) { 
+
+		
+		if (session.getAttribute("usuarioEnSesion") == null) {
+	        return "redirect:/";
+	    }
+		//reviso si existe un carrito, si no, creo uno
+		    List<Producto> carrito = (List<Producto>) session.getAttribute("carrito");
+		    
+		    if (session.getAttribute("carrito") == null){
+		    carrito = new ArrayList<>();
+		}
+
+		    Producto producto = sProductos.buscarProducto(id);
+		    
+		    //si el producto EXISTE lo agrego al carrito
+		    if (producto !=null){
+		    carrito.add(producto);
+		} 
+		    //guardo el carrito con el nuevo producto
+		    session.setAttribute("carrito", carrito);
+		    
+		    return "redirect:/cliente/home";
+		} 
+
+		@PostMapping("pedido/generar")
+		public String finalizarPedido(Model model, HttpSession session) {
+		
+		if (session.getAttribute("usuarioEnSesion") == null) {
+	        return "redirect:/";
+	    }
+
+		//consigo el carrito desde la sesión
+		    List<Producto> carrito = (List<Producto>) session.getAttribute("carrito");
+
+		//consigo el usuario que creo el carrito
+		Usuario usuario = (Usuario)session.getAttribute("usuarioEnSesion");
+
+		//creo un pedido vacío
+		Pedido pedido = new Pedido();
+		//setteo el creador del pedido
+		pedido.setCreador(usuario);
+		//setteo el tipo de servicio
+		pedido.setTipoDeServicio("Compra");
+		//setteo el total de la compra en 0**
+		long total = 0;
+
+		//Creo una nueva lista de relación productoenpedido
+		List<ProductoEnPedido> items = new ArrayList<>();
+
+		//por cada producto que hay en la lista de carrito agrego esta informacion
+		for (Producto producto : carrito) {
+		    ProductoEnPedido item = new ProductoEnPedido();
+		    item.setProducto(producto);
+		    item.setPedido(pedido);
+		    total+=producto.getpVenta();
+		    items.add(item);
+		    
+		}
+
+		pedido.setTotalDelPedido(total);
+		pedido.setProductosEnPedido(items);
+		//una vez tengo todo guardo en la db
+
+		sPedido.guardarPedido(pedido);
+
+		//eliminar el carrito
+		session.removeAttribute("carrito");
+		
+	    return "redirect:/cliente/pedidos";
+		}
 }

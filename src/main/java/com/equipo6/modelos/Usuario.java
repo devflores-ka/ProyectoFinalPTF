@@ -1,5 +1,6 @@
 package com.equipo6.modelos;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,9 +13,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -68,8 +67,9 @@ public class Usuario {
 	private Date updatedAt;
 	
 	//-------------------RELACIONES----------------------
-	@OneToMany(mappedBy="creador", fetch=FetchType.EAGER, cascade=CascadeType.ALL)//Lazy
-	private List<Pedido> misPedidos;	
+	
+	@OneToMany(mappedBy="creador", fetch=FetchType.LAZY, cascade=CascadeType.ALL)//Lazy
+	private List<Pedido> misPedidos = new ArrayList<>();	
 
 	public Usuario() {}
 

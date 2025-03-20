@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.equipo6.modelos.Pedido;
 import com.equipo6.modelos.Producto;
@@ -239,10 +238,11 @@ public class ControladorAdmins {
 		clientepwd.setEmail(cliente.getEmail());
 		clientepwd.setDireccion(cliente.getDireccion());
 		clientepwd.setTipoDeUsuario(cliente.getTipoDeUsuario());
-		
+
 		if (result.hasErrors()) {
 
-			model.addAttribute("cliente", clientepwd);;
+			model.addAttribute("cliente", clientepwd);
+			;
 			return "ADMINeditarCliente.jsp";
 		}
 
