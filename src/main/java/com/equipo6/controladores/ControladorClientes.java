@@ -276,7 +276,7 @@ public class ControladorClientes {
 		Producto producto = pEp.getProducto();
 		
 		String imgUrl =producto.getUrlImagen();
-		pedido.setUrlImagen(imgUrl);
+		pedido.setUrlImagen(imgUrl.toString());
 		pedido.setTotalDelPedido(total);
 		pedido.setProductosEnPedido(items);
 		//una vez tengo todo guardo en la db

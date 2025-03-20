@@ -67,7 +67,7 @@
              	<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
 		            <c:forEach var="pedido" items="${pedidos}">
 		                <div class="card">
-		                    <img class="det-img" src="${pedido.productosEnPedido.urlImagen}" alt="Imagen del pedido"> 
+		                    <img class="det-img" src="${pedido.urlImagen}" alt="Imagen del pedido"> 
 		                    <div class="detalles">
 		                        <h3 class="outfit">Pedido #${pedido.id}</h3>
 		                        <c:forEach items="${pedido.productosEnPedido}" var="producto">
@@ -85,7 +85,7 @@
             	<c:when test="${usuarioEnSesion.tipoDeUsuario == cliente }">
             		<c:forEach var="pedido" items="${usuario.misPedidos}">
 		                <div class="card">
-		                    <img class="det-img" src="${pedido.productosEnPedido.urlImagen}" alt="Imagen del pedido"> 
+		                    <img class="det-img" src="${pedido.urlImagen}" alt="Imagen del pedido"> 
 		                    <div class="detalles">
 		                        <h3 class="outfit">Pedido #${pedido.id}</h3>
 		                        <c:forEach items="${pedido.productosEnPedido}" var="producto">
@@ -103,7 +103,7 @@
             	<c:otherwise>
             		<c:forEach var="pedido" items="${pedido.productosEnPedido.pedidosQueTienenEsteProducto}"><!-- PREGUNTAR A LA PROFE****************************** -->
 		                <div class="card">
-		                    <img class="det-img" src="${pedido.productosEnPedido.urlImagen}" alt="Imagen del pedido"> 
+		                    <img class="det-img" src="${pedido.urlImagen}" alt="Imagen del pedido"> 
 		                    <div class="detalles">
 		                        <h3 class="outfit">Pedido #${pedido.id}</h3>
 		                        <c:forEach items="${pedido.productosEnPedido}" var="producto">
