@@ -128,7 +128,7 @@ public class ControladorClientes {
 	}
 
 //ACdetalleCliente.jsp
-	@GetMapping("/{id}")
+	@GetMapping("mostrarcliente/{id}")
 	public String mostrarCliente(@PathVariable("id") Long id, Model model, HttpSession session) {
 
 		if (session.getAttribute("usuarioEnSesion") == null) {
@@ -174,10 +174,26 @@ public class ControladorClientes {
 	}
 
 	@PutMapping("/actualizar/{id}")
-	public String procesarEditarReceta(@Valid @ModelAttribute("usuario") Usuario usuario, @PathVariable("id") Long id,
-			BindingResult result) {
+	public String procesarEditarCliente( @ModelAttribute("usuario") Usuario usuario, @PathVariable("id") Long id,
+			BindingResult result,  Model model, HttpSession session) {
+		if(session.getAttribute("usuarioEnSesion") == null){
+			return "redirect:/";
+		}
+		System.out.println("Actualizar Cliente: Envía la ruta");
+		String admin = "ADMIN";// para comparacion en jsp
+		model.addAttribute("usuario", usuario);
+
+		Usuario usuariopwd = sUsuarios.buscarUsuario(id);
+		usuariopwd.setNombre(usuario.getNombre());
+		usuariopwd.setApellido(usuario.getApellido());
+		usuariopwd.setEmail(usuario.getEmail());
+		usuariopwd.setDireccion(usuario.getDireccion());
+		usuariopwd.setTipoDeUsuario(usuario.getTipoDeUsuario());
+		
+
 		if (result.hasErrors()) {
 			System.out.println("hubo un error" + result);
+			model.addAttribute("usuario", usuariopwd);
 			return "CLIENTEeditarCliente.jsp";
 		} else {
 
