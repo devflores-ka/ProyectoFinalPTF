@@ -237,7 +237,7 @@ public class ControladorClientes {
 		    return "redirect:/cliente/home";
 		} 
 
-		@PostMapping("pedido/generar")
+		@PostMapping("/pedido/generar")
 		public String finalizarPedido(Model model, HttpSession session) {
 		
 		if (session.getAttribute("usuarioEnSesion") == null) {
@@ -271,7 +271,12 @@ public class ControladorClientes {
 		    items.add(item);
 		    
 		}
-
+		
+		ProductoEnPedido pEp = items.get(0);
+		Producto producto = pEp.getProducto();
+		
+		String imgUrl =producto.getUrlImagen();
+		pedido.setUrlImagen(imgUrl);
 		pedido.setTotalDelPedido(total);
 		pedido.setProductosEnPedido(items);
 		//una vez tengo todo guardo en la db

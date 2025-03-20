@@ -1,5 +1,8 @@
 package com.equipo6.controladores;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -8,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.equipo6.modelos.LoginUsuario;
-import com.equipo6.modelos.Pedido;
+import com.equipo6.modelos.Producto;
 import com.equipo6.modelos.Usuario;
 import com.equipo6.servicios.ServicioPedido;
 import com.equipo6.servicios.ServicioUsuarios;
@@ -48,8 +51,8 @@ public class ControladorUsuarios {
 		} else {
 			
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
-			Pedido pedido = new Pedido();
-			session.setAttribute("carrito", pedido);
+			List<Producto>carrito = new ArrayList<>();
+			session.setAttribute("carrito", carrito);
 			return "redirect:/cliente/home";
 		}
 

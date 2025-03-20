@@ -32,6 +32,8 @@ public class Pedido{
 	
 	private Long totalDelPedido;
 	
+	private String urlImagen;
+	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
@@ -104,6 +106,16 @@ public class Pedido{
 		this.productosEnPedido = productosEnPedido;
 	}
 	
+	
+	
+	public String getUrlImagen() {
+		return urlImagen;
+	}
+
+	public void setUrlImagen(String urlImagen) {
+		this.urlImagen = urlImagen;
+	}
+
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date();

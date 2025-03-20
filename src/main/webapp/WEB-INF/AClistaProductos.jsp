@@ -90,11 +90,11 @@
 										<i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}
 									</p>
 									<div class="b-2 a-s-e">
-									<form action="/cliente/carrito/agregar/${producto.id }" method="POST">
-										<button type="submit" class="btn montserrat mt-05">
-		                       				 <span><i class="fa-solid fa-cart-plus"></i> Agregar al carrito </span>
-		                    			</button>
-									</form>
+										<form action="/cliente/carrito/agregar/${producto.id }" method="POST">
+											<button type="submit" class="btn montserrat mt-05">
+			                       				 <span><i class="fa-solid fa-cart-plus"></i> Agregar al carrito </span>
+			                    			</button>
+										</form>
 										<a href="/cliente/productos/${producto.id}" class="btn montserrat"> Detalles</a>
 									</div>
 								</div>
@@ -114,7 +114,11 @@
                             </div>
                             <hr >
                     	</c:forEach>
-                        <a href="#" class="btn montserrat "><i class="fa-solid fa-check"></i>Generar Pedido</a>
+						<form action="/cliente/pedido/generar" method="POST">
+							<button type="submit" class="btn montserrat mt-05">
+								<span><i class="fa-solid fa-check"></i> Generar pedido </span>
+							</button>
+						</form>
                		</section>
 				</div>
 			</c:otherwise>
