@@ -83,7 +83,7 @@
 		            </c:forEach>
             	</c:when>
             	<c:when test="${usuarioEnSesion.tipoDeUsuario == cliente }">
-            		<c:forEach var="pedido" items="${usuarioEnSesion.misPedidos}">
+            		<c:forEach var="pedido" items="${usuario.misPedidos}">
 		                <div class="card">
 		                    <img class="det-img" src="${pedido.productosEnPedido.urlImagen}" alt="Imagen del pedido"> 
 		                    <div class="detalles">

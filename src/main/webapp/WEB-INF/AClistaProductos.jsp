@@ -90,8 +90,12 @@
 										<i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}
 									</p>
 									<div class="b-2 a-s-e">
-										<a href="/admin/productos/${producto.id}" class="btn montserrat"> Detalles</a>
-										<a href="/cliente/carrito/${usuarioEnSesion.id}/${producto.id}"class="btn montserrat"><i class="fa-solid fa-cart-plus"></i>Agregar al carrito</a>
+									<form action="/cliente/carrito/agregar/${producto.id }" method="POST">
+										<button type="submit" class="btn montserrat mt-05">
+		                       				 <span><i class="fa-solid fa-cart-plus"></i> Agregar al carrito </span>
+		                    			</button>
+									</form>
+										<a href="/cliente/productos/${producto.id}" class="btn montserrat"> Detalles</a>
 									</div>
 								</div>
 							</div>
@@ -99,7 +103,7 @@
 					</section>
 					<section class="carrito">
                         <h2 class="outfit">Mi carrito</h2>
-                    	<c:forEach var="producto" items=${carrito}>
+                    	<c:forEach var="producto" items="${carrito}">
                             <div class="flex m-05">
                                 <img src="${producto.urlImagen}">
                                 <div>

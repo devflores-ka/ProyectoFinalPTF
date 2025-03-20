@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4">
+        <link rel="stylesheet" type="text/css" href="css/style.css?version=0.4">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -15,11 +15,11 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
         <!--FAVICON-->
-        <link rel="icon" type="image/x-icon" href="/img/icon.webp">
+        <link rel="icon" type="image/x-icon" href="img/icon.webp">
     </head>
     <body>
         <header class="head" id="start">
-            <a href="/"><img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS"></a>
+            <a href="/"><img src="img/logo.webp" alt="Halus" class="logo-n" title="HALUS"></a>
             <ul class="navbar" >
                 <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
                 <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
@@ -48,11 +48,11 @@
                 </div>
                 <div id="slider">
                     <figure>
-                        <img class="sliderimg" src="/img/slide-1.webp" alt="paneles solares">
-                        <img class="sliderimg" src="/img/slide-2.webp" alt="paneles solares">
-                        <img class="sliderimg" src="/img/slide-3.webp" alt="paneles solares">
-                        <img class="sliderimg" src="/img/slide-4.webp" alt="paneles solares">
-                        <img class="sliderimg" src="/img/slide-1.webp" alt="paneles solares">
+                        <img class="sliderimg" src="img/slide-1.webp" alt="paneles solares">
+                        <img class="sliderimg" src="img/slide-2.webp" alt="paneles solares">
+                        <img class="sliderimg" src="img/slide-3.webp" alt="paneles solares">
+                        <img class="sliderimg" src="img/slide-4.webp" alt="paneles solares">
+                        <img class="sliderimg" src="img/slide-1.webp" alt="paneles solares">
                     </figure>
                 </div> 
             </section>
@@ -87,10 +87,8 @@
             </section>
             <section class="cont-sect mb-5" id="soluciones">
                 <h2 class="outfit h2-o">¿Cuáles son nuestras soluciones?</h2>
-                <div class="container w-txt">
-	                <p class="montserrat g-p">Te ofrecemos un lugar donde puedes encontrar los productos que necesitas y los proveedores que necesitas. ¿Alguna vez te has visto afectado por cortes del suministro eléctrico? Dejar de depender de una red eléctrica y sus complicaciones es algo que ahora está a tu alcance, con nuestro marketplace organizado y personalizado puedes comparar productos, precios y solicitar desde diferentes empresas justo lo que tú necesitas.</p>
-	                <p class="montserrat g-p">Experiencia el cambio, elige una fuente de energía limpia, renovable y confiable.</p>
-                </div>
+	            <p class="montserrat g-p w-txt">Te ofrecemos un lugar donde puedes encontrar los productos que necesitas y los proveedores que necesitas. ¿Alguna vez te has visto afectado por cortes del suministro eléctrico? Dejar de depender de una red eléctrica y sus complicaciones es algo que ahora está a tu alcance, con nuestro marketplace organizado y personalizado puedes comparar productos, precios y solicitar desde diferentes empresas justo lo que tú necesitas.</p>
+	            <p class="montserrat g-p w-txt">Experiencia el cambio, elige una fuente de energía limpia, renovable y confiable.</p>
             </section>
             <section class="cont-sect mb-5" id="comoFunciona">
                 <h2 class="outfit h2-o">¿Cómo funciona?</h2>
@@ -98,7 +96,22 @@
                 	<p class="montserrat g-p">Halus se encarga de acercar empresas que se ajustan a tus necesidades. La posibilidad de comparar productos que se ajustan a tu presupuesto, con diversidad de proveedores para escoger el que más te gusta. Desde probar la experiencia con un arriendo semestral, hasta cambiarte definitivamente a esta mejor opción. Encontrarás en nosotros un mercado de energía ideal para adentrarte en este nuevo mundo.</p>
                 </div>
             </section>
-             <section class="cont-sect mb-5" id="comoFunciona">
+             <section class="cont-sect mb-5" id="calculadora">
+                <h2 class="outfit h2-o">Calcula tus ahorros</h2>
+                <p class="montserrat g-p w-txt">¿Quieres tener una idea de cómo serán tus ahorros al cambiarte desde lo convencional a lo mejor?</p>
+                <a href="/calculadora" class="btn montserrat w-txt">Prueba nuestra calculadora de ahorros aquí</a>
+
+                <h2 class="outfit">Calculadora de Ahorro con Paneles Solares</h2>
+    
+                <label>Consumo mensual de energía (kWh): <input type="number" id="consumo" value="300"></label><br>
+                <label>Costo actual de electricidad ($/kWh): <input type="number" id="costo" value="150"></label><br>
+                <label>Superficie disponible (m²): <input type="number" id="superficie" value="20"></label><br>
+                <label>Inversión inicial ($): <input type="number" id="inversion" value="100000"></label><br>
+                
+                <button onclick="calcularAhorro()">Calcular Ahorro</button>
+                
+                <canvas id="graficoAhorro"></canvas>
+                <script src="main.js"></script>
              </section>
             <section class="cont-sect mb-5" id="principios">
                 <h2 class="outfit  h2-o">Nuestros principios</h2>
@@ -134,6 +147,7 @@
                 <p class="montserrat">This site is prototype-only. Any images, fonts, texts, etc. are being used for this single prototype without any revenue. All rights to their respective owners.</p>
             </div>
         </footer>
+        <script src="main.js"></script>
         <script>
             document.addEventListener('scroll', () =>{
                 const toTopButton = document.querySelector('#to-top');

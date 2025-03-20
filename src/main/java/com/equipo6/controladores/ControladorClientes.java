@@ -211,7 +211,7 @@ public class ControladorClientes {
 	}
 		
 		//---------------CARRITO---------------(SOLO COMPRAS)
-		@PostMapping("/carrito/agregar/{Id}")
+		@PostMapping("/carrito/agregar/{id}")
 		public String agregarproducto (@PathVariable("id") Long id, HttpSession session ) { 
 
 		
