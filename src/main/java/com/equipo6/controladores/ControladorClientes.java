@@ -21,6 +21,7 @@ import com.equipo6.servicios.ServicioProductos;
 import com.equipo6.servicios.ServicioUsuarios;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 @RequestMapping("/cliente")
 @Controller
@@ -166,40 +167,35 @@ public class ControladorClientes {
 		String admin = "ADMIN";// para comparacion en jsp
 		model.addAttribute("admin", admin);
 
-		model.addAttribute("usuario ", usuarioActual);
+		model.addAttribute("cliente", usuarioActual);
 
 		return "ACeditarCliente.jsp";
 
 	}
-
-	@PutMapping("/actualizar/{id}")
-	public String procesarEditarCliente( @ModelAttribute("usuario") Usuario usuario, @PathVariable("id") Long id,
-			BindingResult result,  Model model, HttpSession session) {
-		if(session.getAttribute("usuarioEnSesion") == null){
-			return "redirect:/";
-		}
-		System.out.println("Actualizar Cliente: Envía la ruta");
-		String admin = "ADMIN";// para comparacion en jsp
-		model.addAttribute("usuario", usuario);
-
-		Usuario usuariopwd = sUsuarios.buscarUsuario(id);
-		usuariopwd.setNombre(usuario.getNombre());
-		usuariopwd.setApellido(usuario.getApellido());
-		usuariopwd.setEmail(usuario.getEmail());
-		usuariopwd.setDireccion(usuario.getDireccion());
-		usuariopwd.setTipoDeUsuario(usuario.getTipoDeUsuario());
 		
+		@PutMapping("/actualizar/{id}")
+	    public String actualizarCliente(@PathVariable("id") Long id, @ModelAttribute("cliente")Usuario cliente,
+	            BindingResult result, Model model) {
 
-		if (result.hasErrors()) {
-			System.out.println("hubo un error" + result);
-			model.addAttribute("usuario", usuariopwd);
-			return "CLIENTEeditarCliente.jsp";
-		} else {
+			String admin = "ADMIN";// para comparacion en jsp
+			model.addAttribute("admin", admin);
+			
+	        Usuario clientepwd = sUsuarios.buscarUsuario(id);
+	        clientepwd.setNombre(cliente.getNombre());
+	        clientepwd.setApellido(cliente.getApellido());
+	        clientepwd.setEmail(cliente.getEmail());
+	        clientepwd.setDireccion(cliente.getDireccion());
 
-			sUsuarios.guardarUsuario(usuario);
-			return "redirect:/mostrarcliente/{id}"; // vista 7 de edicion
+	        if (result.hasErrors()) {
 
-		}
+	            model.addAttribute("cliente", clientepwd);;
+	            return "ACeditarCliente.jsp";
+	        }
+
+	        sUsuarios.guardarUsuario(clientepwd);
+
+	        return "redirect:/cliente/" + clientepwd.getId();
+	    
 
 	}
 }
