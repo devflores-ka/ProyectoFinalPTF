@@ -1,17 +1,15 @@
 package com.equipo6.controladores;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.equipo6.modelos.LoginUsuario;
-import com.equipo6.modelos.Producto;
+import com.equipo6.modelos.Pedido;
 import com.equipo6.modelos.Usuario;
 import com.equipo6.servicios.ServicioPedido;
 import com.equipo6.servicios.ServicioUsuarios;
@@ -29,8 +27,17 @@ public class ControladorUsuarios {
 	private ServicioPedido sPedidos;
 
 	@GetMapping("/")
-	public String index() {
-		return "index.jsp";
+	public String index(HttpSession session, Model model) {
+    Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
+    if (usuarioEnSesion != null) {
+		String cliente = "CLIENTE";// para comparacion en jsp
+		model.addAttribute("cliente", cliente);
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
+		String empresa = "EMPRESA";
+		model.addAttribute("empresa", empresa);
+    }
+    	return "index.jsp";
 	}
 
 	@GetMapping("/registro/formulario")
@@ -51,8 +58,8 @@ public class ControladorUsuarios {
 		} else {
 			
 			session.setAttribute("usuarioEnSesion", nuevoUsuario);
-			List<Producto>carrito = new ArrayList<>();
-			session.setAttribute("carrito", carrito);
+			Pedido pedido = new Pedido();
+			session.setAttribute("carrito", pedido);
 			return "redirect:/cliente/home";
 		}
 

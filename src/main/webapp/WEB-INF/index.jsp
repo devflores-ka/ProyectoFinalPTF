@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,18 +19,55 @@
         <link rel="icon" type="image/x-icon" href="/img/icon.webp">
     </head>
     <body>
-        <header class="head" id="start">
+        <header class="head">
             <a href="/"><img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS"></a>
-            <ul class="navbar" >
-                <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
-                <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
-                <li><a class="navlink montserrat" href="#comoFunciona">Funcionamiento</a></li>
-                <li><a class="navlink montserrat" href="/informacion">¿Porqué energía solar?</a></li>
-                <li><a class="navlink montserrat" href="/empresas">Empresas</a></li>
-                <li><a href="/registro/formulario" class="btn montserrat">Registro clientes</a></li>
-                <li><a href="/login" class="btn montserrat">Entrar</a></li>
-            </ul>
-        </header>
+               <c:choose>
+	               <c:when test="${usuarioEnSesion == null }">
+	                       <ul class="navbar">
+	                           <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
+	                           <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
+	                           <li><a class="navlink montserrat" href="#comoFunciona">Funcionamiento</a></li>
+	                           <li><a class="navlink montserrat" href="/informacion">¿Porqué energía solar?</a></li>
+	                           <li><a class="navlink montserrat" href="/empresas">Empresas</a></li>
+	                           <li><a href="/registro/formulario" class="btn montserrat">Registro clientes</a></li>
+	                           <li><a href="/login" class="btn montserrat">Entrar</a></li>
+	                       </ul>
+                   </c:when>
+                   <c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
+                       <ul class="navbar">
+                           <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
+                           <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
+                           <li><a class="navlink montserrat" href="#comoFunciona">Funcionamiento</a></li>
+                           <li><a class="navlink montserrat" href="/informacion">¿Porqué energía solar?</a></li>
+                           <li><a class="navlink montserrat" href="/empresas">Empresas</a></li>
+                           <li><a class="navlink montserrat" href="/admin/home">Home</a></li>
+                           <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
+                       </ul>
+                   </c:when>
+                   <c:when test="${usuarioEnSesion.tipoDeUsuario == cliente }">
+                       <ul class="navbar">
+                           <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
+                           <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
+                           <li><a class="navlink montserrat" href="#comoFunciona">Funcionamiento</a></li>
+                           <li><a class="navlink montserrat" href="/informacion">¿Porqué energía solar?</a></li>
+                           <li><a class="navlink montserrat" href="/empresas">Empresas</a></li>
+                           <li><a class="navlink montserrat" href="/cliente/home">Home</a></li>
+                           <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
+                       </ul>
+                   </c:when>                  
+                   <c:otherwise>
+                       <ul class="navbar">
+                           <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
+                           <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
+                           <li><a class="navlink montserrat" href="#comoFunciona">Funcionamiento</a></li>
+                           <li><a class="navlink montserrat" href="/informacion">¿Porqué energía solar?</a></li>
+                           <li><a class="navlink montserrat" href="/empresas">Empresas</a></li>
+                           <li><a class="navlink montserrat" href="/empresa/home">Home</a></li>
+                           <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
+                       </ul>
+                   </c:otherwise>
+               </c:choose> 
+       </header>
         <main class="main">
         	<a href="#start" >
                 <div id="to-top" class="btn">
