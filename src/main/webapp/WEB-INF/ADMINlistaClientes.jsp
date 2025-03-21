@@ -36,7 +36,7 @@
             <c:forEach var="cliente" items="${clientes}">
                 <div class="ad-cont">
                     <h3 class="outfit">${cliente.nombre}</h3>
-                    <a href="/admin/empresas/${cliente.id}" class="btn montserrat mt-05">Detalles</a> <!-- revisar: ${Usuario.id} -->
+                    <a href="/admin/clientes/${cliente.id}" class="btn montserrat mt-05">Detalles</a> <!-- revisar: ${Usuario.id} -->
                 </div>
             </c:forEach>
        </main>

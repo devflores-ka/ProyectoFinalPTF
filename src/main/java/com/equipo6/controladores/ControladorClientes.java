@@ -117,11 +117,17 @@ public class ControladorClientes {
 		if (session.getAttribute("usuarioEnSesion") == null) {
 			return "redirect:/";
 		}
+		
+		String cliente = "CLIENTE";// para comparacion en jsp
+		model.addAttribute("cliente", cliente);
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
 
 		Pedido pedido = sPedido.buscarPedido(id);
 		model.addAttribute("pedido", pedido);
-
-		Usuario usuarioEnSesion = (Usuario) session.getAttribute("userInSession");
+		
+		System.out.println("COntenido del pedido"+pedido.getProductosEnPedido());
+		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
 		Usuario usuarioActualizado = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
 
 		model.addAttribute("usuario", usuarioActualizado);
@@ -271,14 +277,16 @@ public class ControladorClientes {
 		    items.add(item);
 		    
 		}
-		
+		//para conseguir la imagen del primer producto
 		ProductoEnPedido pEp = items.get(0);
 		Producto producto = pEp.getProducto();
 		
 		String imgUrl =producto.getUrlImagen();
 		pedido.setUrlImagen(imgUrl.toString());
+		
 		pedido.setTotalDelPedido(total);
 		pedido.setProductosEnPedido(items);
+		System.out.println(pedido.getProductosEnPedido());
 		//una vez tengo todo guardo en la db
 
 		sPedido.guardarPedido(pedido);

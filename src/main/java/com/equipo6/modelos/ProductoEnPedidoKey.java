@@ -5,9 +5,10 @@ import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import jakarta.persistence.Id;
 
 @Embeddable
-public class ProductoEnPedidoLlave implements Serializable {
+public class ProductoEnPedidoKey implements Serializable {
 
 	@Column (name= "pedido_id")
 	private Long pedidoId;
@@ -15,7 +16,7 @@ public class ProductoEnPedidoLlave implements Serializable {
 	@Column (name="producto_id")
 	private Long productoId;
 
-	public ProductoEnPedidoLlave () {}
+	public ProductoEnPedidoKey () {}
 
     public Long getPedidoId() {
         return pedidoId;
@@ -37,7 +38,7 @@ public class ProductoEnPedidoLlave implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ProductoEnPedidoLlave that = (ProductoEnPedidoLlave) o;
+        ProductoEnPedidoKey that = (ProductoEnPedidoKey) o;
         return Objects.equals(productoId, that.productoId) && Objects.equals(pedidoId, that.pedidoId);
     }
 

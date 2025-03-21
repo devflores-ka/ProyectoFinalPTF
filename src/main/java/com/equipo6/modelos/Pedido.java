@@ -46,6 +46,7 @@ public class Pedido{
 	@JoinColumn(name="usuario_id")
 	private Usuario creador;
 	
+	
 	@OneToMany(mappedBy="pedido" ,fetch=FetchType.LAZY)	
 	private List<ProductoEnPedido> productosEnPedido = new ArrayList<>();
 	
@@ -106,8 +107,6 @@ public class Pedido{
 	public void setProductosEnPedido(List<ProductoEnPedido> productosEnPedido) {
 		this.productosEnPedido = productosEnPedido;
 	}
-	
-	
 	
 	public String getUrlImagen() {
 		return urlImagen;

@@ -72,7 +72,6 @@
 		                        <h3 class="outfit">Pedido #${pedido.id}</h3>
 		                        <c:forEach items="${pedido.productosEnPedido}" var="producto">
 		                            <p class="montserrat g-p">Producto: ${producto.nombre}</p>
-		                            <!-- <p class="montserrat g-p">Cantidad: ${producto.cantidad}</p>-->
 		                        </c:forEach>
 		                        <p class="montserrat g-p">Tipo de pedido: ${pedido.tipoDeServicio}</p>
 		                        <hr>

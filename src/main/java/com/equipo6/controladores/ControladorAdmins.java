@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.equipo6.modelos.Pedido;
 import com.equipo6.modelos.Producto;
+import com.equipo6.modelos.ProductoEnPedido;
 import com.equipo6.modelos.Usuario;
 import com.equipo6.servicios.ServicioPedido;
 import com.equipo6.servicios.ServicioProductos;
@@ -366,7 +367,7 @@ public class ControladorAdmins {
 		return "ACElistaPedidos.jsp";
 	}
 
-//ACEdetallePedido.jsp	
+//ACEdetallePedido.jsp	**********************************************
 	@GetMapping("/pedidos/{id}")
 	public String pedido(@PathVariable("id") Long id, Model model, HttpSession session) {
 
@@ -375,9 +376,14 @@ public class ControladorAdmins {
 		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
 			return "redirect:/";
 		}
-
+		
+		String cliente = "CLIENTE";// para comparacion en jsp
+		model.addAttribute("cliente", cliente);
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
+		
 		Pedido pedido = sPedido.buscarPedido(id);
-		model.addAttribute("pedido", pedido);
+		model.addAttribute("pedido", pedido);		
 
 		return "ACEdetallePedido.jsp";
 	}

@@ -56,7 +56,7 @@
     <main class="main">
         <div class="card">
             <h2 class="outfit">Pedido #${pedido.id}</h2>
-            <c:forEach var="producto" items="${pedido.productosEnPedido}">
+            <c:forEach var="producto" items="${pEp}">
                 <p class="montserrat g-p">Producto: ${producto.nombre}</p>
                 <h3 class="outfit">Información proveedor: </h3>
                 <p class="montserrat g-p">Nombre empresa: ${producto.creador.nombre}</p>
