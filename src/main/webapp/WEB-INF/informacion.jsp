@@ -18,8 +18,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
         <!--FAVICON-->
         <link rel="icon" type="image/x-icon" href="/img/icon.webp">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="/js/main.js?v=1" defer></script>
     </head>
     <body>
         <header class="head">
@@ -72,20 +70,11 @@
                 </c:choose>
         </header>
         <main class="main">
-            <h1 class="outfit m-1">Calculadora de Ahorro con Paneles Solares</h1>
-            <div class="r-cont">
-                <div class="calculadora mb-1">
-                    <label class="montserrat mt-05" for="consumo">Consumo mensual de energía (kWh): <input class="txt-input" type="number" id="consumo" value="300"></label>
-                    <label class="montserrat mt-05" for="costo">Costo actual de electricidad ($/kWh): <input class="txt-input" type="number" id="costo" value="150"></label>
-                    <label class="montserrat mt-05" for="superficie">Superficie disponible (m²): <input class="txt-input" type="number" id="superficie" value="20"></label>
-                    <label class="montserrat mt-05" for="inversion">Inversión inicial ($): <input class="txt-input" type="number" id="inversion" value="100000"></label>
-                    <p class="montserrat g-p sm-txt">¡Pasa tu cursor sobre cada punto en un año y revisa cuánto habrás ahorrado!</p>
-                </div>
-                <button onclick="calcularAhorro()" class="btn montserrat">Calcular Ahorro</button>
-                <div style="width: 100%; height:35em; position:relative">
-                	<canvas id="graficoAhorro"></canvas>
-                </div>
-            </div>
+            <section class="cont-sect mb-5" id="soluciones">
+                <h2 class="outfit h2-o">¿Porqué energía solar?</h2>
+	            <p class="montserrat g-p w-txt">Te ofrecemos un lugar donde puedes encontrar los productos que necesitas y los proveedores que necesitas. ¿Alguna vez te has visto afectado por cortes del suministro eléctrico? Dejar de depender de una red eléctrica y sus complicaciones es algo que ahora está a tu alcance, con nuestro marketplace organizado y personalizado puedes comparar productos, precios y solicitar desde diferentes empresas justo lo que tú necesitas.</p>
+	            <p class="montserrat g-p w-txt">Experiencia el cambio, elige una fuente de energía limpia, renovable y confiable.</p>
+            </section>
         </main>
         <footer>
             <div class="footer">

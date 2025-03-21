@@ -58,6 +58,8 @@ public class ControladorClientes {
 		String admin = "ADMIN";
 		List<Producto> productos = sProductos.todosLosProductos();
 		model.addAttribute("admin", admin);
+		String cliente ="CLIENTE";
+		model.addAttribute("cliente", cliente);
 		model.addAttribute("productos", productos);
 
 		return "ACElistaProductos.jsp"; // admin/productos

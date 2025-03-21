@@ -65,7 +65,13 @@ public class ControladorUsuarios {
 	}
 
 	@GetMapping("/empresas")
-	public String empresas() {
+	public String empresas(Model model) {
+		String cliente = "CLIENTE";// para comparacion en jsp
+		model.addAttribute("cliente", cliente);
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
+		String empresa = "EMPRESA";
+		model.addAttribute("empresa", empresa);
 		return "empresas.jsp";
 	}
 	
@@ -103,12 +109,24 @@ public class ControladorUsuarios {
 	}
 	
 	@GetMapping("/calculadora")
-	public String calculadora() {
+	public String calculadora(Model model) {
+		String cliente = "CLIENTE";// para comparacion en jsp
+		model.addAttribute("cliente", cliente);
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
+		String empresa = "EMPRESA";
+		model.addAttribute("empresa", empresa);
 		return "calculadora.jsp";
 	}
 	
 	@GetMapping("/informacion")
-	public String informacion() {
+	public String informacion(Model model) {
+		String cliente = "CLIENTE";// para comparacion en jsp
+		model.addAttribute("cliente", cliente);
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
+		String empresa = "EMPRESA";
+		model.addAttribute("empresa", empresa);
 		return "informacion.jsp";
 	}
 }
