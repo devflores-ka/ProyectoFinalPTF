@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.equipo6.modelos.Producto;
+import com.equipo6.modelos.Usuario;
 import com.equipo6.repositorios.RepositorioProductos;
 
 @Service
@@ -17,6 +18,10 @@ public class ServicioProductos {
 	public List<Producto> todosLosProductos() {
 		
 		return repoProductos.findAllByOrderByNombreDesc();
+	}
+	
+	public List<Producto> buscarProductosPorEmpresa(Usuario empresa){
+		return repoProductos.findAllByCreador(empresa);
 	}
 	
 	public Producto guardarProducto(Producto producto) {

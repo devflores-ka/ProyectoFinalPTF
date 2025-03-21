@@ -31,6 +31,23 @@
 		    </ul>    
         </header>
         <main class="main">
+            <h1 class="outfit">Bienvenido ${usuarioEnSesion.nombre}</h1>
+            <div class="ad-cont">
+                <i class="fa-solid fa-bag-shopping fa-card m-05"></i>
+                <div>
+                    <h2 class="outfit">Productos de mi empresa</h2>
+                    <p class="montserrat g-p">Administrar los productos de mi empresa</p>
+                </div>
+                <a href="/empresa/productos" class="btn montserrat">Ver</a>
+            </div>
+            <div class="ad-cont">
+                <i class="fa-solid fa-check fa-card m-05"></i>
+                <div>
+                    <h2 class="outfit">Mis ventas</h2>
+                    <p class="montserrat g-p">Administrar los pedidos a mi empresa</p>
+                </div>
+                <a href="/empresa/ventas" class="btn montserrat">Ver</a>
+            </div>
         </main>    
         <footer>
             <div class="footer">

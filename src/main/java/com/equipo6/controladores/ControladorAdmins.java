@@ -168,8 +168,9 @@ public class ControladorAdmins {
 		}
 
 		sUsuarios.guardarUsuario(empresapwd);
+		Usuario usuarioActualizado = sUsuarios.buscarUsuario(id);
 		System.out.println("Actualizar Empresa: debería hacer return");
-		return "redirect:/admin/empresas/" + empresapwd.getId();
+		return "redirect:/admin/empresas/" + usuarioActualizado.getId();
 	}
 
 //ADMINlistaClientes.jsp	
@@ -248,8 +249,8 @@ public class ControladorAdmins {
 		}
 
 		sUsuarios.guardarUsuario(clientepwd);
-
-		return "redirect:/admin/clientes/" + clientepwd.getId();
+		Usuario usuarioActualizado = sUsuarios.buscarUsuario(id);
+		return "redirect:/admin/clientes/" + usuarioActualizado.getId();
 	}
 
 //DELETEmapping	

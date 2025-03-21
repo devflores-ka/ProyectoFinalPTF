@@ -33,7 +33,7 @@
 				        <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 				   	</ul>
 			    </c:when>
-			    <c:otherwise>
+			    <c:when test="${usuarioEnSesion.tipoDeUsuario == cliente }">
 				    <ul class="navbar">
 						<li><a class="navlink montserrat" href="/cliente/home">Inicio</a></li>
 				        <li><a class="navlink montserrat" href="/cliente/pedidos">Mis Pedidos</a></li>
@@ -41,6 +41,16 @@
 				        <li><a class="navlink montserrat" href="/cliente/${usuarioEnSesion.id}">Perfil</a></li>
 				        <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 				    </ul>
+			    </c:when>
+			    <c:otherwise>
+			    	<ul class="navbar">
+		                <li><a class="navlink montserrat" href="/empresa/home">Inicio</a></li>
+		                <li><a class="navlink montserrat" href="/empresa/productos">Mis productos</a></li>
+		                <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">Mi empresa</a></li>
+		                <li><a class="navlink montserrat" href="/nuevoProducto">Agregar Producto</a></li>
+		                <li><a class="navlink montserrat" href="/empresa/ventas">Mis ventas</a></li>
+		                <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
+		            </ul>
 			    </c:otherwise>
             </c:choose>         
         </header>
@@ -75,7 +85,7 @@
 					</c:forEach>
 				</section>
 			</c:when>
-			<c:otherwise>
+			<c:when test="${usuarioEnSesion.tipoDeUsuario == cliente }">
 				<div class="c-list-cont flex">
 					<section class="l-prod flex">
 						<c:forEach var="producto" items="${productos}">
@@ -121,6 +131,28 @@
 						</form>
                		</section>
 				</div>
+			</c:when>
+			<c:otherwise>
+				<section class="l-prod flex">
+					<c:forEach var="producto" items="${productos}">
+						<div class="c-cont">
+							<img src="${producto.urlImagen}" class="flex-2">
+							<div class="c-div-h">
+								<h2 class="outfit mb-1">${producto.nombre}</h2>
+								<p class="montserrat">
+									<i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}
+								</p>
+								<p class="montserrat mb-1">
+									<i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}
+								</p>
+								<div class="b-2 a-s-e">
+									<a href="/empresa/productos/${producto.id}" class="btn montserrat"> Detalles</a>
+									<a href="/empresa/editar/producto/${producto.id }" class="btn montserrat">Editar</a>
+								</div>
+							</div>
+						</div>
+					</c:forEach>
+				</section>
 			</c:otherwise>
 		</c:choose>
 		</main>    

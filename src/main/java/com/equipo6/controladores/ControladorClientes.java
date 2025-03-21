@@ -210,8 +210,8 @@ public class ControladorClientes {
 	        }
 
 	        sUsuarios.guardarUsuario(clientepwd);
-
-	        return "redirect:/cliente/" + clientepwd.getId();
+	        Usuario usuarioActualizado = sUsuarios.buscarUsuario(id);
+	        return "redirect:/cliente/" + usuarioActualizado.getId();
 	    
 
 	}

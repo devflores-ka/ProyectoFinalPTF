@@ -63,9 +63,9 @@ public class ControladorEmpresas {
 		Usuario usuario = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
 		model.addAttribute("usuario", usuario);
 
-		List<Producto> productos = sProductos.todosLosProductos();
+		List<Producto> productos = sProductos.buscarProductosPorEmpresa(usuario);
 		model.addAttribute("productos", productos);
-		return "ElistaProductos.jsp";
+		return "ACElistaProductos.jsp";
 	}
 
 //ACEdetalleProducto.jsp
@@ -259,18 +259,32 @@ public class ControladorEmpresas {
 		model.addAttribute("empresa", empresaActual);
 		return "AEeditarEmpresa.jsp";
 	}
-
-//PUTmapping    
+	
 	@PutMapping("/actualizar/{id}")
-	public String actualizarEmpresa(@Valid @ModelAttribute("empresa") Usuario empresa, BindingResult result,
-			Model model) {
+    public String actualizarEmpresa(@PathVariable("id") Long id, @ModelAttribute("empresa")Usuario empresa,
+            BindingResult result, Model model) {
 
-		if (result.hasErrors()) {
-			model.addAttribute("empresa", empresa);
-			return "AEeditarEmpresa.jsp";
-		}
-		sUsuarios.guardarUsuario(empresa);
-		return "redirect:/empresa/" + empresa.getId();
-	}
+		String admin = "ADMIN";// para comparacion en jsp
+		model.addAttribute("admin", admin);
+		
+        Usuario empresapwd = sUsuarios.buscarUsuario(id);
+        empresapwd.setNombre(empresa.getNombre());
+        empresapwd.setApellido(empresa.getApellido());
+        empresapwd.setEmail(empresa.getEmail());
+        empresapwd.setDireccion(empresa.getDireccion());
+
+        if (result.hasErrors()) {
+
+            model.addAttribute("empresa", empresapwd);;
+            return "AEeditarEmpresa.jsp";
+        }
+
+        sUsuarios.guardarUsuario(empresapwd);
+        
+        Usuario empresaActualizada=sUsuarios.buscarUsuario(id);
+        return "redirect:/empresa/" + empresaActualizada.getId();
+    
+
+}
 
 }
