@@ -152,8 +152,8 @@ public class ControladorEmpresas {
 		}
 
 		sProductos.guardarProducto(producto);
-
-		return "redirect:/empresa/productos/" + producto.getId();
+		Producto productoActualizado = sProductos.buscarProducto(id);
+		return "redirect:/empresa/productos/" + productoActualizado.getId();
 	}
 
 	// DELETEmapping

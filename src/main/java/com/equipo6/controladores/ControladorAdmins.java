@@ -335,8 +335,8 @@ public class ControladorAdmins {
 		}
 
 		sProductos.guardarProducto(producto);
-
-		return "redirect:/admin/productos/" + producto.getId();
+		Producto productoActualizado = sProductos.buscarProducto(id);
+		return "redirect:/admin/productos/" + productoActualizado.getId();
 	}
 
 	// DELETEmapping
