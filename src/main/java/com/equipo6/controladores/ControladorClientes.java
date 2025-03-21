@@ -60,7 +60,7 @@ public class ControladorClientes {
 		model.addAttribute("admin", admin);
 		model.addAttribute("productos", productos);
 
-		return "AClistaProductos.jsp"; // admin/productos
+		return "ACElistaProductos.jsp"; // admin/productos
 
 	}
 

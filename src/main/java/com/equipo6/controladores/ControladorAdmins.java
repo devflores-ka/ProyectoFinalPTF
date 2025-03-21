@@ -278,7 +278,7 @@ public class ControladorAdmins {
 
 		model.addAttribute("productos", productos);
 
-		return "AClistaProductos.jsp"; // cliente/home
+		return "ACElistaProductos.jsp"; // cliente/home
 	}
 
 //ACEdetalleProducto.jsp
