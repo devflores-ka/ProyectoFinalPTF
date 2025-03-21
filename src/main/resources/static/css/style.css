@@ -51,6 +51,11 @@ a{
     	}
 }
 
+@media(max-width: 1530px){
+	iframe{
+		width:100%;
+	}
+}
 .footer a:hover{
     color: rgba(255,115,96,1);
 }
