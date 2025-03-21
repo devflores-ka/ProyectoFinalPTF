@@ -38,7 +38,7 @@
                            <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
                            <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
                            <li><a class="navlink montserrat" href="#comoFunciona">Funcionamiento</a></li>
-                           <li><a class="navlink montserrat" href="/informacion">¿Porqué energía solar?</a></li>
+                           <li><a class="navlink montserrat" href="/informacion"><i class="fa-solid fa-plus"></i> info</a></li>
                            <li><a class="navlink montserrat" href="/empresas">Empresas</a></li>
                            <li><a class="navlink montserrat" href="/admin/home">Home</a></li>
                            <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
@@ -49,7 +49,7 @@
                            <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
                            <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
                            <li><a class="navlink montserrat" href="#comoFunciona">Funcionamiento</a></li>
-                           <li><a class="navlink montserrat" href="/informacion">¿Porqué energía solar?</a></li>
+                           <li><a class="navlink montserrat" href="/informacion"><i class="fa-solid fa-plus"></i> info</a></li>
                            <li><a class="navlink montserrat" href="/empresas">Empresas</a></li>
                            <li><a class="navlink montserrat" href="/cliente/home">Home</a></li>
                            <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
@@ -60,7 +60,7 @@
                            <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
                            <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
                            <li><a class="navlink montserrat" href="#comoFunciona">Funcionamiento</a></li>
-                           <li><a class="navlink montserrat" href="/informacion">¿Porqué energía solar?</a></li>
+                           <li><a class="navlink montserrat" href="/informacion"><i class="fa-solid fa-plus"></i> info</a></li>
                            <li><a class="navlink montserrat" href="/empresas">Empresas</a></li>
                            <li><a class="navlink montserrat" href="/empresa/home">Home</a></li>
                            <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>

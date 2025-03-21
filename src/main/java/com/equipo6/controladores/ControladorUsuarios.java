@@ -101,4 +101,14 @@ public class ControladorUsuarios {
 		session.invalidate();
 		return "redirect:/";
 	}
+	
+	@GetMapping("/calculadora")
+	public String calculadora() {
+		return "calculadora.jsp";
+	}
+	
+	@GetMapping("/informacion")
+	public String informacion() {
+		return "informacion.jsp";
+	}
 }

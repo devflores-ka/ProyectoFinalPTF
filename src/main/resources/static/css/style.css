@@ -423,8 +423,15 @@ a{
     height: 2em;
 }
 
-.calc-label{
-    width: 50%;
+/*CALCULADORA*/
+
+.calculadora label{
+    display: flex;
+    justify-content: space-between;
+}
+
+.calculadora input{
+    width: 20%;
 }
 
 .txt-input{

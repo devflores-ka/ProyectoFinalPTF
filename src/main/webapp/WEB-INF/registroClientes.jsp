@@ -25,6 +25,7 @@
                 <li><a class="navlink montserrat" href="/#nosotros">Nosotros</a></li>
                 <li><a class="navlink montserrat" href="/#soluciones">Soluciones</a></li>
                 <li><a class="navlink montserrat" href="/#comoFunciona">Funcionamiento</a></li>
+                <li><a class="navlink montserrat" href="/informacion"><i class="fa-solid fa-plus"></i> info</a></li>
                 <li><a class="navlink montserrat" href="/empresas">Empresas</a></li>
                 <li><a href="/registro/formulario" class="btn montserrat">Registro clientes</a></li>
                 <li><a href="/login" class="btn montserrat">Entrar</a></li>
