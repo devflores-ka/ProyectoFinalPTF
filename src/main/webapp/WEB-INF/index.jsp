@@ -19,7 +19,7 @@
         <link rel="icon" type="image/x-icon" href="/img/icon.webp">
     </head>
     <body>
-        <header class="head">
+        <header class="head" id="start">
             <a href="/"><img src="/img/logo.webp" alt="Halus" class="logo-n" title="HALUS"></a>
                <c:choose>
 	               <c:when test="${usuarioEnSesion == null }">
@@ -27,7 +27,7 @@
 	                           <li><a class="navlink montserrat" href="#nosotros">Nosotros</a></li>
 	                           <li><a class="navlink montserrat" href="#soluciones">Soluciones</a></li>
 	                           <li><a class="navlink montserrat" href="#comoFunciona">Funcionamiento</a></li>
-	                           <li><a class="navlink montserrat" href="/informacion">¿Porqué energía solar?</a></li>
+	                           <li><a class="navlink montserrat" href="/informacion"><i class="fa-solid fa-plus"></i> info</a></li>
 	                           <li><a class="navlink montserrat" href="/empresas">Empresas</a></li>
 	                           <li><a href="/registro/formulario" class="btn montserrat">Registro clientes</a></li>
 	                           <li><a href="/login" class="btn montserrat">Entrar</a></li>

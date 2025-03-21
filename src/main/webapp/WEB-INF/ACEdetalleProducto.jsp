@@ -89,7 +89,7 @@
                 </div>
             </div>
         </main>    
-        <footer class="mt-3">
+        <footer>
             <div class="footer">
                 <h5 class="outfit"> <i class="fa-regular fa-copyright"></i> Halus</h5>
                 <p class="montserrat">Main font "Biko" <a href="http://www.jesuismonreve.org/biko-font-family/"> <i class="fa-regular fa-copyright"></i> Marco Ugolini </a></p>

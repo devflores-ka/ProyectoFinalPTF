@@ -132,11 +132,11 @@ public class ControladorClientes {
 
 		model.addAttribute("usuario", usuarioActualizado);
 
-		return "ACEdetallePedido.jsp"; // jsp vista 5 detalle de un pedido
+		return "ACEdetallePedido.jsp"; 
 
 	}
 
-	// DELETEmappind
+	// DELETEmapping
 	@DeleteMapping("/borrar/pedido/{id}")
 	public String borrarPedido(@PathVariable("id") Long id) {
 		sPedido.borrarPedido(id);

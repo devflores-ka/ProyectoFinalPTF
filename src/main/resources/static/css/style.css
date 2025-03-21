@@ -14,17 +14,55 @@ a{
     transition: 0.3s;
 }
 
+@media (max-width: 930px){
+    .head{
+        width: 100%;
+        height: fit-content;
+        background-color: #232323;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1em;
+        line-height: 30px;
+    }
+
+    .head .logo-n{
+        width: 5em;
+    }
+
+    .head .navbar{
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        gap: 1em;
+        margin-right: 4em;
+    }
+    
+
+}
+
+@media(max-width: 875px){
+	    #principios .container{
+    	width: 100em;
+        gap: 1em;
+        flex-direction: column;
+    	}
+}
+
 .footer a:hover{
     color: rgba(255,115,96,1);
 }
 
 .head{
     width: 100%;
-    height: 7em ;
+    height: fit-content ;
     background-color: #232323;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1em 0;
 }
 
 .montserrat{
@@ -135,6 +173,7 @@ a{
 .main{
     margin: 1em auto;
     width: 80%;
+    min-height: 30em;
 }
 
 .l-prod{
@@ -344,7 +383,7 @@ a{
 }
 
 .footer{
-	height:140px;
+	height:75px;
     background-color: #F7F7F7;
     padding: 2em 3em;
     border-top: 2px solid rgb(152, 152, 152);
