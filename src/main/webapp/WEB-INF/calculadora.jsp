@@ -7,9 +7,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Halus | Iniciar Sesión</title>
+        <title>Halus | Calculadora </title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4.2">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4.3">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -19,7 +19,7 @@
         <!--FAVICON-->
         <link rel="icon" type="image/x-icon" href="/img/icon.webp">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script src="/js/main.js" defer></script>
+        <script src="/js/main.js?v=1" defer></script>
     </head>
     <body>
         <header class="head">
@@ -82,8 +82,9 @@
                     <p class="montserrat g-p sm-txt">¡Pasa tu cursor sobre cada punto en un año y revisa cuánto habrás ahorrado!</p>
                 </div>
                 <button onclick="calcularAhorro()" class="btn montserrat">Calcular Ahorro</button>
-                
-                <canvas id="graficoAhorro"></canvas>
+                <div style="width: 100%; height:35em; position:relative">
+                	<canvas id="graficoAhorro"></canvas>
+                </div>
             </div>
         </main>
         <footer>

@@ -14,7 +14,7 @@ a{
     transition: 0.3s;
 }
 
-@media (max-width: 930px){
+@media (max-width: 1000px){
     .head{
         width: 100%;
         height: fit-content;
@@ -52,10 +52,12 @@ a{
 }
 
 @media(max-width: 1530px){
-	iframe{
+	iframe, canvas{
 		width:100%;
 	}
+	
 }
+
 .footer a:hover{
     color: rgba(255,115,96,1);
 }
