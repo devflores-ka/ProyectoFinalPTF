@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.equipo6.modelos.Pedido;
 import com.equipo6.modelos.Producto;
-import com.equipo6.modelos.ProductoEnPedido;
 import com.equipo6.modelos.Usuario;
 import com.equipo6.servicios.ServicioPedido;
 import com.equipo6.servicios.ServicioProductos;
@@ -218,7 +217,10 @@ public class ControladorAdmins {
 		if (usuarioEnSesion == null || !usuarioEnSesion.getTipoDeUsuario().equals("ADMIN")) {
 			return "redirect:/";
 		}
-
+		
+		String admin = "ADMIN";// para comparacion en jsp
+		model.addAttribute("admin", admin);
+		
 		Usuario clienteEditar = sUsuarios.buscarUsuario(id);
 
 		if (clienteEditar == null) {
@@ -226,7 +228,7 @@ public class ControladorAdmins {
 		}
 
 		model.addAttribute("cliente", clienteEditar);
-		return "ADMINeditarCliente.jsp";
+		return "ACeditarCliente.jsp";
 	}
 
 //PUTmapping	
@@ -245,11 +247,11 @@ public class ControladorAdmins {
 
 			model.addAttribute("cliente", clientepwd);
 			;
-			return "ADMINeditarCliente.jsp";
+			return "ACeditarCliente.jsp";
 		}
 
 		sUsuarios.guardarUsuario(clientepwd);
-		Usuario usuarioActualizado = sUsuarios.buscarUsuario(id);
+		Usuario usuarioActualizado = sUsuarios.buscarUsuario(clientepwd.getId());
 		return "redirect:/admin/clientes/" + usuarioActualizado.getId();
 	}
 

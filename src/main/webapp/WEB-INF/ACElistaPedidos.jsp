@@ -59,8 +59,11 @@
 	               <c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
 	               		<h1 class="outfit">Todos los pedidos</h1>
 	               </c:when>
+	               <c:when test="${usuarioEnSesion.tipoDeUsuario == cliente }">
+	               		<h1 class="outfit">Mis pedidos</h1>
+	               </c:when>
 	               <c:otherwise>
-	               		<h1 class="outfit">Mis Pedidos</h1>
+	               		<h1 class="outfit">Mis ventas</h1>
 	               </c:otherwise>
              </c:choose>
              <c:choose>
@@ -89,7 +92,7 @@
 		                        <h3 class="outfit">Pedido #${pedido.id}</h3>
 		                        <c:forEach items="${pedido.productosEnPedido}" var="producto">
 		                            <p class="montserrat g-p">Producto: ${producto.nombre}</p>
-		                            <!-- <p class="montserrat g-p">Cantidad: ${producto.cantidad}</p>-->
+		                            <p class="montserrat g-p">x${producto.cantidad}</p>
 		                        </c:forEach>
 		                        <p class="montserrat g-p">Tipo de pedido: ${pedido.tipoDeServicio}</p>
 		                        <hr>
@@ -100,14 +103,14 @@
 		            </c:forEach>
             	</c:when>
             	<c:otherwise>
-            		<c:forEach var="pedido" items="${pedido.productosEnPedido.pedidosQueTienenEsteProducto}"><!-- PREGUNTAR A LA PROFE****************************** -->
+            		<c:forEach var="pedido" items="${pedido.productosEnPedido.pedidosQueTienenEsteProducto}">
 		                <div class="card">
 		                    <img class="det-img" src="${pedido.urlImagen}" alt="Imagen del pedido"> 
 		                    <div class="detalles">
 		                        <h3 class="outfit">Pedido #${pedido.id}</h3>
 		                        <c:forEach items="${pedido.productosEnPedido}" var="producto">
 		                            <p class="montserrat g-p">Producto: ${producto.nombre}</p>
-		                            <!-- <p class="montserrat g-p">Cantidad: ${producto.cantidad}</p>-->
+		                            <p class="montserrat g-p">x${producto.cantidad}</p>
 		                        </c:forEach>
 		                        <p class="montserrat g-p">Tipo de pedido: ${pedido.tipoDeServicio}</p>
 		                        <hr>

@@ -75,17 +75,23 @@
 		                        <form:errors path="direccion" class="txt-danger montserrat" />
 		                    </div>
 							<div class="mt-05">
-								<label for="tipoDeUsuario">Tipo de Usuario:</label>
+								<form:label for="tipoDeUsuario" path="tipoDeUsuario">Tipo de Usuario:</form:label>
 						        <form:select path="tipoDeUsuario">
-						            <option value="CLIENTE">Cliente</option>
-						            <option value="EMPRESA">Empresa</option>
+						            <form:option path="tipoDeUsuario" class="txt-input montserrat" value="CLIENTE">Cliente</form:option>
+						            <form:option path="tipoDeUsuario" class="txt-input montserrat" value="EMPRESA">Empresa</form:option>
 						        </form:select>
-				                <form:errors path="direccion" class="txt-danger montserrat" />
+				                <form:errors path="tipoDeUsuario" class="txt-danger montserrat" />
 				            </div>
 		                    <button type="submit" class="btn montserrat mt-05">
 		                        <span> Guardar </span>
 		                    </button>
 		                </form:form>
+		                <form action="/admin/borrar/usuario/${empresa.id}" method="POST">
+							<input type="hidden" name="_method" value="DELETE">
+							<button type="submit" class="btn-danger montserrat mt-05">
+		                        <span> <i class="fa-solid fa-xmark"></i> Eliminar Empresa </span>
+		                    </button>
+                		</form> 
 		             </c:when>
 		             <c:otherwise>
 		             	<form:form action="/empresa/actualizar/${empresa.id}" method="POST" modelAttribute="empresa">
@@ -116,25 +122,6 @@
 		                </form:form>
 		             </c:otherwise>
 		        </c:choose>
-                <c:if test="${usuarioEnSesion.tipoDeUsuario == admin }">
-	                <form:form action="/admin/editar/rol/${empresa.id}" method="POST" modelAttribute="empresa">
-		                <input type="hidden" name="_method" value="PUT"><!-- SOBREESCRIBO METODO -->
-		                <div class="mt-05">
-	                        <form:label class="montserrat" path="tipoDeUsuario">Tipo de usuario:</form:label>
-	                        <form:select class="txt-input montserrat" path="tipoDeUsuario" id="tipoDeUsuario" name="nuevoRol">
-								<form:option class="txt-input montserrat" path="tipoDeUsuario" value="CLIENTE"/>
-								<form:option class="txt-input montserrat" path="tipoDeUsuario" value="EMPRESA"/>
-								<input type="submit" class="btn montserrat mt-05" value="Cambiar tipo de usuario"/>
-							</form:select>
-	                    </div>
-	                </form:form>
-	                <form action="/admin/borrar/usuario/${empresa.id}" method="POST">
-						<input type="hidden" name="_method" value="DELETE">
-						<button type="submit" class="btn-danger montserrat mt-05">
-	                        <span> <i class="fa-solid fa-xmark"></i> Eliminar Empresa </span>
-	                    </button>
-                	</form> 
-                </c:if>
             </div>
         </main>
         <footer>

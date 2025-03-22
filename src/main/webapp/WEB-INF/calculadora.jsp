@@ -79,7 +79,11 @@
                     <label class="montserrat mt-05" for="costo">Costo actual de electricidad ($/kWh): <input class="txt-input" type="number" id="costo" value="150"></label>
                     <label class="montserrat mt-05" for="superficie">Superficie disponible (m²): <input class="txt-input" type="number" id="superficie" value="20"></label>
                     <label class="montserrat mt-05" for="inversion">Inversión inicial ($): <input class="txt-input" type="number" id="inversion" value="100000"></label>
-                    <p class="montserrat g-p sm-txt">¡Pasa tu cursor sobre cada punto en un año y revisa cuánto habrás ahorrado!</p>
+                    <p class="montserrat g-p sm-txt">
+                    	Paso 1: Añade tu información para calcular. <br>
+                    	Paso 2: Presiona el botón para que nuestros servidores generen tu gráfico.<br>
+                    	Paso 3: ¡Pasa tu cursor sobre cada punto en un año y revisa cuánto habrás ahorrado!
+                    </p>
                 </div>
                 <button onclick="calcularAhorro()" class="btn montserrat">Calcular Ahorro</button>
                 <div style="width: 100%; height:35em; position:relative">

@@ -64,6 +64,7 @@
                         <form:textarea path="garantia" class="txt-input montserrat"/>
                         <form:errors path="garantia" class="txt-danger montserrat"/>
                     </div>			
+                    <form:hidden path="creator" value="${userInSession.id}"/>
                     <button type="submit" class="btn montserrat mt-05">
                         <span> Añadir Producto </span>
                     </button>

@@ -39,7 +39,7 @@
 				    <ul class="navbar">
 						<li><a class="navlink montserrat" href="/cliente/home">Inicio</a></li>
 				        <li><a class="navlink montserrat" href="/cliente/pedidos">Mis Pedidos</a></li>
-				        <li><a class="navlink montserrat" href="/cliente/carrito/${usuarioEnSesion.id}">Carrito</a></li>
+				        <li><a class="navlink montserrat" href="/cliente/carrito">Carrito</a></li>
 				        <li><a class="navlink montserrat" href="/cliente/${usuarioEnSesion.id}">Perfil</a></li>
 				        <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 				    </ul>
@@ -48,7 +48,7 @@
         </header>
         <main class="main">
 	        <c:choose>
-	        	<c:when test="${usuarioEnSesion == admin }">
+	        	<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
 		        	<h1 class="outfit m-1">Editar Cliente </h1>
 		            <div class="r-cont">
 		                <form:form action="/admin/actualizar/cliente/${cliente.id}" method="POST" modelAttribute="cliente">
@@ -72,21 +72,18 @@
 		                        <form:label class="montserrat" path="direccion">Direccion:</form:label>
 		                        <form:input path="direccion" class="txt-input montserrat" placeholder="Direccion cliente"/>
 		                        <form:errors path="direccion" class="txt-danger montserrat"/>
-		                    </div>		
+		                    </div>	
+		                    <div class="mt-05">
+								<form:label for="tipoDeUsuario" path="tipoDeUsuario">Tipo de Usuario:</form:label>
+						        <form:select path="tipoDeUsuario">
+						            <form:option path="tipoDeUsuario" class="txt-input montserrat" value="CLIENTE">Cliente</form:option>
+						            <form:option path="tipoDeUsuario" class="txt-input montserrat" value="EMPRESA">Empresa</form:option>
+						        </form:select>
+				                <form:errors path="tipoDeUsuario" class="txt-danger montserrat" />
+				            </div>	
 		                    <button type="submit" class="btn montserrat mt-05 mb-1">
 		                        <span> Guardar </span>
 		                    </button>
-		                </form:form>
-		                <form:form action="/admin/editar/rol/${empresa.id}" method="POST" modelAttribute="cliente">
-			                <input type="hidden" name="_method" value="PUT"><!-- SOBREESCRIBO METODO -->
-			                <div class="mt-05">
-		                        <form:label class="montserrat" path="tipoDeUsuario">Tipo de usuario:</form:label>
-		                        <form:select class="txt-input montserrat" path="tipoDeUsuario" id="tipoDeUsuario" name="nuevoRol">
-									<form:option class="txt-input montserrat" path="tipoDeUsuario" value="CLIENTE"/>
-									<form:option class="txt-input montserrat" path="tipoDeUsuario" value="EMPRESA"/>
-									<input type="submit" class="btn montserrat" value="Cambiar tipo de usuario"/>
-								</form:select>
-		                    </div>
 		                </form:form>
 		                <form action="/admin/borrar/usuario/${cliente.id}" method="POST">
 							<input type="hidden" name="_method" value="DELETE">

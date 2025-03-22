@@ -58,7 +58,7 @@ a{
 	
 }
 
-.footer a:hover{
+.footer a:hover, #info a:hover{
     color: rgba(255,115,96,1);
 }
 
@@ -180,7 +180,7 @@ a{
 .main{
     margin: 1em auto;
     width: 80%;
-    min-height: 30em;
+    min-height: 35em;
 }
 
 .l-prod{
@@ -529,6 +529,7 @@ html{
 #main{
     margin: 0 auto;
     width: 100%;
+    min-height: 35em;
 }
 
 .c-cont{
@@ -545,6 +546,18 @@ html{
     width: 100%;
     height: 20em;
     object-fit: cover;
+}
+
+#info, #info h2{
+	text-align:center;
+}
+
+#info .w-txt{
+	width: 67%;
+}
+
+#info img{
+	width:90%;
 }
 
 .c-cont img{

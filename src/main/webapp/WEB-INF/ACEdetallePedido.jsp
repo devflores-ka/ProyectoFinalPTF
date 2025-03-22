@@ -56,17 +56,17 @@
     <main class="main">
         <div class="card">
             <h2 class="outfit">Pedido #${pedido.id}</h2>
-            <c:forEach var="producto" items="${pEp}">
-                <p class="montserrat g-p">Producto: ${producto.nombre}</p>
+            <c:forEach var="pEp" items="${pEp}">
+                <p class="montserrat g-p">Producto: ${pEp.producto.nombre}</p>
                 <h3 class="outfit">Información proveedor: </h3>
-                <p class="montserrat g-p">Nombre empresa: ${producto.creador.nombre}</p>
-                <p class="montserrat g-p">Contacto empresa: ${producto.creador.email}</p>
+                <p class="montserrat g-p">Nombre empresa: ${pEp.producto.creador.nombre}</p>
+                <p class="montserrat g-p">Contacto empresa: ${pEp.producto.creador.email}</p>
             </c:forEach> 
                 <h3 class="outfit">Información cliente: </h3>
                 <p class="montserrat g-p">Nombre cliente: ${pedido.creador.nombre}</p>
                 <p class="montserrat g-p">Dirección cliente: ${pedido.creador.direccion}</p> 
                 <hr class="mt-05">
-            <h3 class="outfit">TOTAL: ${pedido.totalDelPedido}</h3>
+            <h3 class="outfit mb-1">TOTAL: ${pedido.totalDelPedido}</h3>
             <c:choose>
             	<c:when test="${usuarioEnSesion.tipoDeUsuario == cliente }">
             		<a href="/cliente/pedidos" class=" btn montserrat"> <i class="fa-solid fa-chevron-left"></i> Volver </a>

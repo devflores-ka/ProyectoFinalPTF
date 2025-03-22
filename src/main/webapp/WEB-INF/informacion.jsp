@@ -9,7 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus | Calculadora </title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4.3">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4.5">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -70,10 +70,13 @@
                 </c:choose>
         </header>
         <main class="main">
-            <section class="cont-sect mb-5" id="soluciones">
+            <section class="cont-sect mb-5" id="info">
                 <h2 class="outfit h2-o">¿Porqué energía solar?</h2>
-	            <p class="montserrat g-p w-txt">Te ofrecemos un lugar donde puedes encontrar los productos que necesitas y los proveedores que necesitas. ¿Alguna vez te has visto afectado por cortes del suministro eléctrico? Dejar de depender de una red eléctrica y sus complicaciones es algo que ahora está a tu alcance, con nuestro marketplace organizado y personalizado puedes comparar productos, precios y solicitar desde diferentes empresas justo lo que tú necesitas.</p>
-	            <p class="montserrat g-p w-txt">Experiencia el cambio, elige una fuente de energía limpia, renovable y confiable.</p>
+                <h2 class="outfit">"La energía solar está destinada a ser la mayor fuente de energía renovable para el 2029."</h2>
+	            <p class="montserrat  w-txt">Beneficiándose de políticas que la apoyan, el costo de la energía generada de manera <em>Fotovoltaica</em> se ha desplomado dramáticamente en las últimas décadas, contribuyendo a un <em>boom</em> en el desarrollo y despliegue de paneles solares, con una capacidad global que crece a un paso histórico. Entre los años 2018 hasta el 2023, se triplicó. <a target="_blank" href="https://www.iea.org/energy-system/renewables/solar-pv"><sup>[1]</sup></a></p>
+	            <p class="montserrat w-txt">Entre los siguientes años se espera que el uso de la tecnología fotovoltaica aumente hasta abarcar un 80% del uso entre todas las opciones de energías renovables - ¡Esto es bueno! Significa que cada vez se espera que compañías y hogares como el de cada uno de nosotros implemente estas tecnologías, contribuyendo al cuidado de nuestro medioambiente directamente disminuyendo la emisión de gases que emite la generación de electricidad convencional.</p>
+	            <p class="montserrat w-txt">La instalación fotovoltaica genera un <strong>ahorro</strong> de emisiones de CO2. Con una producción anual de 53 MWh (53000 kWh) de electricidad solar, se pueden evitar las emisiones asociadas a la electricidad convencional generada a partir de combustibles fósiles, la cual genera aproximadamente 450-900 gramos de CO2 por kWh.<a target="_blank" href="http://hdl.handle.net/2117/420908" title="pag.53"><sup>[2]</sup></a></p>
+	           	<a href="https://www.iea.org/data-and-statistics/charts/share-of-renewable-electricity-generation-by-technology-2000-2030" target="_blank"><img alt="Gráfico" src="/img/info.png"></a>
             </section>
         </main>
         <footer>

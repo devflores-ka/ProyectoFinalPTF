@@ -44,10 +44,15 @@
             </c:choose> 
         </header>
         <main class="main">
-        	<h1 class="outfit">${usuarioEnSesion.nombre } ${usuarioEnSesion.apellido}</h1>
-        	<c:if test="${usuarioEnSesion.tipoDeUsuario == admin }">
-            	<h1 class="outfit">${cliente.nombre } ${cliente.apellido}</h1>
-            </c:if>
+			<c:choose>
+        		<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
+        			<h1 class="outfit">Admin | Detalle de usuario</h1>
+        			<h1 class="outfit">${cliente.nombre } ${cliente.apellido}</h1>
+        		</c:when>
+        		<c:otherwise>
+        			<h1 class="outfit">${usuarioEnSesion.nombre} ${usuarioEnSesion.apellido}</h1>
+        		</c:otherwise>
+        	</c:choose>
             <div class="h-25">
 	            <c:choose>
 	            	<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">

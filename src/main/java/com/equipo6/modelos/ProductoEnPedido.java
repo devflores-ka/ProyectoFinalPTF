@@ -13,13 +13,12 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
-import jakarta.persistence.Table;
 
 @Entity
 public class ProductoEnPedido {
     
 	@EmbeddedId
-    ProductoEnPedidoKey id;
+    private ProductoEnPedidoKey id;
 
     @ManyToOne (fetch=FetchType.LAZY)
     @MapsId("pedidoId")

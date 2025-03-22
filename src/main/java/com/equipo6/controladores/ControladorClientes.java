@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import com.equipo6.modelos.ProductoEnPedidoKey;
 import com.equipo6.modelos.Pedido;
 import com.equipo6.modelos.Producto;
 import com.equipo6.modelos.ProductoEnPedido;
 import com.equipo6.modelos.Usuario;
 import com.equipo6.servicios.ServicioPedido;
+import com.equipo6.servicios.ServicioProductoEnPedido;
 import com.equipo6.servicios.ServicioProductos;
 import com.equipo6.servicios.ServicioUsuarios;
 
@@ -37,6 +38,9 @@ public class ControladorClientes {
 
 	@Autowired
 	private ServicioProductos sProductos;
+	
+	@Autowired
+	private ServicioProductoEnPedido sProdEnP;
 
 //AClistaProductos.jsp
 	@GetMapping("/home")
@@ -124,11 +128,18 @@ public class ControladorClientes {
 		model.addAttribute("cliente", cliente);
 		String admin = "ADMIN";
 		model.addAttribute("admin", admin);
-
+		
 		Pedido pedido = sPedido.buscarPedido(id);
 		model.addAttribute("pedido", pedido);
+		//consigo el id del pedido para buscar los productos que tiene
+		Long pedidoId = pedido.getId();
+		//busco la lista con el id del pedido
+		List<ProductoEnPedido> productosEnElPedido = sProdEnP.buscarProdxPedido(pedidoId);
+		model.addAttribute("pEp", productosEnElPedido);
 		
-		System.out.println("COntenido del pedido"+pedido.getProductosEnPedido());
+		System.out.println("El pedido tiene: "+productosEnElPedido);
+		
+		
 		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
 		Usuario usuarioActualizado = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
 
@@ -157,13 +168,12 @@ public class ControladorClientes {
 		String admin = "ADMIN";
 		model.addAttribute("admin", admin);
 
-		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
-
-		Usuario usuario = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
+		Usuario usuario = sUsuarios.buscarUsuario(id);
 		if (usuario == null) {
 			return "redirect:/cliente/home";
 		}
 		model.addAttribute("usuario", usuario);
+		
 
 		return "ACdetalleCliente.jsp"; // admin/clientes/{id}
 
@@ -212,8 +222,8 @@ public class ControladorClientes {
 	        }
 
 	        sUsuarios.guardarUsuario(clientepwd);
-	        Usuario usuarioActualizado = sUsuarios.buscarUsuario(id);
-	        return "redirect:/cliente/" + usuarioActualizado.getId();
+	        Usuario usuarioActualizado = sUsuarios.buscarUsuario(clientepwd.getId());
+	        return "redirect:/cliente/"+usuarioActualizado.getId();
 	    
 
 	}
@@ -254,7 +264,9 @@ public class ControladorClientes {
 
 		//consigo el carrito desde la sesión
 		    List<Producto> carrito = (List<Producto>) session.getAttribute("carrito");
-
+		    if(carrito == null || carrito.isEmpty()) {
+		    	return "redirect:/cliente/home";
+		    }
 		//consigo el usuario que creo el carrito
 		Usuario usuario = (Usuario)session.getAttribute("usuarioEnSesion");
 
@@ -265,6 +277,11 @@ public class ControladorClientes {
 		//setteo el tipo de servicio
 		pedido.setTipoDeServicio("Compra");
 		//setteo el total de la compra en 0**
+		pedido.setTotalDelPedido(0L);
+		
+		pedido = sPedido.guardarPedido(pedido);
+		
+		//declaro el total como variable para aumentarlo con cada producto que se sume
 		long total = 0;
 
 		//Creo una nueva lista de relación productoenpedido
@@ -275,10 +292,22 @@ public class ControladorClientes {
 		    ProductoEnPedido item = new ProductoEnPedido();
 		    item.setProducto(producto);
 		    item.setPedido(pedido);
+		    item.setCantidadProducto(1);
 		    total+=producto.getpVenta();
+		    
+		    //para la relación con modelo extra
+		    //generamos la relación manualmente
+		    ProductoEnPedidoKey key = new ProductoEnPedidoKey();
+		    key.setPedidoId(pedido.getId());
+		    key.setProductoId(producto.getId());
+		    item.setId(key);
+		    
+		    //luego de eso se guarda el producto como producto en pedido
+		    sProdEnP.guardarProductoEnPedido(item);
 		    items.add(item);
 		    
 		}
+		
 		//para conseguir la imagen del primer producto
 		ProductoEnPedido pEp = items.get(0);
 		Producto producto = pEp.getProducto();
@@ -288,9 +317,10 @@ public class ControladorClientes {
 		
 		pedido.setTotalDelPedido(total);
 		pedido.setProductosEnPedido(items);
+		
 		System.out.println(pedido.getProductosEnPedido());
+		
 		//una vez tengo todo guardo en la db
-
 		sPedido.guardarPedido(pedido);
 
 		//eliminar el carrito
