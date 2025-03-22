@@ -37,6 +37,7 @@
 				    <ul class="navbar">
 						<li><a class="navlink montserrat" href="/cliente/home">Inicio</a></li>
 				        <li><a class="navlink montserrat" href="/cliente/pedidos">Mis Pedidos</a></li>
+				        <li><a class="navlink montserrat" href="/cliente/carrito">Carrito</a></li>
 				        <li><a class="navlink montserrat" href="/cliente/${usuarioEnSesion.id}">Perfil</a></li>
 				        <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 				    </ul>

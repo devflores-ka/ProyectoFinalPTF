@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus | Pedidos</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?v=0.4.7">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -37,7 +37,7 @@
 				    <ul class="navbar">
 						<li><a class="navlink montserrat" href="/cliente/home">Inicio</a></li>
 				        <li><a class="navlink montserrat" href="/cliente/pedidos">Mis Pedidos</a></li>
-				        <li><a class="navlink montserrat" href="/cliente/carrito/${usuarioEnSesion.id}">Carrito</a></li>
+				        <li><a class="navlink montserrat" href="/cliente/carrito">Carrito</a></li>
 				        <li><a class="navlink montserrat" href="/cliente/${usuarioEnSesion.id}">Perfil</a></li>
 				        <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 				    </ul>
@@ -68,57 +68,52 @@
              </c:choose>
              <c:choose>
              	<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
-		            <c:forEach var="pedido" items="${pedidos}">
-		                <div class="card">
-		                    <img class="det-img" src="${pedido.urlImagen}" alt="Imagen del pedido"> 
-		                    <div class="detalles">
-		                        <h3 class="outfit">Pedido #${pedido.id}</h3>
-		                        <c:forEach items="${pedido.productosEnPedido}" var="producto">
-		                            <p class="montserrat g-p">Producto: ${producto.nombre}</p>
-		                        </c:forEach>
-		                        <p class="montserrat g-p">Tipo de pedido: ${pedido.tipoDeServicio}</p>
-		                        <hr>
-		                        <p class="outfit mb-1">TOTAL <i class="fa-solid fa-dollar-sign"></i> ${pedido.totalDelPedido} CLP</p>
-		                        <a href="/admin/pedidos/${pedido.id}" class="btn montserrat" title="más info -a">Detalles</a>
-		                    </div>
-		                </div>
-		            </c:forEach>
+             		<div class="l-prod flex">
+			            <c:forEach var="pedido" items="${pedidos}">
+			                <div class="card">
+			                    <img class="det-img" src="${pedido.urlImagen}" alt="Imagen del pedido"> 
+			                    <div class="detalles">
+			                        <h3 class="outfit">Pedido #${pedido.id}</h3>
+			                        <p class="montserrat g-p">Tipo de pedido: ${pedido.tipoDeServicio}</p>
+			                        <hr>
+			                        <p class="outfit mb-1">TOTAL <i class="fa-solid fa-dollar-sign"></i> ${pedido.totalDelPedido} CLP</p>
+			                        <a href="/admin/pedidos/${pedido.id}" class="btn montserrat" title="más info -a">Detalles</a>
+			                    </div>
+			                </div>
+			            </c:forEach>
+		            </div>
             	</c:when>
             	<c:when test="${usuarioEnSesion.tipoDeUsuario == cliente }">
-            		<c:forEach var="pedido" items="${usuario.misPedidos}">
-		                <div class="card">
-		                    <img class="det-img" src="${pedido.urlImagen}" alt="Imagen del pedido"> 
-		                    <div class="detalles">
-		                        <h3 class="outfit">Pedido #${pedido.id}</h3>
-		                        <c:forEach items="${pedido.productosEnPedido}" var="producto">
-		                            <p class="montserrat g-p">Producto: ${producto.nombre}</p>
-		                            <p class="montserrat g-p">x${producto.cantidad}</p>
-		                        </c:forEach>
-		                        <p class="montserrat g-p">Tipo de pedido: ${pedido.tipoDeServicio}</p>
-		                        <hr>
-		                        <p class="outfit mb-1">TOTAL <i class="fa-solid fa-dollar-sign"></i> ${pedido.totalDelPedido} CLP</p>
-		                        <a href="/cliente/pedidos/${pedido.id}" class="btn montserrat" title="más info">Detalles</a>
-		                    </div>
-		                </div>
-		            </c:forEach>
+            		<div class="l-prod flex">
+	            		<c:forEach var="pedido" items="${usuario.misPedidos}">
+			                <div class="card">
+			                    <img class="det-img" src="${pedido.urlImagen}" alt="Imagen del pedido"> 
+			                    <div class="detalles">
+			                        <h3 class="outfit">Pedido #${pedido.id}</h3>
+			                        <p class="montserrat g-p">Tipo de pedido: ${pedido.tipoDeServicio}</p>
+			                        <hr>
+			                        <p class="outfit mb-1">TOTAL <i class="fa-solid fa-dollar-sign"></i> ${pedido.totalDelPedido} CLP</p>
+			                        <a href="/cliente/pedidos/${pedido.id}" class="btn montserrat" title="más info">Detalles</a>
+			                    </div>
+			                </div>
+			            </c:forEach>
+		            </div>
             	</c:when>
             	<c:otherwise>
-            		<c:forEach var="pedido" items="${pedido.productosEnPedido.pedidosQueTienenEsteProducto}">
-		                <div class="card">
-		                    <img class="det-img" src="${pedido.urlImagen}" alt="Imagen del pedido"> 
-		                    <div class="detalles">
-		                        <h3 class="outfit">Pedido #${pedido.id}</h3>
-		                        <c:forEach items="${pedido.productosEnPedido}" var="producto">
-		                            <p class="montserrat g-p">Producto: ${producto.nombre}</p>
-		                            <p class="montserrat g-p">x${producto.cantidad}</p>
-		                        </c:forEach>
-		                        <p class="montserrat g-p">Tipo de pedido: ${pedido.tipoDeServicio}</p>
-		                        <hr>
-		                        <p class="outfit mb-1">TOTAL <i class="fa-solid fa-dollar-sign"></i> ${pedido.totalDelPedido} CLP</p>
-		                        <a href="/cliente/pedidos/${pedido.id}" class="btn montserrat" title="más info">Detalles</a>
-		                    </div>
-		                </div>
-		            </c:forEach>
+            		<div class="l-prod flex">
+	            		<c:forEach var="pedido" items="${pedido.productosEnPedido.pedidosQueTienenEsteProducto}">
+			                <div class="card">
+			                    <img class="det-img" src="${pedido.urlImagen}" alt="Imagen del pedido"> 
+			                    <div class="detalles">
+			                        <h3 class="outfit">Pedido #${pedido.id}</h3>
+			                        <p class="montserrat g-p">Tipo de pedido: ${pedido.tipoDeServicio}</p>
+			                        <hr>
+			                        <p class="outfit mb-1">TOTAL <i class="fa-solid fa-dollar-sign"></i> ${pedido.totalDelPedido} CLP</p>
+			                        <a href="/cliente/pedidos/${pedido.id}" class="btn montserrat" title="más info">Detalles</a>
+			                    </div>
+			                </div>
+			            </c:forEach>
+		            </div>
             	</c:otherwise>
             </c:choose>
         </main>    

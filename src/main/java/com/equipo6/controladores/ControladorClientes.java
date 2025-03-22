@@ -222,13 +222,41 @@ public class ControladorClientes {
 	        }
 
 	        sUsuarios.guardarUsuario(clientepwd);
-	        Usuario usuarioActualizado = sUsuarios.buscarUsuario(clientepwd.getId());
-	        return "redirect:/cliente/"+usuarioActualizado.getId();
+
+	        return "redirect:/cliente/home";
 	    
 
 	}
 		
 		//---------------CARRITO---------------(SOLO COMPRAS)
+		
+		@GetMapping("/carrito")
+		public String carritoVer(HttpSession session, Model model) {
+			
+			if (session.getAttribute("usuarioEnSesion") == null) {
+				return "redirect:/";
+			}
+			
+			//reviso si existe un carrito, si no, creo uno
+		    List<Producto> carrito = (List<Producto>) session.getAttribute("carrito");
+		    
+		    if (session.getAttribute("carrito") == null){
+		    carrito = new ArrayList<>();
+		}
+			
+		    model.addAttribute("carrito", carrito); //envio el carrito al jsp para verlo
+		    
+			String admin = "ADMIN";
+			List<Producto> productos = sProductos.todosLosProductos();
+			model.addAttribute("admin", admin);
+			String cliente ="CLIENTE";
+			model.addAttribute("cliente", cliente);
+			model.addAttribute("productos", productos);
+
+			return "carrito.jsp"; // admin/productos
+
+		}
+		
 		@PostMapping("/carrito/agregar/{id}")
 		public String agregarproducto (@PathVariable("id") Long id, HttpSession session ) { 
 
@@ -250,6 +278,27 @@ public class ControladorClientes {
 		    carrito.add(producto);
 		} 
 		    //guardo el carrito con el nuevo producto
+		    session.setAttribute("carrito", carrito);
+		    
+		    return "redirect:/cliente/home";
+		} 
+		
+		@PostMapping("/carrito/quitar/{id}")
+		public String quitarProducto(@PathVariable("id") Long id, HttpSession session ) { 
+
+		
+		if (session.getAttribute("usuarioEnSesion") == null) {
+	        return "redirect:/";
+	    }
+
+		    List<Producto> carrito = (List<Producto>) session.getAttribute("carrito");
+		    
+		    Producto producto = sProductos.buscarProducto(id);
+		    
+		    if (producto !=null){
+			    carrito.remove(producto);
+			} 
+		    
 		    session.setAttribute("carrito", carrito);
 		    
 		    return "redirect:/cliente/home";
@@ -283,7 +332,7 @@ public class ControladorClientes {
 		
 		//declaro el total como variable para aumentarlo con cada producto que se sume
 		long total = 0;
-
+		
 		//Creo una nueva lista de relación productoenpedido
 		List<ProductoEnPedido> items = new ArrayList<>();
 

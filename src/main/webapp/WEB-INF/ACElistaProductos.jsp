@@ -56,7 +56,7 @@
         </header>
         <main id="main">
             <div id="c-header">
-                <img src="/img/header-image.webp" class="c-img">
+                <img src="/img/prod-header.png" class="c-img">
                 <div id="c-header-txt">
                     <h1 class="outfit">Todos los productos</h1>
                     <p class="montserrat mb-1">Explora nuestras opciones para avanzar hacia la energia sustentable.</p>
@@ -103,7 +103,7 @@
 										<a href="/cliente/productos/${producto.id}" class="btn montserrat"> Detalles</a>
 										<form action="/cliente/arrendar/${producto.id }" method="POST">
 											<button type="submit" class="btn montserrat mt-05">
-												<span><i class="fa-solid fa-check"></i> Generar pedido </span>
+												<span><i class="fa-solid fa-check"></i> Arrendar </span>
 											</button>
 										</form>
 										<form action="/cliente/carrito/agregar/${producto.id }" method="POST">
@@ -123,9 +123,13 @@
                                 <img src="${producto.urlImagen}">
                                 <div>
                                     <p class="montserrat g-p sm-txt mb-1">${producto.nombre}</p>
-                                    <p class="montserrat g-p sm-txt">${producto.pVenta}</p>
+                                    <p class="montserrat g-p sm-txt"> <i class="fa-solid fa-dollar-sign"></i>${producto.pVenta}</p>
                                 </div>
-                                <a href="#" class="btn-danger m-05"><i class="fa-xmark fa-solid"></i></a>
+                                <form action="/cliente/carrito/quitar/${producto.id}" method="POST">
+									<button type="submit" class="btn-danger m-05">
+										<span><i class="fa-xmark fa-solid"></i></span>
+									</button>
+								</form>
                             </div>
                             <hr >
                     	</c:forEach>

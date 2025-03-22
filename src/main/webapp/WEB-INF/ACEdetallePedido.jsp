@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus | Detalle del pedido</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.2">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4.6">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -37,6 +37,7 @@
 				    <ul class="navbar">
 						<li><a class="navlink montserrat" href="/cliente/home">Inicio</a></li>
 				        <li><a class="navlink montserrat" href="/cliente/pedidos">Mis Pedidos</a></li>
+				        <li><a class="navlink montserrat" href="/cliente/carrito">Carrito</a></li>
 				        <li><a class="navlink montserrat" href="/cliente/${usuarioEnSesion.id}">Perfil</a></li>
 				        <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 				    </ul>
@@ -54,23 +55,26 @@
             </c:choose> 
     </header>
     <main class="main">
-        <div class="card">
-            <h2 class="outfit">Pedido #${pedido.id}</h2>
+        <div id="pedido">
+            <h1 class="outfit">Pedido #${pedido.id}</h1>
+            <h2 class="outfit">Productos:</h2>
             <c:forEach var="pEp" items="${pEp}">
-                <p class="montserrat g-p">Producto: ${pEp.producto.nombre}</p>
-                <h3 class="outfit">Información proveedor: </h3>
-                <p class="montserrat g-p">Nombre empresa: ${pEp.producto.creador.nombre}</p>
-                <p class="montserrat g-p">Contacto empresa: ${pEp.producto.creador.email}</p>
+                <h3 class="outfit">${pEp.producto.nombre}</h3>
+                <h3 class="montserrat g-p">Información proveedor: </h3>
+                <p class="montserrat g-p i">Empresa: ${pEp.producto.creador.nombre}</p>
+                <p class="montserrat g-p i">Contacto: ${pEp.producto.creador.email}</p>
+                <hr class="mt-05">
             </c:forEach> 
-                <h3 class="outfit">Información cliente: </h3>
-                <p class="montserrat g-p">Nombre cliente: ${pedido.creador.nombre}</p>
-                <p class="montserrat g-p">Dirección cliente: ${pedido.creador.direccion}</p> 
+            	<br>
+                <h2 class="outfit">Información cliente: </h2>
+                <p class="montserrat g-p i">Nombre cliente: ${pedido.creador.nombre} ${pedido.creador.apellido}</p>
+                <p class="montserrat g-p i">Dirección cliente: ${pedido.creador.direccion}</p> 
                 <hr class="mt-05">
             <h3 class="outfit mb-1">TOTAL: ${pedido.totalDelPedido}</h3>
             <c:choose>
             	<c:when test="${usuarioEnSesion.tipoDeUsuario == cliente }">
             		<a href="/cliente/pedidos" class=" btn montserrat"> <i class="fa-solid fa-chevron-left"></i> Volver </a>
-            		<form action="/cliente/borrar/pedido/${pedido.id}" method="POST">
+            		<form action="/cliente/borrar/pedido/${pedido.id}" method="POST" class="mt-05">
                			<input type="hidden" name="_method" value="DELETE">
                 		<button type="submit" class="btn-danger montserrat mt-05 btn-full">
                     		<span> <i class="fa-solid fa-xmark"></i> Cancelar pedido </span>
@@ -78,7 +82,7 @@
             		</form> 
             	</c:when>
             	<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
-            		<form action="/admin/borrar/pedido/${pedido.id}" method="POST">
+            		<form action="/admin/borrar/pedido/${pedido.id}" method="POST" class="mt-05">
                			<input type="hidden" name="_method" value="DELETE">
                 		<button type="submit" class="btn-danger montserrat mt-05 btn-full">
                     		<span> <i class="fa-solid fa-xmark"></i> Cancelar pedido </span>
@@ -86,7 +90,7 @@
             		</form> 
             	</c:when>
             	<c:otherwise>
-            		<form action="/empresa/borrar/pedido/${pedido.id}" method="POST">
+            		<form action="/empresa/borrar/pedido/${pedido.id}" method="POST" class="mt-05">
                			<input type="hidden" name="_method" value="DELETE">
                 		<button type="submit" class="btn-danger montserrat mt-05 btn-full">
                     		<span> <i class="fa-solid fa-xmark"></i> Cancelar pedido </span>
