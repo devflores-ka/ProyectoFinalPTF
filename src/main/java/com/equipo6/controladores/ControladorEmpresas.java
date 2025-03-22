@@ -116,8 +116,8 @@ public class ControladorEmpresas {
 			return "nuevoProducto.jsp";
 		} else {
 			sProductos.guardarProducto(producto);
-			return "redirect:/empresa/productos";
 		}
+		return "redirect:/empresa/productos";
 	}
 
 	// AEeditarProducto.jsp
@@ -129,7 +129,10 @@ public class ControladorEmpresas {
 		if (session.getAttribute("usuarioEnSesion") == null || !usuarioEnSesion.getTipoDeUsuario().equals("EMPRESA")) {
 			return "redirect:/";
 		}
-
+		
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
+		
 		Producto producto = sProductos.buscarProducto(id);
 
 		if (producto == null) {
@@ -150,7 +153,10 @@ public class ControladorEmpresas {
 			model.addAttribute("producto", producto);
 			return "AEeditarProducto.jsp";
 		}
-
+		
+		String admin = "ADMIN";
+		model.addAttribute("admin", admin);
+		
 		sProductos.guardarProducto(producto);
 		Producto productoActualizado = sProductos.buscarProducto(id);
 		return "redirect:/empresa/productos/" + productoActualizado.getId();
@@ -182,7 +188,7 @@ public class ControladorEmpresas {
 		Usuario usuario = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
 		model.addAttribute("usuario", usuario);
 
-		return "ACEpedidos.jsp";
+		return "ACElistaPedidos.jsp";
 	}
 
 //ACEdetallePedido.jsp 
@@ -281,8 +287,7 @@ public class ControladorEmpresas {
 
         sUsuarios.guardarUsuario(empresapwd);
         
-        Usuario empresaActualizada=sUsuarios.buscarUsuario(id);
-        return "redirect:/empresa/" + empresaActualizada.getId();
+        return "redirect:/empresa/home" ;
     
 
 }

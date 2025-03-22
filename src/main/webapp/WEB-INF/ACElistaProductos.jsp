@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus | Productos</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4.6">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4.7">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -37,7 +37,7 @@
 				    <ul class="navbar">
 						<li><a class="navlink montserrat" href="/cliente/home">Inicio</a></li>
 				        <li><a class="navlink montserrat" href="/cliente/pedidos">Mis Pedidos</a></li>
-				        <li><a class="navlink montserrat" href="/cliente/carrito/${usuarioEnSesion.id}">Carrito</a></li>
+				        <li><a class="navlink montserrat" href="/cliente/carrito">Carrito</a></li>
 				        <li><a class="navlink montserrat" href="/cliente/${usuarioEnSesion.id}">Perfil</a></li>
 				        <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 				    </ul>
@@ -66,15 +66,15 @@
 			<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
 				<section class="l-prod flex">
 					<c:forEach var="producto" items="${productos}">
-						<div class="c-cont">
+						<div class="c-cont w-20">
 							<img src="${producto.urlImagen}" class="flex-2">
 							<div class="c-div-h">
 								<h2 class="outfit mb-1">${producto.nombre}</h2>
 								<p class="montserrat">
-									<i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}
+									Precio venta <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}
 								</p>
 								<p class="montserrat mb-1">
-									<i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}
+									Precio arriendo <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}
 								</p>
 								<div class="b-2 a-s-e">
 									<a href="/admin/productos/${producto.id}" class="btn montserrat"> Detalles</a>
@@ -89,23 +89,28 @@
 				<div class="c-list-cont flex">
 					<section class="l-prod flex">
 						<c:forEach var="producto" items="${productos}">
-							<div class="c-cont">
+							<div class="c-cont w-20">
 								<img src="${producto.urlImagen}" class="flex-2">
 								<div class="c-div-h">
 									<h2 class="outfit mb-1">${producto.nombre}</h2>
 									<p class="montserrat">
-										<i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}
+										Precio venta <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}
 									</p>
 									<p class="montserrat mb-1">
-										<i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}
+										Precio arriendo <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}
 									</p>
 									<div class="b-2 a-s-e">
+										<a href="/cliente/productos/${producto.id}" class="btn montserrat"> Detalles</a>
+										<form action="/cliente/arrendar/${producto.id }" method="POST">
+											<button type="submit" class="btn montserrat mt-05">
+												<span><i class="fa-solid fa-check"></i> Generar pedido </span>
+											</button>
+										</form>
 										<form action="/cliente/carrito/agregar/${producto.id }" method="POST">
 											<button type="submit" class="btn montserrat mt-05">
 			                       				 <span><i class="fa-solid fa-cart-plus"></i> Agregar al carrito </span>
 			                    			</button>
 										</form>
-										<a href="/cliente/productos/${producto.id}" class="btn montserrat"> Detalles</a>
 									</div>
 								</div>
 							</div>
@@ -135,15 +140,15 @@
 			<c:otherwise>
 				<section class="l-prod flex">
 					<c:forEach var="producto" items="${productos}">
-						<div class="c-cont">
+						<div class="c-cont w-20">
 							<img src="${producto.urlImagen}" class="flex-2">
 							<div class="c-div-h">
 								<h2 class="outfit mb-1">${producto.nombre}</h2>
 								<p class="montserrat">
-									<i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}
+									Precio venta <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}
 								</p>
 								<p class="montserrat mb-1">
-									<i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}
+									Precio arriendo <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}
 								</p>
 								<div class="b-2 a-s-e">
 									<a href="/empresa/productos/${producto.id}" class="btn montserrat"> Detalles</a>

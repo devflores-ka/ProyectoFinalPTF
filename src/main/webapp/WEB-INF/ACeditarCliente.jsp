@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus | Editar información</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4.5">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -50,7 +50,7 @@
 	        <c:choose>
 	        	<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
 		        	<h1 class="outfit m-1">Editar Cliente </h1>
-		            <div class="r-cont">
+		            <div class="r-cont mb-1">
 		                <form:form action="/admin/actualizar/cliente/${cliente.id}" method="POST" modelAttribute="cliente">
 		                    <input type="hidden" name="_method" value="PUT"><!-- SOBREESCRIBO METODO -->
 		                    <div class="mt-05">
@@ -74,14 +74,14 @@
 		                        <form:errors path="direccion" class="txt-danger montserrat"/>
 		                    </div>	
 		                    <div class="mt-05">
-								<form:label for="tipoDeUsuario" path="tipoDeUsuario">Tipo de Usuario:</form:label>
-						        <form:select path="tipoDeUsuario">
+								<form:label class="montserrat" for="tipoDeUsuario" path="tipoDeUsuario">Tipo de Usuario:</form:label>
+						        <form:select class="txt-input montserrat" path="tipoDeUsuario">
 						            <form:option path="tipoDeUsuario" class="txt-input montserrat" value="CLIENTE">Cliente</form:option>
 						            <form:option path="tipoDeUsuario" class="txt-input montserrat" value="EMPRESA">Empresa</form:option>
 						        </form:select>
 				                <form:errors path="tipoDeUsuario" class="txt-danger montserrat" />
 				            </div>	
-		                    <button type="submit" class="btn montserrat mt-05 mb-1">
+		                    <button type="submit" class="btn montserrat mt-05">
 		                        <span> Guardar </span>
 		                    </button>
 		                </form:form>
@@ -95,7 +95,7 @@
 	        	</c:when>
 	        	<c:otherwise>
 	        	<h1 class="outfit m-1">Editar mi información</h1>
-		            <div class="r-cont">
+		            <div class="r-cont mb-1">
 		                <form:form action="/cliente/actualizar/${usuarioEnSesion.id}" method="POST" modelAttribute="cliente">
 		                    <input type="hidden" name="_method" value="PUT"><!-- SOBREESCRIBO METODO -->
 		                    <div class="mt-05">

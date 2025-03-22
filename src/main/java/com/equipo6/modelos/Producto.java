@@ -56,7 +56,7 @@ public class Producto {
 	private String garantia;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="usuario_id")
+	@JoinColumn(name="usuario_id", updatable=false)
 	private Usuario creador;
 	
 	@Column(updatable=false)

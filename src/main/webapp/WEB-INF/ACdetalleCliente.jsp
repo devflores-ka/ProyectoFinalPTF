@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus | Detalle del usuario</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4.5">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -47,7 +47,7 @@
 			<c:choose>
         		<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
         			<h1 class="outfit">Admin | Detalle de usuario</h1>
-        			<h1 class="outfit">${cliente.nombre } ${cliente.apellido}</h1>
+        			<h2 class="outfit">${cliente.nombre } ${cliente.apellido}</h2>
         		</c:when>
         		<c:otherwise>
         			<h1 class="outfit">${usuarioEnSesion.nombre} ${usuarioEnSesion.apellido}</h1>
@@ -58,7 +58,8 @@
 	            	<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
 	            		<p class="montserrat mt-05" >Id Cliente: ${cliente.id }</p>
 		                <p class="montserrat mt-05" >Direccion: ${cliente.direccion }</p>
-		                <p class="montserrat mt-05 mb-1" >Correo electronico: ${cliente.email }</p>
+		                <p class="montserrat mt-05" >Correo electronico: ${cliente.email }</p>
+		                <p class="montserrat mt-05 mb-1">Tipo de usuario: ${cliente.tipoDeUsuario }</p>
 		                <a href="/admin/editar/cliente/${cliente.id }" class="btn montserrat"> Editar Cliente </a>
 	            	</c:when>
 	            	<c:otherwise>

@@ -149,7 +149,6 @@ public class ControladorAdmins {
 	public String actualizarEmpresa(@PathVariable("id") Long id, @ModelAttribute("empresa") Usuario empresa,
 			BindingResult result, Model model) {
 
-		System.out.println("Actualizar Empresa: Envía la ruta");
 		String admin = "ADMIN";// para comparacion en jsp
 		model.addAttribute("admin", admin);
 
@@ -161,15 +160,13 @@ public class ControladorAdmins {
 		empresapwd.setTipoDeUsuario(empresa.getTipoDeUsuario());
 
 		if (result.hasErrors()) {
-			System.out.println("Actualizar Empresa: hay error" + result);
 			model.addAttribute("empresa", empresapwd);
 			return "AEeditarEmpresa.jsp";
 		}
 
 		sUsuarios.guardarUsuario(empresapwd);
-		Usuario usuarioActualizado = sUsuarios.buscarUsuario(id);
-		System.out.println("Actualizar Empresa: debería hacer return");
-		return "redirect:/admin/empresas/" + usuarioActualizado.getId();
+
+		return "redirect:/admin/empresas/";
 	}
 
 //ADMINlistaClientes.jsp	
@@ -233,7 +230,7 @@ public class ControladorAdmins {
 
 //PUTmapping	
 	@PutMapping("/actualizar/cliente/{id}")
-	public String actualizarCliente(@PathVariable("id") Long id, @ModelAttribute("cliente") @Valid Usuario cliente,
+	public String actualizarCliente(@PathVariable("id") Long id, @ModelAttribute("cliente") Usuario cliente,
 			BindingResult result, Model model) {
 
 		Usuario clientepwd = sUsuarios.buscarUsuario(id);
@@ -249,10 +246,12 @@ public class ControladorAdmins {
 			;
 			return "ACeditarCliente.jsp";
 		}
-
+		
+		String admin = "ADMIN";// para comparacion en jsp
+		model.addAttribute("admin", admin);
 		sUsuarios.guardarUsuario(clientepwd);
-		Usuario usuarioActualizado = sUsuarios.buscarUsuario(clientepwd.getId());
-		return "redirect:/admin/clientes/" + usuarioActualizado.getId();
+		
+		return "redirect:/admin/clientes/";
 	}
 
 //DELETEmapping	

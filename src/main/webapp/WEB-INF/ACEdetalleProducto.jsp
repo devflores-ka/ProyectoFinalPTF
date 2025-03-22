@@ -46,22 +46,22 @@
 			    	<ul class="navbar">
 		                <li><a class="navlink montserrat" href="/empresa/home">Inicio</a></li>
 		                <li><a class="navlink montserrat" href="/empresa/productos">Mis productos</a></li>
-		                <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">Mi empresa</a></li>
 		                <li><a class="navlink montserrat" href="/nuevoProducto">Agregar Producto</a></li>
 		                <li><a class="navlink montserrat" href="/empresa/ventas">Mis ventas</a></li>
+		                <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">Mi empresa</a></li>
 		                <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 		            </ul>
 			    </c:otherwise>
             </c:choose> 
         </header>
         <main class="main">
-            <div class="flex">
+            <div class="flex m-1">
                 <img src="${producto.urlImagen }" class="imagen flex-2" alt="${producto.nombre}">
                 <div class="info flex-3">
                     <h2 class="outfit">${producto.nombre}</h2>
                     <p class="montserrat">${producto.descripcion}</p>
-                    <p class="montserrat"> <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}</p>
-                    <p class="montserrat"> <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}</p>
+                    <p class="montserrat">Precio venta <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}</p>
+                    <p class="montserrat">Precio arriendo <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}</p>
                     <p class="montserrat g-p">Proveedor: ${producto.creador.nombre}</p>
                     <c:choose>
                     	<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">

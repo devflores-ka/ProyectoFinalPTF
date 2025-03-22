@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus | Editar Empresa</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.5">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.5.0">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -75,8 +75,8 @@
 		                        <form:errors path="direccion" class="txt-danger montserrat" />
 		                    </div>
 							<div class="mt-05">
-								<form:label for="tipoDeUsuario" path="tipoDeUsuario">Tipo de Usuario:</form:label>
-						        <form:select path="tipoDeUsuario">
+								<form:label class="montserrat" for="tipoDeUsuario" path="tipoDeUsuario">Tipo de Usuario:</form:label>
+						        <form:select path="tipoDeUsuario" class="montserrat txt-input">
 						            <form:option path="tipoDeUsuario" class="txt-input montserrat" value="CLIENTE">Cliente</form:option>
 						            <form:option path="tipoDeUsuario" class="txt-input montserrat" value="EMPRESA">Empresa</form:option>
 						        </form:select>

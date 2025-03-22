@@ -52,7 +52,7 @@
             <div class="r-cont">
 	            <c:choose>
 	            	<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
-	            		<form:form action="/admin/actualizar/${producto.id}" method="POST" modelAttribute="producto">
+	            		<form:form action="/admin/actualizar/producto/${producto.id}" method="POST" modelAttribute="producto">
 		                    <input type="hidden" name="_method" value="PUT"><!-- SOBREESCRIBO METODO -->
 		                    <div class="mt-05">
 		                        <form:label class="montserrat" path="nombre">Nombre:</form:label>
@@ -88,7 +88,6 @@
 		                        <span> Guardar </span>
 		                    </button>
 		                </form:form>
-		                
 		                <form action="/admin/borrar/${producto.id}" method="POST">
 							<input type="hidden" name="_method" value="DELETE">
 							<button type="submit" class="btn-danger montserrat mt-05">
@@ -97,7 +96,7 @@
 		                </form>
 	            	</c:when>
 	            	<c:otherwise>
-			            <form:form action="/empresa/actualizar/${producto.id}" method="POST" modelAttribute="producto">
+			            <form:form action="/empresa/actualizar/producto/${producto.id}" method="POST" modelAttribute="producto">
 		                    <input type="hidden" name="_method" value="PUT"><!-- SOBREESCRIBO METODO -->
 		                    <div class="mt-05">
 		                        <form:label class="montserrat" path="nombre">Nombre:</form:label>
@@ -132,8 +131,7 @@
 		                    <button type="submit" class="btn montserrat mt-05">
 		                        <span> Guardar </span>
 		                    </button>
-		                </form:form>
-		                
+		                </form:form>                
 		                <form action="/empresa/borrar/${producto.id}" method="POST">
 							<input type="hidden" name="_method" value="DELETE">
 							<button type="submit" class="btn-danger montserrat mt-05">

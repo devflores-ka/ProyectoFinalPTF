@@ -328,4 +328,55 @@ public class ControladorClientes {
 		
 	    return "redirect:/cliente/pedidos";
 		}
+		
+//PostMapping
+		@PostMapping("/arrendar/{id}")
+		public String arrendarProducto(@PathVariable ("id")Long id, HttpSession session) {
+			
+			if (session.getAttribute("usuarioEnSesion") == null) {
+		        return "redirect:/";
+		    }
+		
+		Usuario usuario = (Usuario)session.getAttribute("usuarioEnSesion");
+		
+		Producto producto = sProductos.buscarProducto(id);
+		
+		Pedido pedido = new Pedido();
+		pedido.setCreador(usuario);
+		pedido.setTipoDeServicio("Arriendo");
+		pedido.setTotalDelPedido(0L);
+		
+		pedido = sPedido.guardarPedido(pedido);
+		
+		long total = 0;
+
+		List<ProductoEnPedido> items = new ArrayList<>();
+		
+		ProductoEnPedido item = new ProductoEnPedido();
+	    item.setProducto(producto);
+	    item.setPedido(pedido);
+	    item.setCantidadProducto(1);
+	    total+=producto.getpArriendo();
+	    
+	    ProductoEnPedidoKey key = new ProductoEnPedidoKey();
+	    key.setPedidoId(pedido.getId());
+	    key.setProductoId(producto.getId());
+	    item.setId(key);
+	    
+	    sProdEnP.guardarProductoEnPedido(item);
+	    items.add(item);
+	    
+	    ProductoEnPedido pEp = items.get(0);
+		Producto productoIndex1 = pEp.getProducto();
+		
+		String imgUrl =productoIndex1.getUrlImagen();
+		pedido.setUrlImagen(imgUrl.toString());
+		
+		pedido.setTotalDelPedido(total);
+		pedido.setProductosEnPedido(items);
+		
+		sPedido.guardarPedido(pedido);
+		
+		return "redirect:/cliente/pedidos";
+		}
 }

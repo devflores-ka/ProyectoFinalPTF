@@ -46,17 +46,23 @@
             </c:choose> 
         </header>
         <main class="main">
-        	<c:if test="${usuarioEnSesion.tipoDeUsuario == admin }">
-	            <h1 class="outfit m-1">${empresa.nombre}</h1>
-			</c:if>
-			<h1 class="outfit m-1">${usuarioEnSesion.nombre }</h1>
+        	<c:choose>
+        		<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
+        			<h1 class="outfit">Admin | Detalle de usuario</h1>
+        			<h2 class="outfit">${empresa.nombre }</h2>
+        		</c:when>
+        		<c:otherwise>
+        			<h1 class="outfit">${usuarioEnSesion.nombre} ${usuarioEnSesion.apellido}</h1>
+        		</c:otherwise>
+        	</c:choose>
             <div class="h-25">
 	            <c:choose>
 	                <c:when test="${usuarioEnSesion.tipoDeUsuario == admin}">
 	                	<p class="montserrat mt-05" >Id empresa: ${empresa.id}</p>
 	                    <p class="montserrat mt-05" >Representante Legal: ${empresa.apellido}</p>
                         <p class="montserrat mt-05" >Direccion: ${empresa.direccion}</p>
-                        <p class="montserrat mt-05 mb-1" >Correo Electronico: ${empresa.email}</p>
+                        <p class="montserrat mt-05" >Correo Electronico: ${empresa.email}</p>
+                        <p class="montserrat mt-05 mb-1">Tipo de usuario: ${empresa.tipoDeUsuario }</p>
 	                    <a href="/admin/editar/empresa/${empresa.id }" class="btn montserrat"> Editar Empresa </a>
 	                </c:when>
 	                <c:otherwise>
