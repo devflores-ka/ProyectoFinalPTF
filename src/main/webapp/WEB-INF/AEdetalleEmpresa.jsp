@@ -52,7 +52,7 @@
         			<h2 class="outfit">${empresa.nombre }</h2>
         		</c:when>
         		<c:otherwise>
-        			<h1 class="outfit">${usuarioEnSesion.nombre} ${usuarioEnSesion.apellido}</h1>
+        			<h1 class="outfit">${usuarioEnSesion.nombre} </h1>
         		</c:otherwise>
         	</c:choose>
             <div class="h-25">

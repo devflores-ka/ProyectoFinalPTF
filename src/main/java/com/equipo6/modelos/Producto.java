@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -67,7 +68,7 @@ public class Producto {
 	private Date updatedAt;
 	
 	//---------------RELACIONES------------------
-	@OneToMany(mappedBy ="producto", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy ="producto", fetch=FetchType.LAZY/*, cascade=CascadeType.ALL*/)
 	private List<ProductoEnPedido> pedidosQueTienenEsteProducto;
 	
 	public Producto() {

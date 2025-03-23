@@ -251,7 +251,7 @@ public class ControladorAdmins {
 		model.addAttribute("admin", admin);
 		sUsuarios.guardarUsuario(clientepwd);
 		
-		return "redirect:/admin/clientes/";
+		return "redirect:/admin/clientes";
 	}
 
 //DELETEmapping	
