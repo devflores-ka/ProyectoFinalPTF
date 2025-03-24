@@ -18,7 +18,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
         <!--FAVICON-->
         <link rel="icon" type="image/x-icon" href="/img/icon.webp">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
         <script src="/js/main.js?v=1" defer></script>
     </head>
     <body>

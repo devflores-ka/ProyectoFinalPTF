@@ -24,7 +24,7 @@
             <ul class="navbar">
 		          <li><a class="navlink montserrat" href="/empresa/home">Inicio</a></li>
 		          <li><a class="navlink montserrat" href="/empresa/productos">Mis productos</a></li>
-		          <li><a class="navlink montserrat" href="/nuevoProducto">Agregar Producto</a></li>
+		          <li><a class="navlink montserrat" href="/nuevo/producto">Agregar Producto</a></li>
 		          <li><a class="navlink montserrat" href="/empresa/ventas">Mis ventas</a></li>
 		          <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">Mi empresa</a></li>
 		          <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
