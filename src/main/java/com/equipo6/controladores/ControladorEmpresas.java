@@ -95,7 +95,7 @@ public class ControladorEmpresas {
 
 //nuevoProducto.jsp    
 	@GetMapping("/nuevo/producto")
-	public String nuevoProducto(Model model, HttpSession session) {
+	public String nuevoProducto(@ModelAttribute("nuevoProducto") Producto nuevoProducto, HttpSession session) {
 
 		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
 
@@ -103,19 +103,17 @@ public class ControladorEmpresas {
 			return "redirect:/";
 		}
 
-		model.addAttribute("producto", new Producto());
-
 		return "nuevoProducto.jsp";
 	}
 
 //POSTmapping    
 	@PostMapping("/agregar/producto")
-	public String agregarProducto(@Valid @ModelAttribute("producto") Producto producto, BindingResult result) {
+	public String agregarProducto(@Valid @ModelAttribute("nuevoProducto") Producto nuevoProducto, BindingResult result) {
 
 		if (result.hasErrors()) {
 			return "nuevoProducto.jsp";
 		} else {
-			sProductos.guardarProducto(producto);
+			sProductos.guardarProducto(nuevoProducto);
 		}
 		return "redirect:/empresa/productos";
 	}
@@ -185,8 +183,9 @@ public class ControladorEmpresas {
 		model.addAttribute("admin", admin);
 
 		// Para conseguir las ventas de LA EMPRESA EN SESION
-		Usuario usuario = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
-		model.addAttribute("usuario", usuario);
+		Long idEmpresa = usuarioEnSesion.getId();
+		List <Pedido> ventas = sPedidos.pedidosDeLaEmpresa(idEmpresa);
+		model.addAttribute("ventas", ventas);
 
 		return "ACElistaPedidos.jsp";
 	}
@@ -268,7 +267,7 @@ public class ControladorEmpresas {
 	
 	@PutMapping("/actualizar/{id}")
     public String actualizarEmpresa(@PathVariable("id") Long id, @ModelAttribute("empresa")Usuario empresa,
-            BindingResult result, Model model) {
+            BindingResult result, Model model, HttpSession session) {
 
 		String admin = "ADMIN";// para comparacion en jsp
 		model.addAttribute("admin", admin);
@@ -287,7 +286,9 @@ public class ControladorEmpresas {
 
         sUsuarios.guardarUsuario(empresapwd);
         
-        return "redirect:/empresa/home" ;
+        Usuario usuarioActualizado = sUsuarios.buscarUsuario(id);
+        session.setAttribute("usuarioEnSesion", usuarioActualizado);
+        return "redirect:/empresa/"+usuarioActualizado.getId() ;
     
 
 }

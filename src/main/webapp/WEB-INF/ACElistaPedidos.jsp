@@ -47,7 +47,7 @@
 		                <li><a class="navlink montserrat" href="/empresa/home">Inicio</a></li>
 		                <li><a class="navlink montserrat" href="/empresa/productos">Mis productos</a></li>
 		                <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">Mi empresa</a></li>
-		                <li><a class="navlink montserrat" href="/nuevo/producto">Agregar Producto</a></li>
+		                <li><a class="navlink montserrat" href="/empresa/nuevo/producto">Agregar Producto</a></li>
 		                <li><a class="navlink montserrat" href="/empresa/ventas">Mis ventas</a></li>
 		                <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 		            </ul>
@@ -101,7 +101,7 @@
             	</c:when>
             	<c:otherwise>
             		<div class="l-prod flex">
-	            		<c:forEach var="pedido" items="${pedido.productosEnPedido.pedidosQueTienenEsteProducto}">
+	            		<c:forEach var="pedido" items="${ventas}">
 			                <div class="card">
 			                    <img class="det-img" src="${pedido.urlImagen}" alt="Imagen del pedido"> 
 			                    <div class="detalles">
@@ -109,7 +109,7 @@
 			                        <p class="montserrat g-p">Tipo de pedido: ${pedido.tipoDeServicio}</p>
 			                        <hr>
 			                        <p class="outfit mb-1">TOTAL <i class="fa-solid fa-dollar-sign"></i> ${pedido.totalDelPedido} CLP</p>
-			                        <a href="/cliente/pedidos/${pedido.id}" class="btn montserrat" title="más info">Detalles</a>
+			                        <a href="/empresa/pedidos/${pedido.id}" class="btn montserrat" title="más info">Detalles</a>
 			                    </div>
 			                </div>
 			            </c:forEach>

@@ -204,7 +204,7 @@ public class ControladorClientes {
 		
 		@PutMapping("/actualizar/{id}")
 	    public String actualizarCliente(@PathVariable("id") Long id, @ModelAttribute("cliente")Usuario cliente,
-	            BindingResult result, Model model) {
+	            BindingResult result, Model model, HttpSession session) {
 
 			String admin = "ADMIN";// para comparacion en jsp
 			model.addAttribute("admin", admin);
@@ -222,8 +222,11 @@ public class ControladorClientes {
 	        }
 
 	        sUsuarios.guardarUsuario(clientepwd);
-
-	        return "redirect:/cliente/home";
+	        
+	        Usuario usuarioActualizado = sUsuarios.buscarUsuario(id);
+	        session.setAttribute("usuarioEnSesion", usuarioActualizado);
+	        
+	        return "redirect:/cliente/"+usuarioActualizado.getId();
 	    
 
 	}

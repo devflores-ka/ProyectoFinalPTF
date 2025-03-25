@@ -88,12 +88,13 @@
 		                        <span> Guardar </span>
 		                    </button>
 		                </form:form>
-		                <form action="/admin/borrar/producto/${producto.id}" method="POST">
+		               <!--   <form action="/admin/borrar/producto/${producto.id}" method="POST">
 							<input type="hidden" name="_method" value="DELETE">
 							<button type="submit" class="btn-danger montserrat mt-05">
 		                        <span> <i class="fa-solid fa-xmark"></i> Eliminar Producto </span>
 		                    </button>
 		                </form>
+		                 A FUTURO-->
 	            	</c:when>
 	            	<c:otherwise>
 			            <form:form action="/empresa/actualizar/producto/${producto.id}" method="POST" modelAttribute="producto">
@@ -132,12 +133,13 @@
 		                        <span> Guardar </span>
 		                    </button>
 		                </form:form>                
-		                <form action="/empresa/borrar/producto/${producto.id}" method="POST">
+		             <!--    <form action="/empresa/borrar/producto/${producto.id}" method="POST">
 							<input type="hidden" name="_method" value="DELETE">
 							<button type="submit" class="btn-danger montserrat mt-05">
 		                        <span> <i class="fa-solid fa-xmark"></i> Eliminar Producto </span>
 		                    </button>
 		                </form>
+		                A FUTURO-->
 	            	</c:otherwise>
 	            </c:choose>   	
             </div>
