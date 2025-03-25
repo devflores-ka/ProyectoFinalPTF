@@ -33,36 +33,36 @@
         <main class="main">
             <h1 class="outfit m-1">Añadir Producto</h1>
             <div class="r-cont">
-                <form:form action="/agregarProducto" method="POST" modelAttribute="nuevoProducto">
+                <form:form action="/empresa/agregar/producto" method="POST" modelAttribute="nuevoProducto">
                     <div class="mt-05">
                         <form:label class="montserrat" path="nombre">Nombre:</form:label>
                         <form:input path="nombre" class="txt-input montserrat"/>
-                        <form:errors path="nombre" class="txt-danger montserrat"/>
+                        <form:errors path="nombre" class="txt-danger montserrat sm-txt"/>
                     </div>
                     <div class="mt-05">
                         <form:label class="montserrat" path="urlImagen">URL de imagen:</form:label>
                         <form:input path="urlImagen" class="txt-input montserrat"/>
-                        <form:errors path="urlImagen" class="txt-danger montserrat"/>
+                        <form:errors path="urlImagen" class="txt-danger montserrat sm-txt"/>
                     </div>
                     <div class="mt-05">
                         <form:label class="montserrat" path="pVenta">Precio de Venta:</form:label>
                         <form:input path="pVenta" class="txt-input montserrat"/>
-                        <form:errors path="pVenta" class="txt-danger montserrat"/>
+                        <form:errors path="pVenta" class="txt-danger montserrat sm-txt"/>
                     </div>
                     <div class="mt-05">
                         <form:label class="montserrat" path="pArriendo">Precio de Arriendo (mensual):</form:label>
                         <form:input path="pArriendo" class="txt-input montserrat"/>
-                        <form:errors path="pArriendo" class="txt-danger montserrat"/>
+                        <form:errors path="pArriendo" class="txt-danger montserrat sm-txt"/>
                     </div>			
                     <div class="mt-05">
                         <form:label class="montserrat" path="descripcion">Descripcion:</form:label>
                         <form:textarea path="descripcion" class="txt-input montserrat"/>
-                        <form:errors path="descripcion" class="txt-danger montserrat"/>
+                        <form:errors path="descripcion" class="txt-danger montserrat sm-txt"/>
                     </div>
                     <div class="mt-05">
                         <form:label class="montserrat" path="garantia">Garantías:</form:label>
                         <form:textarea path="garantia" class="txt-input montserrat"/>
-                        <form:errors path="garantia" class="txt-danger montserrat"/>
+                        <form:errors path="garantia" class="txt-danger montserrat sm-txt"/>
                     </div>			
                     <form:hidden path="creador" value="${usuarioEnSesion.id}"/>
                     <button type="submit" class="btn montserrat mt-05">

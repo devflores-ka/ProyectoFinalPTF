@@ -38,12 +38,12 @@
                     <div class="mt-05">
                         <form:label class="montserrat" path="emailLogin">Email:</form:label>
                         <form:input path="emailLogin" class="txt-input montserrat"/>
-                        <form:errors path="emailLogin" class="txt-danger montserrat"/>
+                        <form:errors path="emailLogin" class="txt-danger montserrat sm-txt"/>
                     </div>
                     <div class="mt-05">
                         <form:label class="montserrat" path="passwordLogin">Contraseña:</form:label>
                         <form:password path="passwordLogin" class="txt-input montserrat"/>
-                        <form:errors path="passwordLogin" class="txt-danger montserrat"/>
+                        <form:errors path="passwordLogin" class="txt-danger montserrat sm-txt"/>
                     </div>				
                     <button type="submit" class="btn montserrat mt-05">
                         <span class="q-w"> Iniciar Sesión </span>

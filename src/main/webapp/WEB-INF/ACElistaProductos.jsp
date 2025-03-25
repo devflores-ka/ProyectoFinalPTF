@@ -125,11 +125,11 @@
                                     <p class="montserrat g-p sm-txt mb-1">${producto.nombre}</p>
                                     <p class="montserrat g-p sm-txt"> <i class="fa-solid fa-dollar-sign"></i>${producto.pVenta}</p>
                                 </div>
-                                <form action="/cliente/carrito/quitar/${producto.id}" method="POST">
+                              <!--   <form action="/cliente/carrito/quitar/${producto.id}" method="POST">
 									<button type="submit" class="btn-danger m-05">
 										<span><i class="fa-xmark fa-solid"></i></span>
 									</button>
-								</form>
+								</form> -->
                             </div>
                             <hr >
                     	</c:forEach>
