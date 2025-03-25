@@ -68,7 +68,7 @@ public class Usuario {
 	
 	//-------------------RELACIONES----------------------
 	
-	@OneToMany(mappedBy="creador", fetch=FetchType.LAZY, cascade=CascadeType.ALL)//Lazy
+	@OneToMany(mappedBy="creador", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Pedido> misPedidos = new ArrayList<>();	
 
 	public Usuario() {}

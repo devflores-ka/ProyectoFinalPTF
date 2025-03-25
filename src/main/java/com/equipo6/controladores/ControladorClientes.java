@@ -283,7 +283,7 @@ public class ControladorClientes {
 		    return "redirect:/cliente/home";
 		} 
 		
-		@PostMapping("/carrito/quitar/{id}")
+		/*@PostMapping("/carrito/quitar/{id}") //----------------------------------------------------A FUTURO
 		public String quitarProducto(@PathVariable("id") Long id, HttpSession session ) { 
 
 		
@@ -302,8 +302,8 @@ public class ControladorClientes {
 		    session.setAttribute("carrito", carrito);
 		    
 		    return "redirect:/cliente/home";
-		} 
-
+		} */
+		
 		@PostMapping("/pedido/generar")
 		public String finalizarPedido(Model model, HttpSession session) {
 		
@@ -341,7 +341,8 @@ public class ControladorClientes {
 		    ProductoEnPedido item = new ProductoEnPedido();
 		    item.setProducto(producto);
 		    item.setPedido(pedido);
-		    item.setCantidadProducto(1);
+		    int cant = item.getCantidadProducto();
+		    item.setCantidadProducto(cant +1);
 		    total+=producto.getpVenta();
 		    
 		    //para la relación con modelo extra

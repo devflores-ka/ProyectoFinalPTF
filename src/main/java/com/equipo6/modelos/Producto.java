@@ -60,6 +60,8 @@ public class Producto {
 	@JoinColumn(name="usuario_id", updatable=false)
 	private Usuario creador;
 	
+	//private boolean productoActivo;-----------------A FUTURO
+	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createdAt;
@@ -68,7 +70,7 @@ public class Producto {
 	private Date updatedAt;
 	
 	//---------------RELACIONES------------------
-	@OneToMany(mappedBy ="producto", fetch=FetchType.LAZY/*, cascade=CascadeType.ALL*/)
+	@OneToMany(mappedBy ="producto", fetch=FetchType.LAZY)
 	private List<ProductoEnPedido> pedidosQueTienenEsteProducto;
 	
 	public Producto() {
