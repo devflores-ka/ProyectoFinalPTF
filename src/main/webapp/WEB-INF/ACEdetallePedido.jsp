@@ -57,8 +57,12 @@
     <main class="main">
         <div id="pedido">
             <h1 class="outfit">Pedido #${pedido.id}</h1>
-            <h2 class="outfit">Productos: <i class="fa-regular fa-circle-question g-p" title="Los productos tachados no pertenecen a tu empresa"></i></h2>
-            <br>
+             <h2 class="outfit">Productos: 
+             	<c:if test="${usuarioEnSesion.tipoDeUsuario == empresa }">
+             		<i class="fa-regular fa-circle-question g-p" title="Los productos tachados no pertenecen a tu empresa"></i>
+            	 </c:if>
+             </h2> 
+             <br>
             <c:forEach var="pEp" items="${pEp}">
             	<c:choose>
 	                <c:when test="${pEp.producto.creador.id == usuarioEnSesion.id}">
@@ -69,6 +73,7 @@
 	                <c:otherwise>
 	                	<p class="montserrat i g-p txt-lt">${pEp.producto.nombre}</p>
 	                	<p class="montserrat i g-p txt-lt">Proveedor: ${pEp.producto.creador.nombre }</p>
+	                	<p class="montserrat g-p i">Valor: ${pEp.producto.pVenta} CLP</p>
 	                </c:otherwise>
 	            </c:choose>              
                 <hr class="mt-05">

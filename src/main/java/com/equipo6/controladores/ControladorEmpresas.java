@@ -208,6 +208,13 @@ public class ControladorEmpresas {
 		Pedido pedido = sPedidos.buscarPedido(id);
 		model.addAttribute("pedido", pedido);
 		
+		String cliente = "CLIENTE";// para comparacion en jsp
+ 		model.addAttribute("cliente", cliente);
+ 		String admin = "ADMIN";
+ 		model.addAttribute("admin", admin);
+ 		String empresa = "EMPRESA";
+ 		model.addAttribute("empresa", empresa);
+		
 		Long pedidoId = pedido.getId();
 		//busco la lista con el id del pedido
 		List<ProductoEnPedido> productosEnElPedido = sProdEnP.buscarProdxPedido(pedidoId);

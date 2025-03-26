@@ -389,6 +389,8 @@ public class ControladorAdmins {
 		model.addAttribute("cliente", cliente);
 		String admin = "ADMIN";
 		model.addAttribute("admin", admin);
+		String empresa = "EMPRESA";
+ 		model.addAttribute("empresa", empresa);
 		
 		Pedido pedido = sPedido.buscarPedido(id);
 		model.addAttribute("pedido", pedido);		
