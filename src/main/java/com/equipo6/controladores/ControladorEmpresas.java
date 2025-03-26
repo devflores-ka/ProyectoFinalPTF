@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.equipo6.modelos.Pedido;
 import com.equipo6.modelos.Producto;
+import com.equipo6.modelos.ProductoEnPedido;
 import com.equipo6.modelos.Usuario;
 import com.equipo6.servicios.ServicioPedido;
+import com.equipo6.servicios.ServicioProductoEnPedido;
 import com.equipo6.servicios.ServicioProductos;
 import com.equipo6.servicios.ServicioUsuarios;
 
@@ -36,6 +38,9 @@ public class ControladorEmpresas {
 
 	@Autowired
 	private ServicioPedido sPedidos;
+	
+	@Autowired
+	private ServicioProductoEnPedido sProdEnP;
 
 //EMPRESAhome.jsp
 	@GetMapping("/home")
@@ -202,7 +207,12 @@ public class ControladorEmpresas {
 
 		Pedido pedido = sPedidos.buscarPedido(id);
 		model.addAttribute("pedido", pedido);
-
+		
+		Long pedidoId = pedido.getId();
+		//busco la lista con el id del pedido
+		List<ProductoEnPedido> productosEnElPedido = sProdEnP.buscarProdxPedido(pedidoId);
+		model.addAttribute("pEp", productosEnElPedido);
+		
 		Usuario usuarioActualizado = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
 		model.addAttribute("usuario", usuarioActualizado);
 

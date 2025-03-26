@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus | Detalle del pedido</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4.6">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4.8">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -44,12 +44,12 @@
 			    </c:when>
 			    <c:otherwise>
 			    	<ul class="navbar">
-		                <li><a class="navlink montserrat" href="/empresa/home">Inicio</a></li>
-		                <li><a class="navlink montserrat" href="/empresa/productos">Mis productos</a></li>
-		                <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">Mi empresa</a></li>
-		                <li><a class="navlink montserrat" href="/empresa/nuevo/producto">Agregar Producto</a></li>
-		                <li><a class="navlink montserrat" href="/empresa/ventas">Mis ventas</a></li>
-		                <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
+			          <li><a class="navlink montserrat" href="/empresa/home">Inicio</a></li>
+			          <li><a class="navlink montserrat" href="/empresa/productos">Mis productos</a></li>
+			          <li><a class="navlink montserrat" href="/empresa/nuevo/producto">Agregar Producto</a></li>
+			          <li><a class="navlink montserrat" href="/empresa/ventas">Mis ventas</a></li>
+			          <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">Mi empresa</a></li>
+			          <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 		            </ul>
 			    </c:otherwise>
             </c:choose> 
@@ -57,12 +57,20 @@
     <main class="main">
         <div id="pedido">
             <h1 class="outfit">Pedido #${pedido.id}</h1>
-            <h2 class="outfit">Productos:</h2>
+            <h2 class="outfit">Productos: <i class="fa-regular fa-circle-question g-p" title="Los productos tachados no pertenecen a tu empresa"></i></h2>
+            <br>
             <c:forEach var="pEp" items="${pEp}">
-                <h3 class="outfit">${pEp.producto.nombre}</h3>
-                <h3 class="montserrat g-p">Información proveedor: </h3>
-                <p class="montserrat g-p i">Empresa: ${pEp.producto.creador.nombre}</p>
-                <p class="montserrat g-p i">Contacto: ${pEp.producto.creador.email}</p>
+            	<c:choose>
+	                <c:when test="${pEp.producto.creador.id == usuarioEnSesion.id}">
+	                	 <h3 class="outfit ">${pEp.producto.nombre}</h3>
+	                	 <h3 class="outfit i">Valor: ${pEp.producto.pVenta} CLP</h3>
+	                	 <h3 class="montserrat i">Proveedor: Mi empresa (${pEp.producto.creador.nombre})</h3>
+	                </c:when>
+	                <c:otherwise>
+	                	<p class="montserrat i g-p txt-lt">${pEp.producto.nombre}</p>
+	                	<p class="montserrat i g-p txt-lt">Proveedor: ${pEp.producto.creador.nombre }</p>
+	                </c:otherwise>
+	            </c:choose>              
                 <hr class="mt-05">
             </c:forEach> 
             	<br>
@@ -71,7 +79,7 @@
                 <p class="montserrat g-p i">Dirección cliente: ${pedido.creador.direccion}</p> 
                 <hr class="mt-05">
             <h3 class="outfit g-p"> Tipo de pedido: ${pedido.tipoDeServicio }</h3>
-            <h3 class="outfit mb-1">TOTAL: ${pedido.totalDelPedido}</h3>
+            <h3 class="outfit mb-1">TOTAL: ${pedido.totalDelPedido} CLP</h3>
             <c:choose>
             	<c:when test="${usuarioEnSesion.tipoDeUsuario == cliente }">
             		<a href="/cliente/pedidos" class=" btn montserrat"> <i class="fa-solid fa-chevron-left"></i> Volver </a>

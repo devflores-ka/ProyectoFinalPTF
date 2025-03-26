@@ -109,7 +109,7 @@
 			                        <p class="montserrat g-p">Tipo de pedido: ${pedido.tipoDeServicio}</p>
 			                        <hr>
 			                        <p class="outfit mb-1">TOTAL <i class="fa-solid fa-dollar-sign"></i> ${pedido.totalDelPedido} CLP</p>
-			                        <a href="/empresa/pedidos/${pedido.id}" class="btn montserrat" title="más info">Detalles</a>
+			                        <a href="/empresa/ventas/${pedido.id}" class="btn montserrat" title="más info">Detalles</a>
 			                    </div>
 			                </div>
 			            </c:forEach>

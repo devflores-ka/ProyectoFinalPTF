@@ -139,8 +139,6 @@ public class ControladorClientes {
 		List<ProductoEnPedido> productosEnElPedido = sProdEnP.buscarProdxPedido(pedidoId);
 		model.addAttribute("pEp", productosEnElPedido);
 		
-		System.out.println("El pedido tiene: "+productosEnElPedido);
-		
 		
 		Usuario usuarioEnSesion = (Usuario) session.getAttribute("usuarioEnSesion");
 		Usuario usuarioActualizado = sUsuarios.buscarUsuario(usuarioEnSesion.getId());
