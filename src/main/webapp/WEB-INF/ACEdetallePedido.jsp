@@ -70,6 +70,7 @@
                 <p class="montserrat g-p i">Nombre cliente: ${pedido.creador.nombre} ${pedido.creador.apellido}</p>
                 <p class="montserrat g-p i">Dirección cliente: ${pedido.creador.direccion}</p> 
                 <hr class="mt-05">
+            <h3 class="outfit g-p"> Tipo de pedido: ${pedido.tipoDeServicio }</h3>
             <h3 class="outfit mb-1">TOTAL: ${pedido.totalDelPedido}</h3>
             <c:choose>
             	<c:when test="${usuarioEnSesion.tipoDeUsuario == cliente }">

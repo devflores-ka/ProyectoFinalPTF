@@ -37,7 +37,7 @@
 			    </c:when>
 			    <c:otherwise>
 		            <ul class="navbar">
-				          <li><a class="navlink montserrat" href="/empresa/home">Inicio</a></li>
+		 				  <li><a class="navlink montserrat" href="/empresa/home">Inicio</a></li>
 				          <li><a class="navlink montserrat" href="/empresa/productos">Mis productos</a></li>
 				          <li><a class="navlink montserrat" href="/empresa/nuevo/producto">Agregar Producto</a></li>
 				          <li><a class="navlink montserrat" href="/empresa/ventas">Mis ventas</a></li>
@@ -52,27 +52,28 @@
             <div class="r-cont">
 	            <c:choose>
 	            	<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">
-		                <form:form action="/admin/actualizar/empresa/${empresa.id}" method="POST" modelAttribute="empresa">
+						<div id="error"></div>
+		                <form:form id="form" action="/admin/actualizar/empresa/${empresa.id}" method="POST" modelAttribute="empresa">
 		                    <input type="hidden" name="_method" value="PUT"><!-- SOBREESCRIBO METODO -->
 		                    <div class="mt-05">
-		                        <form:label class="montserrat" path="nombre">Nombre:</form:label>
-		                        <form:input path="nombre" class="txt-input montserrat" placeholder="Nombre de la empresa."/>
-		                        <form:errors path="nombre" class="txt-danger montserrat sm-txt"/>
+		                        <form:label for="nombre" class="montserrat" path="nombre">Nombre:</form:label>
+		                        <form:input required="required" id="nombre" name="nombre" type="text" path="nombre" class="txt-input montserrat" placeholder="Nombre de la empresa." />
+		                        <form:errors path="nombre" class="txt-danger montserrat"/>
 		                    </div>
 		                    <div class="mt-05">
-		                        <form:label class="montserrat" path="apellido">Nombre Representante Legal:</form:label>
-		                        <form:input path="apellido" class="txt-input montserrat" placeholder="Nombre y apellido del representante legal de la empresa."/>
-		                        <form:errors path="apellido" class="txt-danger montserrat sm-txt"/>
+		                        <form:label for="representanteLegal" class="montserrat" path="apellido">Nombre Representante Legal:</form:label>
+		                        <form:input id="representanteLegal" name="representanteLegal" type="text" path="apellido" class="txt-input montserrat" placeholder="Nombre y apellido del representante legal de la empresa." required="required"/>
+		                        <form:errors path="apellido" class="txt-danger montserrat"/>
 		                    </div>
 		                    <div class="mt-05">
-		                        <form:label class="montserrat" path="email">Email:</form:label>
-		                        <form:input path="email" class="txt-input montserrat" placeholder="Email de la empresa."/>
-		                        <form:errors path="email" class="txt-danger montserrat sm-txt"/>
+		                        <form:label for="email" class="montserrat" path="email">Email:</form:label>
+		                        <form:input id="email" name="email" type="email" path="email" class="txt-input montserrat" placeholder="Email de la empresa." required="required"/>
+		                        <form:errors path="email" class="txt-danger montserrat"/>
 		                    </div>
 		                    <div class="mt-05">
-		                        <form:label path="direccion" class="montserrat">Dirección</form:label>
-		                        <form:input path="direccion" class="txt-input montserrat" placeholder="Dirección de la empresa."/>
-		                        <form:errors path="direccion" class="txt-danger montserrat sm-txt" />
+		                        <form:label for="direccion" path="direccion" class="montserrat">Dirección</form:label>
+		                        <form:input id="direccion" name="direccion" type="text" path="direccion" class="txt-input montserrat" placeholder="Dirección de la empresa." required="required"/>
+		                        <form:errors path="direccion" class="txt-danger montserrat" />
 		                    </div>
 							<div class="mt-05">
 								<form:label class="montserrat" for="tipoDeUsuario" path="tipoDeUsuario">Tipo de Usuario:</form:label>
@@ -80,7 +81,7 @@
 						            <form:option path="tipoDeUsuario" class="txt-input montserrat" value="CLIENTE">Cliente</form:option>
 						            <form:option path="tipoDeUsuario" class="txt-input montserrat" value="EMPRESA">Empresa</form:option>
 						        </form:select>
-				                <form:errors path="tipoDeUsuario" class="txt-danger montserrat sm-txt" />
+				                <form:errors path="tipoDeUsuario" class="txt-danger montserrat" />
 				            </div>
 		                    <button type="submit" class="btn montserrat mt-05">
 		                        <span> Guardar </span>
@@ -98,23 +99,23 @@
 		                    <input type="hidden" name="_method" value="PUT"><!-- SOBREESCRIBO METODO -->
 		                    <div class="mt-05">
 		                        <form:label class="montserrat" path="nombre">Nombre:</form:label>
-		                        <form:input path="nombre" class="txt-input montserrat" placeholder="Nombre de la empresa."/>
-		                        <form:errors path="nombre" class="txt-danger montserrat sm-txt"/>
+		                        <form:input id="nombre" path="nombre" class="txt-input montserrat" placeholder="Nombre de la empresa." required="required"/>
+		                        <form:errors path="nombre" class="txt-danger montserrat"/>
 		                    </div>
 		                    <div class="mt-05">
 		                        <form:label class="montserrat" path="apellido">Nombre Representante Legal:</form:label>
-		                        <form:input path="apellido" class="txt-input montserrat" placeholder="Nombre y apellido del representante legal de la empresa."/>
-		                        <form:errors path="apellido" class="txt-danger montserrat sm-txt"/>
+		                        <form:input id="representanteLegal" path="apellido" class="txt-input montserrat" placeholder="Nombre y apellido del representante legal de la empresa." required="required"/>
+		                        <form:errors path="apellido" class="txt-danger montserrat"/>
 		                    </div>
 		                    <div class="mt-05">
 		                        <form:label class="montserrat" path="email">Email:</form:label>
-		                        <form:input path="email" class="txt-input montserrat" placeholder="Email de la empresa."/>
-		                        <form:errors path="email" class="txt-danger montserrat sm-txt"/>
+		                        <form:input id="email" path="email" class="txt-input montserrat" placeholder="Email de la empresa." required="required"/>
+		                        <form:errors path="email" class="txt-danger montserrat"/>
 		                    </div>
 		                    <div class="mt-05">
 		                        <form:label path="direccion" class="montserrat">Dirección</form:label>
-		                        <form:input path="direccion" class="txt-input montserrat" placeholder="Dirección de la empresa."/>
-		                        <form:errors path="direccion" class="txt-danger montserrat sm-txt" />
+		                        <form:input id="direccion" path="direccion" class="txt-input montserrat" placeholder="Dirección de la empresa." required="required"/>
+		                        <form:errors path="direccion" class="txt-danger montserrat" />
 		                    </div>
 		                    <button type="submit" class="btn montserrat mt-05">
 		                        <span> Guardar </span>

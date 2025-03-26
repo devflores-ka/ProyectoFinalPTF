@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Halus | Productos</title>
         <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4.7">
+        <link rel="stylesheet" type="text/css" href="/css/style.css?version=0.4.9">
         <!--FAFA-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--FONT FAMILY@Outfit/@Montserrat-->
@@ -45,11 +45,11 @@
 			    <c:otherwise>
 			    	<ul class="navbar">
 		                <li><a class="navlink montserrat" href="/empresa/home">Inicio</a></li>
-		                <li><a class="navlink montserrat" href="/empresa/productos">Mis productos</a></li>
-		                <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">Mi empresa</a></li>
-		                <li><a class="navlink montserrat" href="/empresa/nuevo/producto">Agregar Producto</a></li>
-		                <li><a class="navlink montserrat" href="/empresa/ventas">Mis ventas</a></li>
-		                <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
+			            <li><a class="navlink montserrat" href="/empresa/productos">Mis productos</a></li>
+			            <li><a class="navlink montserrat" href="/empresa/nuevo/producto">Agregar Producto</a></li>
+			            <li><a class="navlink montserrat" href="/empresa/ventas">Mis ventas</a></li>
+			            <li><a class="navlink montserrat" href="/empresa/${usuarioEnSesion.id}">Mi empresa</a></li>
+			            <li><a href="/logout" class="btn montserrat">Cerrar Sesión</a></li>
 		            </ul>
 			    </c:otherwise>
             </c:choose>         
@@ -70,11 +70,14 @@
 							<img src="${producto.urlImagen}" class="flex-2">
 							<div class="c-div-h">
 								<h2 class="outfit mb-1">${producto.nombre}</h2>
+								<p class="montserrat g-p">
+									Proveedor: ${producto.creador.nombre}
+								</p>
 								<p class="montserrat">
-									Precio venta <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}
+									Precio venta <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta} CLP
 								</p>
 								<p class="montserrat mb-1">
-									Precio arriendo <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}
+									Precio arriendo <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo} CLP
 								</p>
 								<div class="b-2 a-s-e">
 									<a href="/admin/productos/${producto.id}" class="btn montserrat"> Detalles</a>
@@ -87,17 +90,20 @@
 			</c:when>
 			<c:when test="${usuarioEnSesion.tipoDeUsuario == cliente }">
 				<div class="c-list-cont flex">
-					<section class="l-prod flex">
+					<section class="l-prod m-1em flex">
 						<c:forEach var="producto" items="${productos}">
 							<div class="c-cont w-20">
 								<img src="${producto.urlImagen}" class="flex-2">
 								<div class="c-div-h">
 									<h2 class="outfit mb-1">${producto.nombre}</h2>
+									<p class="montserrat g-p">
+										Proveedor: ${producto.creador.nombre}
+									</p>
 									<p class="montserrat">
-										Precio venta <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}
+										Precio venta <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta} CLP
 									</p>
 									<p class="montserrat mb-1">
-										Precio arriendo <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}
+										Precio arriendo <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo} CLP
 									</p>
 									<div class="b-2 a-s-e">
 										<a href="/cliente/productos/${producto.id}" class="btn montserrat"> Detalles</a>
@@ -123,7 +129,7 @@
                                 <img src="${producto.urlImagen}">
                                 <div>
                                     <p class="montserrat g-p sm-txt mb-1">${producto.nombre}</p>
-                                    <p class="montserrat g-p sm-txt"> <i class="fa-solid fa-dollar-sign"></i>${producto.pVenta}</p>
+                                    <p class="montserrat g-p sm-txt"> <i class="fa-solid fa-dollar-sign"></i>${producto.pVenta} CLP</p>
                                 </div>
                               <!--   <form action="/cliente/carrito/quitar/${producto.id}" method="POST">
 									<button type="submit" class="btn-danger m-05">
@@ -142,6 +148,7 @@
 				</div>
 			</c:when>
 			<c:otherwise>
+				<h2 class="h2-o mb-1 outfit">Mis productos</h2>
 				<section class="l-prod flex">
 					<c:forEach var="producto" items="${productos}">
 						<div class="c-cont w-20">
@@ -149,10 +156,10 @@
 							<div class="c-div-h">
 								<h2 class="outfit mb-1">${producto.nombre}</h2>
 								<p class="montserrat">
-									Precio venta <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}
+									Precio venta <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta} CLP
 								</p>
 								<p class="montserrat mb-1">
-									Precio arriendo <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}
+									Precio arriendo <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo} CLP
 								</p>
 								<div class="b-2 a-s-e">
 									<a href="/empresa/productos/${producto.id}" class="btn montserrat"> Detalles</a>

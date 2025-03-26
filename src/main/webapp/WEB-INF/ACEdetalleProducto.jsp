@@ -60,8 +60,8 @@
                 <div class="info flex-3">
                     <h2 class="outfit">${producto.nombre}</h2>
                     <p class="montserrat">${producto.descripcion}</p>
-                    <p class="montserrat">Precio venta <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta}</p>
-                    <p class="montserrat">Precio arriendo <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo}</p>
+                    <p class="montserrat">Precio venta <i class="fa-solid fa-dollar-sign"></i> ${producto.pVenta} CLP</p>
+                    <p class="montserrat">Precio arriendo <i class="fa-solid fa-dollar-sign"></i> ${producto.pArriendo} CLP</p>
                     <p class="montserrat g-p">Proveedor: ${producto.creador.nombre}</p>
                     <c:choose>
                     	<c:when test="${usuarioEnSesion.tipoDeUsuario == admin }">

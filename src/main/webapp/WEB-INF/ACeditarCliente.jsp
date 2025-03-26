@@ -55,23 +55,23 @@
 		                    <input type="hidden" name="_method" value="PUT"><!-- SOBREESCRIBO METODO -->
 		                    <div class="mt-05">
 		                        <form:label class="montserrat" path="nombre">Nombre:</form:label>
-		                        <form:input path="nombre" class="txt-input montserrat" placeholder="Nombre cliente"/>
-		                        <form:errors path="nombre" class="txt-danger montserrat sm-txt"/>
+		                        <form:input id="nombre" path="nombre" class="txt-input montserrat" placeholder="Nombre cliente" required="required"/>
+		                        <form:errors path="nombre" class="txt-danger montserrat"/>
 		                    </div>
 		                    <div class="mt-05">
 		                        <form:label class="montserrat" path="apellido">Apellido:</form:label>
-		                        <form:input path="apellido" class="txt-input montserrat" placeholder="Apellido cliente"/>
-		                        <form:errors path="apellido" class="txt-danger montserrat sm-txt"/>
+		                        <form:input id="apellido" path="apellido" class="txt-input montserrat" placeholder="Apellido cliente" required="required"/>
+		                        <form:errors path="apellido" class="txt-danger montserrat"/>
 		                    </div>
 		                    <div class="mt-05">
 		                        <form:label class="montserrat" path="email">Email:</form:label>
-		                        <form:input path="email" class="txt-input montserrat" placeholder="Email cliente"/>
-		                        <form:errors path="email" class="txt-danger montserrat sm-txt"/>
+		                        <form:input id="email" path="email" class="txt-input montserrat" placeholder="Email cliente" required="required"/>
+		                        <form:errors path="email" class="txt-danger montserrat"/>
 		                    </div>	
 		                    <div class="mt-05">
 		                        <form:label class="montserrat" path="direccion">Direccion:</form:label>
-		                        <form:input path="direccion" class="txt-input montserrat" placeholder="Direccion cliente"/>
-		                        <form:errors path="direccion" class="txt-danger montserrat sm-txt"/>
+		                        <form:input id="direccion" path="direccion" class="txt-input montserrat" placeholder="Direccion cliente" required="required"/>
+		                        <form:errors path="direccion" class="txt-danger montserrat"/>
 		                    </div>	
 		                    <div class="mt-05">
 								<form:label class="montserrat" for="tipoDeUsuario" path="tipoDeUsuario">Tipo de Usuario:</form:label>
@@ -79,7 +79,7 @@
 						            <form:option path="tipoDeUsuario" class="txt-input montserrat" value="CLIENTE">Cliente</form:option>
 						            <form:option path="tipoDeUsuario" class="txt-input montserrat" value="EMPRESA">Empresa</form:option>
 						        </form:select>
-				                <form:errors path="tipoDeUsuario" class="txt-danger montserrat sm-txt" />
+				                <form:errors path="tipoDeUsuario" class="txt-danger montserrat" />
 				            </div>	
 		                    <button type="submit" class="btn montserrat mt-05">
 		                        <span> Guardar </span>
@@ -96,33 +96,34 @@
 	        	<c:otherwise>
 	        	<h1 class="outfit m-1">Editar mi información</h1>
 		            <div class="r-cont mb-1">
-		                <form:form action="/cliente/actualizar/${usuarioEnSesion.id}" method="POST" modelAttribute="cliente">
+						<div id="error"></div>
+		                <form:form id="form" action="/cliente/actualizar/${usuarioEnSesion.id}" method="POST" modelAttribute="cliente">
 		                    <input type="hidden" name="_method" value="PUT"><!-- SOBREESCRIBO METODO -->
 		                    <div class="mt-05">
-		                        <form:label class="montserrat" path="nombre">Nombre:</form:label>
-		                        <form:input path="nombre" class="txt-input montserrat" placeholder="Nombre"/>
-		                        <form:errors path="nombre" class="txt-danger montserrat sm-txt"/>
+		                        <form:label for="nombre" class="montserrat" path="nombre">Nombre:</form:label>
+		                        <form:input id="nombre" name="nombre" type="text" path="nombre" class="txt-input montserrat" placeholder="Nombre" required="required"/>
+		                        <form:errors path="nombre" class="txt-danger montserrat"/>
 		                    </div>
 		                    <div class="mt-05">
-		                        <form:label class="montserrat" path="apellido">Apellido:</form:label>
-		                        <form:input path="apellido" class="txt-input montserrat" placeholder="Apellido"/>
-		                        <form:errors path="apellido" class="txt-danger montserrat sm-txt"/>
+		                        <form:label for="apellido" class="montserrat" path="apellido">Apellido:</form:label>
+		                        <form:input id="apelleido" name="apellido" type="text" path="apellido" class="txt-input montserrat" placeholder="Apellido" required="required"/>
+		                        <form:errors path="apellido" class="txt-danger montserrat"/>
 		                    </div>
 		                    <div class="mt-05">
-		                        <form:label class="montserrat" path="email">Email:</form:label>
-		                        <form:input path="email" class="txt-input montserrat" placeholder="Email"/>
-		                        <form:errors path="email" class="txt-danger montserrat sm-txt"/>
+		                        <form:label for="email" class="montserrat" path="email">Email:</form:label>
+		                        <form:input id="email" name="email" type="email" path="email" class="txt-input montserrat" placeholder="Email" required="required"/>
+		                        <form:errors path="email" class="txt-danger montserrat"/>
 		                    </div>	
 		                    <div class="mt-05">
-		                        <form:label class="montserrat" path="direccion">Direccion:</form:label>
-		                        <form:input path="direccion" class="txt-input montserrat" placeholder="Direccion"/>
-		                        <form:errors path="direccion" class="txt-danger montserrat sm-txt"/>
+		                        <form:label for="direccion" class="montserrat" path="direccion">Direccion:</form:label>
+		                        <form:input id="direccion" name="direccion" type="direccion" path="direccion" class="txt-input montserrat" placeholder="Direccion" required="required"/>
+		                        <form:errors path="direccion" class="txt-danger montserrat"/>
 		                    </div>	
 		                    <button type="submit" class="btn montserrat mt-05">
 		                        <span> Guardar </span>
 		                    </button>
 		                </form:form>
-		             </div>
+		            </div>
 	        	</c:otherwise>
 	        </c:choose>
         </main>

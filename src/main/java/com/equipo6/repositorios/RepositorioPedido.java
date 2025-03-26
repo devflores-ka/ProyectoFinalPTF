@@ -16,6 +16,6 @@ public interface RepositorioPedido extends CrudRepository<Pedido, Long> {
 	
 	List<Pedido> findAllByOrderByCreatedAtDesc();
 	
-	@Query(nativeQuery = true, value = "SELECT * FROM proyectofinal.pedidos p JOIN proyectofinal.producto_en_pedido pep ON p.id=  pep.pedido_id JOIN productos prod ON pep.producto_id = prod.id WHERE prod.usuario_id AS creadorId = :usuarioId")
+	@Query(nativeQuery = true, value = "SELECT DISTINCT * FROM proyectofinal.pedidos p JOIN proyectofinal.producto_en_pedido pep ON p.id=  pep.pedido_id JOIN productos prod ON pep.producto_id = prod.id WHERE prod.usuario_id = :usuarioId")
 	List<Pedido> buscarParaEmpresa(@Param("usuarioId")Long usuarioId);
 }

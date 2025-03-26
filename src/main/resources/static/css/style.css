@@ -79,6 +79,16 @@ a{
 	
 }
 
+@media(max-width: 1400px){
+	.c-list-cont .l-prod{
+	flex-direction: column;
+	}
+	
+	.carrito{
+	background-color: white;}
+	
+}
+
 .footer a:hover, #info a:hover{
     color: rgba(255,115,96,1);
 }
@@ -104,6 +114,10 @@ a{
 
 .outfit{
     font-family: 'Outfit';
+}
+
+.c-list-cont .l-prod{
+	margin: 0 2em;
 }
 
 .sm-txt{
@@ -208,6 +222,7 @@ a{
     width: 80%;
     margin: 0 auto;
     gap: 1em;
+    flex-wrap: wrap;
 }
 
 .c-list-cont{

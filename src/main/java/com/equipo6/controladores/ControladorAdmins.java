@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.equipo6.modelos.Pedido;
 import com.equipo6.modelos.Producto;
+import com.equipo6.modelos.ProductoEnPedido;
 import com.equipo6.modelos.Usuario;
 import com.equipo6.servicios.ServicioPedido;
+import com.equipo6.servicios.ServicioProductoEnPedido;
 import com.equipo6.servicios.ServicioProductos;
 import com.equipo6.servicios.ServicioUsuarios;
 
@@ -36,6 +38,9 @@ public class ControladorAdmins {
 
 	@Autowired
 	private ServicioProductos sProductos;
+	
+	@Autowired
+	private ServicioProductoEnPedido sProdEnP;
 
 	@GetMapping("/home")
 	public String home(HttpSession session) {
@@ -165,8 +170,9 @@ public class ControladorAdmins {
 		}
 
 		sUsuarios.guardarUsuario(empresapwd);
+		Usuario usuarioActualizado = sUsuarios.buscarUsuario(empresapwd.getId());
 
-		return "redirect:/admin/empresas/";
+		return "redirect:/admin/empresas/"+usuarioActualizado.getId();
 	}
 
 //ADMINlistaClientes.jsp	
@@ -250,8 +256,8 @@ public class ControladorAdmins {
 		String admin = "ADMIN";// para comparacion en jsp
 		model.addAttribute("admin", admin);
 		sUsuarios.guardarUsuario(clientepwd);
-		
-		return "redirect:/admin/clientes";
+		Usuario usuarioActualizado = sUsuarios.buscarUsuario(clientepwd.getId());
+		return "redirect:/admin/clientes/"+usuarioActualizado.getId();
 	}
 
 //DELETEmapping	
@@ -387,6 +393,11 @@ public class ControladorAdmins {
 		Pedido pedido = sPedido.buscarPedido(id);
 		model.addAttribute("pedido", pedido);		
 
+		Long pedidoId = pedido.getId();
+		
+		List<ProductoEnPedido> productosEnElPedido = sProdEnP.buscarProdxPedido(pedidoId);
+		model.addAttribute("pEp", productosEnElPedido);
+		
 		return "ACEdetallePedido.jsp";
 	}
 
