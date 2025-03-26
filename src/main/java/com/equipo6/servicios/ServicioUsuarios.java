@@ -76,6 +76,7 @@ public class ServicioUsuarios {
 	}
 	
 	public Usuario guardarUsuario(Usuario usuario) {
+		System.out.println("Se utilizó guardar usuario");
 		return repoUsuarios.save(usuario);
 	}
 	

@@ -1,10 +1,14 @@
 package com.equipo6.modelos;
 
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -20,7 +24,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="pedidos")
-public class Pedido {
+public class Pedido{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +33,8 @@ public class Pedido {
 	private String tipoDeServicio;
 	
 	private Long totalDelPedido;
+	
+	private String urlImagen;
 	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -41,8 +47,9 @@ public class Pedido {
 	@JoinColumn(name="usuario_id")
 	private Usuario creador;
 	
-	@OneToMany(mappedBy="pedido" ,fetch=FetchType.LAZY)	
-	private List<ProductoEnPedido> productosEnPedido;
+	
+	@OneToMany(mappedBy="pedido" ,fetch=FetchType.LAZY, cascade=CascadeType.ALL)	
+	private List<ProductoEnPedido> productosEnPedido = new ArrayList<>();
 	
 	public Pedido()	{}
 	
@@ -102,6 +109,14 @@ public class Pedido {
 		this.productosEnPedido = productosEnPedido;
 	}
 	
+	public String getUrlImagen() {
+		return urlImagen;
+	}
+
+	public void setUrlImagen(String urlImagen) {
+		this.urlImagen = urlImagen;
+	}
+
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date();

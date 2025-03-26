@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -56,8 +57,10 @@ public class Producto {
 	private String garantia;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="usuario_id")
+	@JoinColumn(name="usuario_id", updatable=false)
 	private Usuario creador;
+	
+	//private boolean productoActivo;-----------------A FUTURO
 	
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")

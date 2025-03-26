@@ -1,5 +1,6 @@
 package com.equipo6.modelos;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,9 +13,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
@@ -22,7 +20,6 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
@@ -36,28 +33,27 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //AI
 	private Long id;
 
-	@NotBlank(message="El campo de nombre es obligatorio")
+	@NotBlank(message="El Nombre es requerido")
 	@Size(min=2, message="El nombre debe tener al menos dos caracteres")
 	private String nombre;
 
-	@NotBlank(message="El campo de apellido es obligatorio")
+	@NotBlank(message="El Apellido es requerido")
 	@Size(min=2, message="El apellido debe tener al menos dos caracteres")
 	private String apellido;
 
-	@NotBlank(message="El campo de email es obligatorio")
-	@Email()
+	@NotBlank(message="El email es requerido")
+	@Email(message="Ingrese un email válido")
 	private String email;
 	
-	@NotBlank(message="El campo de dirección es requerido.")
+	@NotBlank(message="La dirección es requerida.")
 	@Size(min=4, message="La dirección debe tener al menos cuatro carácteres.")
 	private String direccion;
 	
-	@NotNull(message="El tipo de usuario es requerido")
 	private String tipoDeUsuario;
 
-	@NotBlank(message="El campo de password es obligatorio")
-	@Size(min=8, message="El password debe tener al menos ocho caracteres")
-	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$", message = "El password necesita incluir al menos una letra mayúscula, una letra minúscula y un número")
+	@NotBlank(message="La contraseña es requerida")
+	@Size(min=8, message="La contraseña debe tener al menos ocho caracteres")
+	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$", message = "La contraseña debe incluir al menos una letra mayúscula, una letra minúscula y un número")
 	private String password;
 
 	@Transient 
@@ -71,8 +67,9 @@ public class Usuario {
 	private Date updatedAt;
 	
 	//-------------------RELACIONES----------------------
+	
 	@OneToMany(mappedBy="creador", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	private List<Pedido> misPedidos;	
+	private List<Pedido> misPedidos = new ArrayList<>();	
 
 	public Usuario() {}
 

@@ -4,29 +4,29 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name="producto_en_pedido")
 public class ProductoEnPedido {
     
 	@EmbeddedId
-    ProductoEnPedidoLlave id;
+    private ProductoEnPedidoKey id;
 
-    @ManyToOne
+    @ManyToOne (fetch=FetchType.LAZY)
     @MapsId("pedidoId")
     @JoinColumn(name = "pedido_id")
     Pedido pedido;
 
-    @ManyToOne
+    @ManyToOne (fetch=FetchType.LAZY)
     @MapsId("productoId")
     @JoinColumn(name = "producto_id")
     Producto producto;
@@ -42,11 +42,11 @@ public class ProductoEnPedido {
 
     public ProductoEnPedido () {}
 
-    public ProductoEnPedidoLlave getId() {
+    public ProductoEnPedidoKey getId() {
         return id;
     }
 
-    public void setId(ProductoEnPedidoLlave id) {
+    public void setId(ProductoEnPedidoKey id) {
         this.id = id;
     }
 

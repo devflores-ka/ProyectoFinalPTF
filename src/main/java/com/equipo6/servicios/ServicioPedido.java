@@ -29,4 +29,9 @@ public class ServicioPedido {
 	public void borrarPedido(Long id) {
 		repoPedido.deleteById(id);
 	}
+	
+	public List<Pedido> pedidosDeLaEmpresa(Long id){
+		return repoPedido.buscarParaEmpresa(id);
+	}
+	
 }
