@@ -64,18 +64,20 @@
              </h2> 
              <br>
             <c:forEach var="pEp" items="${pEp}">
-            	<c:choose>
-	                <c:when test="${pEp.producto.creador.id == usuarioEnSesion.id}">
-	                	 <h3 class="outfit ">${pEp.producto.nombre}</h3>
-	                	 <h3 class="outfit i">Valor: ${pEp.producto.pVenta} CLP</h3>
-	                	 <h3 class="montserrat i">Proveedor: Mi empresa (${pEp.producto.creador.nombre})</h3>
-	                </c:when>
-	                <c:otherwise>
-	                	<p class="montserrat i g-p txt-lt">${pEp.producto.nombre}</p>
-	                	<p class="montserrat i g-p txt-lt">Proveedor: ${pEp.producto.creador.nombre }</p>
-	                	<p class="montserrat g-p i">Valor: ${pEp.producto.pVenta} CLP</p>
-	                </c:otherwise>
-	            </c:choose>              
+            	 <c:choose>
+ 	                <c:when test="${pEp.producto.creador.id == usuarioEnSesion.id}">
+ 	                	 <h3 class="outfit ">${pEp.producto.nombre}</h3>
+ 	                	 <h3 class="outfit i">Valor Venta: ${pEp.producto.pVenta} CLP</h3>
+ 	                	 <h3 class="outfit i">Valor Arriendo: ${pEp.producto.pArriendo } CLP</h3>
+ 	                	 <h3 class="montserrat i">Proveedor: Mi empresa (${pEp.producto.creador.nombre})</h3>
+ 	                </c:when>
+ 	                <c:otherwise>
+ 	                	<p class="montserrat i g-p">${pEp.producto.nombre}</p>
+ 	                	<p class="montserrat i g-p">Proveedor: ${pEp.producto.creador.nombre }</p>
+ 	                	<p class="montserrat g-p i">Valor Arriendo: ${pEp.producto.pArriendo} CLP</p>
+ 	                	<p class="montserrat g-p i">Valor Compra: ${pEp.producto.pVenta} CLP</p>
+ 	                </c:otherwise>
+ 	            </c:choose>               
                 <hr class="mt-05">
             </c:forEach> 
             	<br>
